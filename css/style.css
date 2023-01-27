@@ -1,7 +1,8 @@
 :root{
     --fekete: #080B0C;
-    --sotet: #0f0f0f;
-    --sarga: #F3A712;
+    --zold: #55be3b;
+    --feher: #fff;
+    --szurke: #5a5a5a;
 }
 *{
     margin: 0;
@@ -9,7 +10,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: var(--sotet);
+    background-color: var(--feher);
 }
 
 /* Menu */
@@ -21,7 +22,7 @@ body{
     background-color: var(--fekete);
     color: white;
     width: 100%;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 1px 1px 10px var(--fekete);
 }
 .mcim{
     font-size: 1.5rem;
