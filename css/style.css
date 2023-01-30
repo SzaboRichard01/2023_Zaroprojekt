@@ -34,7 +34,7 @@ body {
     font-weight: 600;
     margin-left: 20px;
     text-decoration: none;
-    color: #55be3b;
+    color: var(--zold);
 }
 
 .links {
@@ -54,7 +54,7 @@ body {
 .links li a {
     display: block;
     text-decoration: none;
-    color: #55be3b;
+    color: var(--zold);
     padding: 1rem;
     background-color: var(--fekete);
 }
