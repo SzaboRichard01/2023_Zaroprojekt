@@ -152,6 +152,18 @@ body {
     text-align: left;
 }
 
+.container_left h1{
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container_right h1{
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .border{
     border: 1px solid var(--zold);
     margin-top: 4.5rem;
