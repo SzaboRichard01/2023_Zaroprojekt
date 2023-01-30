@@ -56,9 +56,13 @@ body {
     text-decoration: none;
     color: #55be3b;
     padding: 1rem;
+    background-color: var(--fekete);
 }
 
 .links li:hover {
+    background-color: #555;
+}
+.links li a:hover {
     background-color: #555;
 }
 
