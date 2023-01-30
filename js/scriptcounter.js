@@ -1,3 +1,4 @@
+//Selects the class named 'counter' and stores it in a 'counters' variable.
 let counters = document.querySelectorAll('.counter');
 let speed = 100;
 
