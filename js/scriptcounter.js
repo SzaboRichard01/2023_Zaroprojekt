@@ -7,11 +7,11 @@ counters.forEach(counter => {
         let target =+ counter.getAttribute('data-target');
         let count =+ counter.innerText;
 
-        let inc = target / speed;
+        let inc = Math.floor((target - count) / speed);
 
-        if (count < target) {
+        if (count < target && inc > 0) {
             counter.innerText = count + inc;
-            setTimeout(updateCount, 15);
+            setTimeout(updateCount, 8);
         }else{
             count.innerText = target;
         }
