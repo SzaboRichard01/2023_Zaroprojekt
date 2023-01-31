@@ -39,14 +39,14 @@
     <!-- Menu -->
     <nav class="menu">
         <a class="mcim" href="index.html">ShineGym&Fit</a>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
         <div class="links">
+            <div class="prof">
+                <a href="#"><?php echo "{$vnev} {$knev}";?></a>
+                <?php
+                    print("<div class=\"pkep\">{$profilkep}</div>");
+                ?>
+            </div>
             <ul>
-                <li><a href="#"><?php echo "{$vnev} {$knev} {$profilkep}";?></a></li>
                 <li><a href="kilepes.php">Kilépés</a></li>
             </ul>
         </div>
@@ -54,9 +54,6 @@
     <!-- Menu vége -->
     <main>
         <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
-        <?php
-            print($profilkep);
-        ?>
         
     </main>
 
