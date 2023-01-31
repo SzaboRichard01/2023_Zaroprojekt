@@ -1,0 +1,61 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+form{
+    width: 60%;
+    margin: 20px;
+    border: 2px solid rgb(48, 48, 48);
+    padding: 20px;
+    min-width: 300px;
+}
+.mezo{
+    font-size: 18px;
+}
+.mezo input{
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    margin: 5px 0 10px 0;
+}
+.hibauzenet{
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* reg.html */
+.reg{
+    margin-top: 20px;
+    width: 90%;
+}
+.reg h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.profilok{
+    display: flex;
+    justify-content: center;
+}
+.kartya{
+    width: 300px;
+    background-color: white;
+    border: 2px solid var(--szurke);
+    padding: 10px;
+    margin: 0 10px;
+}
+.kartya:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.kartya_kep img{
+    width: 100%;
+}
+/* reg.html vége */
