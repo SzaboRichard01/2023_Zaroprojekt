@@ -8,7 +8,7 @@
         require("kapcsolat.php");
         $felh_id = $_SESSION['felh_id'];
 
-        $sql = "SELECT vnev, knev
+        $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online
                 FROM felhasznalok
                 WHERE felhasznalo_id = {$felh_id}";
         $eredmeny = mysqli_query($dbconn, $sql);
@@ -16,6 +16,12 @@
 
         $vnev = $sor['vnev'];
         $knev = $sor['knev'];
+
+        $kep = $sor['kep'];
+
+
+
+        $profilkep = "<img src=\"pics/profile/".$kep."\" alt=\"\">";
     }
     
 ?>
@@ -26,6 +32,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/klap.css">
     <title>Kezdőlap</title>
 </head>
 <body>
@@ -39,7 +46,7 @@
         </a>
         <div class="links">
             <ul>
-                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="#"><?php echo "{$vnev} {$knev} {$profilkep}";?></a></li>
                 <li><a href="kilepes.php">Kilépés</a></li>
             </ul>
         </div>
@@ -47,6 +54,10 @@
     <!-- Menu vége -->
     <main>
         <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
+        <?php
+            print($profilkep);
+        ?>
+        
     </main>
 
     <script src="js/script.js"></script>
