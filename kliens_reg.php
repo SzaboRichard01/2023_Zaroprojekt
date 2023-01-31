@@ -69,7 +69,8 @@
             mysqli_query($dbconn, $sql);
 
             move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");
-            //header()
+            
+            $sikeres = "Sikeres Regisztráció! <a href=\"\">Jelentkezzen be itt!</a>";
         }
     }
 ?><!DOCTYPE html>
