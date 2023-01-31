@@ -13,23 +13,23 @@
         }
 
         if(empty($_POST['neme'])){
-            $hibak[] = "Nem adta meg a nemét!";
+            $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a nemét!</strong></p>";
         } else if(empty($_POST['vnev'])){
-            $hibak[] = "Nem adta meg a vezetéknevét!";
+            $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a vezetéknevét!</strong></p>";
         } else if(empty($_POST['knev'])){
-            $hibak[] = "Nem adta meg a keresztnevét!";
+            $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a keresztnevét!</strong></p>";
         } else if(empty($_POST['email'])){
-            $hibak[] = "E-mail cím megadása kötelező!";
+            $hibak[] = "<p style=\"color: red;\"><strong>E-mail cím megadása kötelező!</strong></p>";
         } else if(empty($_POST['jelszo'])){
-            $hibak[] = "Jelszó megadása kötelező!";
+            $hibak[] = "<p style=\"color: red;\"><strong>Jelszó megadása kötelező!</strong></p>";
         }
 
         $mime = array("image/jpeg", "image/gif", "image/png", "image/jpg");
         if($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000){
-            $hibak[] = "A kép mérete nagyobb mint 2 MB!";
+            $hibak[] = "<p style=\"color: red;\"><strong>A kép mérete nagyobb mint 2 MB!</strong></p>";
         }
         if($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000 && !in_array($_FILES['foto']['type'], $mime)){
-            $hibak[] = "A kép formulátuma nem megfelelő!";
+            $hibak[] = "<p style=\"color: red;\"><strong>A kép formulátuma nem megfelelő!</strong></p>";
         }
 
         switch ($_FILES['foto']['type']) {
@@ -75,6 +75,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reg.css">
     <title>Edző Regisztráció</title>
