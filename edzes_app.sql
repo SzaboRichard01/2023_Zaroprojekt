@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Jan 22. 13:14
+-- Létrehozás ideje: 2023. Jan 31. 17:03
 -- Kiszolgáló verziója: 10.4.27-MariaDB
--- PHP verzió: 8.1.12
+-- PHP verzió: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `edzes_app`
 --
+CREATE DATABASE IF NOT EXISTS `edzes_app` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `edzes_app`;
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,8 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `vnev`, `knev`, `email`, `jelszo`, `profil_tipus`, `kep`, `nem`, `online`, `kepzettseg`, `tapasztalat`, `telefon`) VALUES
-(2, 'Szabó', 'Richárd', 'valami@gmail.com', 'valami', 'edző', '1674389602.jpg', 'férfi', 0, 'Személyi Edző', 3, 0);
+(2, 'Szabó', 'Richárd', 'valami@gmail.com', 'valami', 'edző', '1674389602.jpg', 'férfi', 0, 'Személyi Edző', 3, 0),
+(3, 'Híves', 'Sebastian', 'sebihives2001@gmail.com', 'Nemtudom123', 'edző', '', 'férfi', 0, 'Személyi Edző', 3, 63000000);
 
 -- --------------------------------------------------------
 
@@ -224,7 +227,7 @@ ALTER TABLE `etrend`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `felhasznalo_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `uzenet`
