@@ -70,7 +70,7 @@
 
             move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");
             
-            $sikeres = "Sikeres Regisztráció! <a href=\"\">Jelentkezzen be itt!</a>";
+            $sikeres = "<p>Sikeres Regisztráció! <a href=\"belepes.php\">Jelentkezzen be itt!</a></p>";
         }
     }
 ?><!DOCTYPE html>
@@ -103,6 +103,13 @@
     <!-- Menu vége -->
     <main>
         <h1>Kliens Regisztráció</h1>
+        <div class="sikeres">
+            <?php
+                if(isset($sikeres)){
+                    print $sikeres;
+                }
+            ?>
+        </div>
         <form method="post" enctype="multipart/form-data">
             <div class="hibauzenet">
                 <?php

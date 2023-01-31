@@ -26,6 +26,19 @@ form{
     font-size: 16px;
     margin: 5px 0 10px 0;
 }
+.sikeres{
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: rgb(67, 179, 67);
+}
+.sikeres p{
+    padding: 10px;
+    border: 2px solid green;
+    background-color: rgb(56, 172, 56);
+}
+.sikeres a{
+    color: rgb(0, 17, 0);
+}
 .hibauzenet{
     color: red;
     margin-bottom: 10px;
