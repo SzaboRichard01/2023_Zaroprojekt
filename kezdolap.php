@@ -31,7 +31,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/klap.css">
     <title>Kezdőlap</title>
 </head>
@@ -39,11 +38,16 @@
     <!-- Menu -->
     <nav class="menu">
         <a class="mcim" href="index.html">ShineGym&Fit</a>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
         <div class="links">
-            <div class="prof">
-                <a href="#"><?php echo "{$vnev} {$knev}";?></a>
+            <div class="prof" onclick="location.href='profile.html';">
                 <?php
-                    print("<div class=\"pkep\">{$profilkep}</div>");
+                    print "<p>{$vnev} {$knev}</p>
+                    <div class=\"pkep\">{$profilkep}</div>";
                 ?>
             </div>
             <ul>
