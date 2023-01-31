@@ -150,7 +150,7 @@ body{
         align-items: center;
     }
 }
-
+/*Ugyanúgy itt is a width-et megadni 60px-re, mert akkor meg a navbar-ba csúszik*/
 .sidebar {
     height: 100%;
     width: 60px;
@@ -178,6 +178,8 @@ body{
   .sidebar .exit{
     margin-top: 473px;
   }
+  /*Ahova majd sidebar-t akarunk, oda szerintem a mainre kötelező lenne felrakni margin-left: 60px-t,
+  mert a sidebar alá csúszik akkor*/
   main{
     margin-left: 60px;
   }
