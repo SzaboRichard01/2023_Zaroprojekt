@@ -1,12 +1,4 @@
 <?php
-    /*
-    session_start();
-    if(!isset($_SESSION['belepett'])){
-        header("Location: belepes.php");
-        exit();
-    }
-    */
-
     if(isset($_POST['reg'])){
         if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo'])){
             $nem = $_POST['neme'];

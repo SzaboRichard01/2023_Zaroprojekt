@@ -255,7 +255,7 @@ body {
     color: var(--zold);
 }
 
-ul li{
+.footer-container ul li{
     margin-top: 15px;
 }
 /*Footer vége*/

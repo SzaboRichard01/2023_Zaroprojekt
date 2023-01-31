@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(isset($_SESSION['felh_id'])){
+        header("Location: kezdolap.php");
+    }
 
     if(isset($_POST['rendben'])){
         require_once('kapcsolat.php');
@@ -16,9 +19,10 @@
                     WHERE email = '{$email}'
                     AND jelszo = '{$jelszo}'";
             $eredmeny = mysqli_query($dbconn, $sql);
+            $sor = mysqli_fetch_assoc($eredmeny);
 
             if(mysqli_num_rows($eredmeny) == 1){
-                $_SESSION['belepett'] = true;
+                $_SESSION['felh_id'] = $sor['felhasznalo_id'];
                 header("Location: kezdolap.php");
             } else{
                 $hiba = "Hibás E-mail címet vagy jelszót adott meg!";
