@@ -235,7 +235,7 @@ body {
     border: 1px solid var(--zold);
     margin-left: 95px;
     margin-right: 95px;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
 }
 
 .footer-container h2{
@@ -253,6 +253,10 @@ body {
 
 .footer-container .fa{
     color: var(--zold);
+}
+
+ul li{
+    margin-top: 15px;
 }
 /*Footer vége*/
 
