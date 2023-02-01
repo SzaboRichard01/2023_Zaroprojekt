@@ -223,9 +223,30 @@ main{
     background-color: red;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
   .sidebar li .tooltip{
+    top: -20px;
+    left: unset;
+  }
+  .sidebar{
+    width: 100%;
+    height: 78px;
+    position: absolute;
+    top: unset;
+    bottom: 0;
+  }
+  .sidebar ul{
+    display: flex;
+    justify-content: center;
+  }
+  #kilepes{
     display: none;
+  }
+  .sidebar li{
+    margin: 8px 5px;
+  }
+  main{
+    margin-left: 0;
   }
 }
 /* Sidebar vége */
