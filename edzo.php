@@ -92,8 +92,10 @@ if (!isset($_SESSION['felh_id'])) {
     </div>
     <!-- Menu vége -->
     <main>
-        <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
-
+        <h1>Edzők</h1>
+        <div class="uj_edzo">
+            <h2>Új edző keresése</h2>
+        </div>
     </main>
 
     <script src="js/script.js"></script>
