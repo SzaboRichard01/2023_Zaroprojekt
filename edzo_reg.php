@@ -118,7 +118,7 @@
                     }
                 ?>
             </div>
-            <div class="mezo">
+            <div class="mezokep">
                 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                 <label for="foto">Profilkép feltöltése:</label>
                 <input type="file" name="foto" id="foto">
