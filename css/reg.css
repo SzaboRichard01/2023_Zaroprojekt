@@ -1,3 +1,9 @@
+:root {
+    --fekete: #080B0C;
+    --zold: #55be3b;
+    --feher: #fff;
+    --szurke: #5a5a5a;
+}
 body{
     display: flex;
     flex-direction: column;
@@ -14,9 +20,49 @@ main{
 form{
     width: 60%;
     margin: 20px;
-    border: 2px solid rgb(48, 48, 48);
+    border: 5px solid var(--zold);
+    color: var(--feher);
     padding: 20px;
     min-width: 300px;
+    background-color: var(--fekete);
+    border-radius: 10px;
+}
+main .mezo #rendben{
+    margin-top: 15px;
+}
+.mezo select{
+    border: 1px solid  var(--zold);
+    background-color: var(--szurke);
+    color: var(--zold);
+}
+.mezo select{
+    cursor: pointer;
+}
+.mezo option{
+    border: 1px solid  var(--zold);
+    background-color: var(--szurke);
+    color: var(--zold);
+}
+main #reg{
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    margin: 5px 0 10px 0;
+    border-radius: 5px;
+    border: 1px solid  var(--zold);
+    background-color: var(--szurke);
+    color: var(--zold);
+    margin-top: 15px;
+}
+main #reg:hover{
+    background-color: #a8a8a8;
+    cursor: pointer;
+    color: black;
+}
+main .mezo #rendben:hover{
+    background-color: #a8a8a8;
+    cursor: pointer;
+    color: black;
 }
 .mezo{
     font-size: 18px;
@@ -26,6 +72,10 @@ form{
     height: 30px;
     font-size: 16px;
     margin: 5px 0 10px 0;
+    border-radius: 5px;
+    border: 1px solid  var(--zold);
+    background-color: var(--szurke);
+    color: var(--zold);
 }
 .sikeres{
     font-size: 18px;
