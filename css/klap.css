@@ -115,7 +115,7 @@ main{
     background-color: white;
     border-radius: 10px;
 }
-@media (max-width: 800px) {
+@media (max-width: 500px) {
     .menu {
         flex-direction: column;
         align-items: flex-start;
@@ -223,7 +223,7 @@ main{
     background-color: red;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .sidebar li .tooltip{
     top: -20px;
     left: unset;
