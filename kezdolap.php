@@ -74,12 +74,12 @@ if (!isset($_SESSION['felh_id'])) {
                 <span class="tooltip">Kezdőlap</span>
             </li>
             <li>
-                <a href="#"><i class="fa fa-home"></i></a>
-                <span class="tooltip">Kezdőlap</span>
+                <a href="#"><i class="fa fa-user-circle-o"></i></a>
+                <span class="tooltip">Profil</span>
             </li>
             <li>
-                <a href="#"><i class="fa fa-home"></i></a>
-                <span class="tooltip">Kezdőlap</span>
+                <a href="#"><i class="fa fa-tasks"></i></a>
+                <span class="tooltip">Végrehajtandó feladatok</span>
             </li>
 
             <li id="kilepes">
