@@ -5,22 +5,39 @@ if (!isset($_SESSION['felh_id'])) {
     exit();
 } else {
     require("kapcsolat.php");
+
+    //Saját profil adatai
     $felh_id = $_SESSION['felh_id'];
 
     $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online
                 FROM felhasznalok
                 WHERE felhasznalo_id = {$felh_id}";
     $eredmeny = mysqli_query($dbconn, $sql);
-    $sor = mysqli_fetch_assoc($eredmeny);
+    $prof = mysqli_fetch_assoc($eredmeny);
 
-    $vnev = $sor['vnev'];
-    $knev = $sor['knev'];
+    $vnev = $prof['vnev'];
+    $knev = $prof['knev'];
+    $kep = $prof['kep'];
+    $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"profile\">";
 
-    $kep = $sor['kep'];
 
 
+    $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
-    $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"\">";
+    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, kepzettseg, tapasztalat, telefon
+                FROM felhasznalok
+                WHERE profil_tipus = \"edző\"
+                AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'";
+    $eredmeny = mysqli_query($dbconn, $sql);
+    
+    $kimenet = "";
+    while($sor = mysqli_fetch_assoc($eredmeny)){
+        $kimenet .= "
+        <div class=\"edzo\">
+        <div class=\"pkep\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
+        <p>{$sor['vnev']} {$sor['knev']}</p>\n
+        </div>";
+    }
 }
 
 ?>
@@ -95,7 +112,14 @@ if (!isset($_SESSION['felh_id'])) {
         <h1>Edzők</h1>
         <div class="uj_edzo">
             <h2>Új edző keresése</h2>
+            <form method="post">
+                <input type="search" name="kifejezes" id="kifejezes">
+            </form>
+            <div class="edzok">
+                <?php echo $kimenet; ?>
+            </div>
         </div>
+
     </main>
 
     <script src="js/script.js"></script>

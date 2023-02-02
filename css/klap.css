@@ -252,3 +252,32 @@ main{
   }
 }
 /* Sidebar vége */
+
+/* edzok.php */
+.uj_edzo{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: aqua;
+  width: 500px;
+}
+.edzok{
+  background-color: rgba(59, 59, 59, 0.3);
+  padding: 10px 10px 0 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.edzo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  padding-bottom: 10px;
+}
+.edzo p{
+  width: 120px;
+  margin: 0 5px;
+}
+
+/* edzok.php vége */
