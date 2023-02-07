@@ -115,14 +115,15 @@ if (!isset($_SESSION['felh_id'])) {
             <form method="post">
                 <input type="search" name="kifejezes" id="kifejezes">
             </form>
-            <div class="edzok">
-                <?php echo $kimenet; ?>
+            <div class="edzok-lista">
+                
             </div>
         </div>
 
     </main>
 
     <script src="js/script.js"></script>
+    <script src="lekerdezes/edzok.js"></script>
 </body>
 
 </html>
