@@ -129,5 +129,6 @@
     </main>
 
     <script src="lekerdezes/edzoadatok.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
