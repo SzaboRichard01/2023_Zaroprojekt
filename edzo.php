@@ -62,7 +62,7 @@ if (!isset($_SESSION['felh_id'])) {
             <span class="bar"></span>
         </a>
         <div class="links">
-            <div class="prof" onclick="location.href='profile.html';">
+            <div class="prof" onclick="location.href='profile.php';">
                 <?php
                 print "<p>{$vnev} {$knev}</p>
                     <div class=\"pkep\">{$profilkep}</div>";

@@ -21,9 +21,7 @@
         $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"profile\">";
         //Saját profil adatai vége
 
-
-        $valasztott = mysqli_real_escape_string($dbconn, $_GET['felhasznalo_id']);
-        $sql = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE felhasznalo_id = {$valasztott}");
+        $sql = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE felhasznalo_id = {$felh_id}");
         if(mysqli_num_rows($sql) > 0){
             $kimenet = "";
             while($sor = mysqli_fetch_assoc($sql)){
@@ -37,6 +35,10 @@
                     <div class=\"adatok-tabla\">
                         <table>
                             <tr>
+                                <th>Profil típusa:</th>
+                                <td>{$sor['profil_tipus']}</td>
+                            </tr>
+                            <tr>
                                 <th>E-mail:</th>
                                 <td>{$sor['email']}</td>
                             </tr>
@@ -46,7 +48,7 @@
                             </tr>
                             <tr>
                                 <th>Tapasztalat:</th>
-                                <td>{$sor['tapasztalat']}</td>
+                                <td>{$sor['tapasztalat']} év</td>
                             </tr>
                             <tr>
                                 <th>Telefon:</th>
@@ -68,7 +70,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/klap.css">
-    <title>Document</title>
+    <title><?php echo("{$vnev} {$knev}") ?> - Saját profil</title>
 </head>
 <body>
     <!-- Menu -->
@@ -122,7 +124,7 @@
     </div>
     <!-- Menu vége -->
     <main>
-        <h1>Edző profil adatai</h1>
+        <h1>Saját profil adatai</h1>
         <div class="eadatok">
             <?php print($kimenet) ?>
         </div>
