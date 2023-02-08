@@ -30,7 +30,7 @@ if (!isset($_SESSION['felh_id'])) {
     while($sor = mysqli_fetch_assoc($eredmeny)){
         $kimenet .= "<a href=\"edzoadatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \">
         <div class=\"edzo\">
-        <div class=\"pkep\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
+        <div class=\"pkep pkep-meret\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
         <p>{$sor['vnev']} {$sor['knev']}</p>\n
         </div>";
     }
@@ -103,20 +103,20 @@ if (!isset($_SESSION['felh_id'])) {
         </ul>
     </div>
     <!-- Menu vége -->
-    <main>
+    <main class="edzo-main">
         <h1>Edzők</h1>
         <div class="uj_edzo">
-            <h2>Új edző keresése</h2>
+            <h2><i class="fa fa-search" aria-hidden="true"></i> Új edző keresése</h2>
             <form method="post">
-                <input type="search" name="kifejezes" id="kifejezes">
-                <input type="submit" value="Keresés">
-                <?php $kifejezes != "" ? print("<button onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i></button>") : ""?>
+                <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
+                <input class="kereses-gomb" type="submit" value="Keresés">
+                <?php $kifejezes != "" ? print("<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>") : ""?>
             </form>
             <div class="edzok-lista">
                 <?php echo $kimenet ?>
             </div>
         </div>
-
+    
     </main>
 
     <script src="js/script.js"></script>

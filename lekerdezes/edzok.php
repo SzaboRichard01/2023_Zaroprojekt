@@ -11,12 +11,11 @@
     $kimenet = "";
     while($sor = mysqli_fetch_assoc($sql)){
         $kimenet .= "<a href=\"edzoadatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \">
-    <div class=\"edzo\">
-    <div class=\"pkep\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
-    <p>{$sor['vnev']} {$sor['knev']}</p>\n
-    </div>";
+        <div class=\"edzo\">
+        <div class=\"pkep\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
+        <p>{$sor['vnev']} {$sor['knev']}</p>\n
+        </div>";
     }
     
-
     echo $kimenet;
 ?>

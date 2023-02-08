@@ -46,7 +46,13 @@
                 $kit = ".jpg";
                 break;
         }
-        $foto = date("U").$kit;
+        if($_FILES['foto']['size'] == 0){
+            $foto = "nincskep.png";
+        }
+        else{
+            $foto = date("U").$kit;
+        }
+        
 
         if(isset($hibak)){
             $kimenet = "<ul\n>";
