@@ -24,15 +24,11 @@ if (!isset($_SESSION['felh_id'])) {
 
     $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
-    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, kepzettseg, tapasztalat, telefon
-                FROM felhasznalok
-                WHERE profil_tipus = \"edző\"
-                AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'";
-    $eredmeny = mysqli_query($dbconn, $sql);
+    $eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
     
     $kimenet = "";
     while($sor = mysqli_fetch_assoc($eredmeny)){
-        $kimenet .= "
+        $kimenet .= "<a href=\"edzoadatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \">
         <div class=\"edzo\">
         <div class=\"pkep\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
         <p>{$sor['vnev']} {$sor['knev']}</p>\n
@@ -40,8 +36,7 @@ if (!isset($_SESSION['felh_id'])) {
     }
 }
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="hu">
 
 <head>
@@ -114,16 +109,16 @@ if (!isset($_SESSION['felh_id'])) {
             <h2>Új edző keresése</h2>
             <form method="post">
                 <input type="search" name="kifejezes" id="kifejezes">
+                <input type="submit" value="Keresés">
+                <?php $kifejezes != "" ? print("<button onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i></button>") : ""?>
             </form>
             <div class="edzok-lista">
-                
+                <?php echo $kimenet ?>
             </div>
         </div>
 
     </main>
 
     <script src="js/script.js"></script>
-    <script src="lekerdezes/edzok.js"></script>
 </body>
-
 </html>
