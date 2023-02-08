@@ -355,8 +355,6 @@ main{
 .edzo-adatok .adatok-tabla table td{
   padding: 10px;
 }
-
-
 .eadatok-pkep{
   display: flex;
   flex-direction: column;

@@ -24,7 +24,7 @@ if (!isset($_SESSION['felh_id'])) {
 
     $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
-    $eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
+    $eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = 'edző' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
     
     $kimenet = "";
     while($sor = mysqli_fetch_assoc($eredmeny)){
