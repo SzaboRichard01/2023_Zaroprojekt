@@ -15,7 +15,7 @@ if (!isset($_SESSION['felh_id'])) {
 
     $vnev = $sor['vnev'];
     $knev = $sor['knev'];
-
+    $profilTipus = $sor['profil_tipus'];
     $kep = $sor['kep'];
 
 
@@ -75,6 +75,7 @@ if (!isset($_SESSION['felh_id'])) {
                 <a href="chat.php"><i class="fa fa-comments"></i></a>
                 <span class="tooltip">Chat</span>
             </li>
+
             <li>
                 <a href="edzo.php"><i class="fa fa-male"></i></a>
                 <span class="tooltip">Edzők kezelése</span>
