@@ -93,8 +93,13 @@ if (!isset($_SESSION['felh_id'])) {
     </div>
     <!-- Menu vége -->
     <main>
-      
-
+        <?php
+            print("<div class=\"edzo\">
+            <div class=\"pkep pkep-meret\"><img src=\"pics/profile/" .$sor['kep']. "\"></div>
+            <p>{$sor['vnev']} {$sor['knev']}</p>\n
+            </div>");
+        ?>
+        
     </main>
 
     <script src="js/script.js"></script>
