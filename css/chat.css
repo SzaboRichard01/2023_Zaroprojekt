@@ -1,0 +1,255 @@
+:root {
+    --fekete: #080B0C;
+    --zold: #55be3b;
+    --feher: #fff;
+    --szurke: #5a5a5a;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+}
+main{
+    margin: 15px 0 15px 95px;
+}
+
+
+
+/* Felső Navbar */
+
+/* -    profile rész */
+.pkep{
+    width: 45px;
+    height: 45px;
+    min-width: 50px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid black;
+    margin-right: 8px;
+}
+.prof{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+    padding: 0 5px;
+}
+.prof:hover{
+    background-color: var(--szurke);
+    cursor: pointer;
+}
+.pkep img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.prof a{
+    color: white;
+    text-decoration: none;
+}
+/* -    profile rész vége */
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--fekete);
+    color: white;
+    width: 100%;
+    box-shadow: 1px 1px 10px var(--fekete);
+}
+.mcim {
+    font-size: 1.5rem;
+    margin: .5rem;
+    font-weight: 600;
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--zold);
+}
+.links {
+    height: 100%;
+    display: flex;
+}
+.links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.links li {
+    list-style: none;
+}
+.links li a {
+    display: block;
+    text-decoration: none;
+    color: var(--zold);
+    padding: 1rem;
+    background-color: var(--fekete);
+}
+.links li:hover {
+    background-color: #555;
+}
+.links li a:hover {
+    background-color: #555;
+}
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+@media (max-width: 500px) {
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toggle-button {
+        display: flex;
+    }
+    .links {
+        display: none;
+        width: 100%;
+    }
+    .links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    .links ul li {
+        text-align: center;
+    }
+    .links ul li a {
+        padding: .5rem 1rem;
+    }
+    .links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Felső Navbar Vége */
+
+/* Sidebar */
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 49px;
+  height: 100%;
+  width: 78px;
+  background: var(--fekete);
+  padding: 6px 14px;
+  transition: all 0.5s ease;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: rgba(128, 247, 91, 0.2);
+}
+.sidebar li a:hover{
+  background: var(--zold);
+}
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: var(--fekete);
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+#kilepes{
+    position: absolute;
+    bottom: 50px;
+}
+#kilepes:hover a{
+    background-color: red;
+}
+.sidebar li a span{
+  display: none;
+}
+@media (max-width: 500px) {
+  .sidebar li a span{
+    display: block;
+  }
+  .sidebar{
+    width: 100%;
+    height: 78px;
+    position: fixed;
+    top: unset;
+    bottom: 0;
+  }
+  .sidebar ul{
+    display: flex;
+    justify-content: center;
+  }
+  #kilepes{
+    display: none;
+  }
+  .sidebar li{
+    margin: 8px 5px;
+  }
+  main{
+    margin: 15px 0 100px 0;
+  }
+}
+/* Sidebar vége */
