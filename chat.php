@@ -99,7 +99,14 @@ if (!isset($_SESSION['felh_id'])) {
             <p>{$sor['vnev']} {$sor['knev']}</p>\n
             </div>");
         ?>
-        
+        <div class="chat">
+        </div>
+        <div class="chatszoveg">
+        <form method="post">
+            <input type="text" name="uzenet" id="uzenet">
+            <input type="submit" value="Küldés" name="kuldes" id="kuldes">
+        </form>
+        </div>
     </main>
 
     <script src="js/script.js"></script>
