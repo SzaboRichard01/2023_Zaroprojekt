@@ -5,26 +5,24 @@ if (!isset($_SESSION['felh_id'])) {
     exit();
 } else {
     require("kapcsolat.php");
-
-    //Saját profil adatai
     $felh_id = $_SESSION['felh_id'];
 
     $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online
                 FROM felhasznalok
                 WHERE felhasznalo_id = {$felh_id}";
     $eredmeny = mysqli_query($dbconn, $sql);
-    $prof = mysqli_fetch_assoc($eredmeny);
+    $sor = mysqli_fetch_assoc($eredmeny);
 
-    $vnev = $prof['vnev'];
-    $knev = $prof['knev'];
-    $kep = $prof['kep'];
-    $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"profile\">";
+    $vnev = $sor['vnev'];
+    $knev = $sor['knev'];
+    $kep = $sor['kep'];
+    $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"\">";
 
 
 
     $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
-    $eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = 'edző' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
+    $eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = 'kliens' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
     
     $kimenet = "";
     while($sor = mysqli_fetch_assoc($eredmeny)){
@@ -36,7 +34,8 @@ if (!isset($_SESSION['felh_id'])) {
     }
 }
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="hu">
 
 <head>
@@ -49,7 +48,7 @@ if (!isset($_SESSION['felh_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/klap.css">
-    <title>Edzők Kezelése</title>
+    <title>Kliensek kezelése</title>
 </head>
 
 <body>
@@ -103,10 +102,10 @@ if (!isset($_SESSION['felh_id'])) {
         </ul>
     </div>
     <!-- Menu vége -->
-    <main class="edzo-main">
-        <h1>Edzők</h1>
+    <main>
+        <h1>Kliensek</h1>
         <div class="uj_edzo">
-            <h2><i class="fa fa-search" aria-hidden="true"></i> Új edző keresése</h2>
+            <h2><i class="fa fa-search" aria-hidden="true"></i> Kliensek keresése</h2>
             <form method="post">
                 <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
                 <input class="kereses-gomb" type="submit" value="Keresés">
@@ -116,9 +115,9 @@ if (!isset($_SESSION['felh_id'])) {
                 <?php echo $kimenet ?>
             </div>
         </div>
-    
     </main>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

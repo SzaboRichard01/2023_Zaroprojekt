@@ -26,7 +26,10 @@
             $kimenet = "";
             while($sor = mysqli_fetch_assoc($sql)){
                 $kimenet .= "
-                <p class=\"nev\">{$sor['vnev']} {$sor['knev']}</p>
+                <div class=\"edzo-nev\">
+                    <button onclick=\"location.href='kezdolap.php';\";><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
+                    <p class=\"nev\">{$sor['vnev']} {$sor['knev']}</p>
+                </div>
                 <div class=\"edzo-adatok\">
                     <div class=\"eadatok-pkep\">
                         <p>Profilkép</p>
@@ -41,8 +44,10 @@
                             <tr>
                                 <th>E-mail:</th>
                                 <td>{$sor['email']}</td>
-                            </tr>
-                            <tr>
+                            </tr>";
+                            //Csak akkor írja ki a Képzettséget, Tapasztalatot, Telefonszámot ha a profil típusa edző
+                            if($sor['profil_tipus'] == "edző"){
+                                $kimenet .= "<tr>
                                 <th>Képzettség:</th>
                                 <td>{$sor['kepzettseg']}</td>
                             </tr>
@@ -53,11 +58,14 @@
                             <tr>
                                 <th>Telefon:</th>
                                 <td>{$sor['telefon']}</td>
-                            </tr>
-                        </table>
-                    </div>
+                            </tr>";
+                            }
+                            //---------------------
+                $kimenet .= "</table>
                 </div>
-                ";
+            </div>";
+
+                
             }
 
         }

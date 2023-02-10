@@ -80,7 +80,7 @@ if (!isset($_SESSION['felh_id'])) {
                 <span class="tooltip">Edzők kezelése</span>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users"></i></a>
+                <a href="kliens.php"><i class="fa fa-users"></i></a>
                 <span class="tooltip">Kliensek kezelése</span>
             </li>
 

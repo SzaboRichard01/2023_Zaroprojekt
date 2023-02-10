@@ -9,15 +9,18 @@
         //Saját profil adatai
         $felh_id = $_SESSION['felh_id'];
 
-        $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online
+        $sqlp = "SELECT vnev, knev, email, profil_tipus, kep, nem, online
                     FROM felhasznalok
                     WHERE felhasznalo_id = {$felh_id}";
-        $eredmeny = mysqli_query($dbconn, $sql);
+        $eredmeny = mysqli_query($dbconn, $sqlp);
         $prof = mysqli_fetch_assoc($eredmeny);
 
         $vnev = $prof['vnev'];
         $knev = $prof['knev'];
         $kep = $prof['kep'];
+        $pTipus = $prof['profil_tipus'];
+        $nem = $prof['nem'];
+
         $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"profile\">";
         //Saját profil adatai vége
 
@@ -27,8 +30,34 @@
         if(mysqli_num_rows($sql) > 0){
             $kimenet = "";
             while($sor = mysqli_fetch_assoc($sql)){
+                $edzoVnev = $sor['vnev'];
+                $edzoKnev = $sor['knev'];
+
+                //Felkérés gomb - Ha már egyszer felkértük edzőnek, ne lehessen újra
+                $sqlFelkeres = mysqli_query($dbconn, "SELECT edzo_az, kliens_az FROM `edzo-felhasznalo` WHERE edzo_az = {$valasztott} AND kliens_az = {$felh_id}");
+                if(mysqli_num_rows($sqlFelkeres) > 0){
+                    $FelkeresBtn = "<button disabled >Már felkérve</button>";
+                }
+                else{
+                    $FelkeresBtn = "<button onclick=\"location.href='felkeres.php?felhasznalo_id=" .$sor['felhasznalo_id']."';\">Edző felkérése</button>";
+                }
+                //Felkérés gomb vége
+
+                //Telefonszám
+                $telefon = "";
+                if($sor['telefon'] != 0){
+                    $telefon = $sor['telefon'];
+                }
+                else{
+                    $telefon = "Nincs megadva";
+                }
+                //----------
+
                 $kimenet .= "
-                <p class=\"nev\">{$sor['vnev']} {$sor['knev']}</p>
+                <div class=\"edzo-nev\">
+                    <button onclick=\"location.href='kezdolap.php';\";><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
+                    <p class=\"nev\">{$sor['vnev']} {$sor['knev']}</p>
+                </div>
                 <div class=\"edzo-adatok\">
                     <div class=\"eadatok-pkep\">
                         <p>Profilkép</p>
@@ -37,25 +66,46 @@
                     <div class=\"adatok-tabla\">
                         <table>
                             <tr>
+                                <th>Vezetéknév:</th>
+                                <td>{$sor['vnev']}</td>
+                            </tr>
+                            <tr>
+                                <th>Keresztnév:</th>
+                                <td>{$sor['knev']}</td>
+                            </tr>
+                            <tr>
+                                <th>Profil típusa:</th>
+                                <td>{$sor['profil_tipus']}</td>
+                            </tr>
+                            <tr>
                                 <th>E-mail:</th>
                                 <td>{$sor['email']}</td>
-                            </tr>
-                            <tr>
-                                <th>Képzettség:</th>
-                                <td>{$sor['kepzettseg']}</td>
-                            </tr>
-                            <tr>
-                                <th>Tapasztalat:</th>
-                                <td>{$sor['tapasztalat']}</td>
-                            </tr>
-                            <tr>
-                                <th>Telefon:</th>
-                                <td>{$sor['telefon']}</td>
-                            </tr>
-                        </table>
+                            </tr>";
+
+                            //Csak akkor írja ki a Képzettséget, Tapasztalatot, Telefonszámot ha a profil típusa edző
+                            if($sor['profil_tipus'] == "edző"){
+                                $kimenet .= "<tr>
+                                    <th>Képzettség:</th>
+                                    <td>{$sor['kepzettseg']}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tapasztalat:</th>
+                                    <td>{$sor['tapasztalat']}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon:</th>
+                                    <td>{$telefon}</td>
+                                </tr>";
+                            }
+                            //-----------------
+                $kimenet .= "</table>
                     </div>
                 </div>
-                ";
+                <div class=\"edzo-gombok\">
+                    {$FelkeresBtn}
+                    <button>Csevegés</button>
+                    <button>Edző tiltása</button>
+                </div>";
             }
 
         }
@@ -68,7 +118,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/klap.css">
-    <title>Document</title>
+    <title><?php print "{$edzoVnev} {$edzoKnev}"; ?> [Adatok]</title>
 </head>
 <body>
     <!-- Menu -->
@@ -122,13 +172,12 @@
     </div>
     <!-- Menu vége -->
     <main>
-        <h1>Edző profil adatai</h1>
+        <h1>Profil adatai</h1>
         <div class="eadatok">
             <?php print($kimenet) ?>
         </div>
     </main>
 
-    <script src="lekerdezes/edzoadatok.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
