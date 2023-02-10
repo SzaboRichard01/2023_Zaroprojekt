@@ -320,10 +320,19 @@ main{
   margin: 10px 10px;
   width: 95%;
 }
-.eadatok .nev{
+.edzo-nev{
+  display: flex;
+}
+.edzo-nev button{
+  padding: 10px;
+  font-size: 16px;
+  min-width: 100px;
+}
+.eadatok .edzo-nev .nev{
   font-size: 25px;
   background-color: rgba(189, 189, 189, 0.6);
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
+  width: 100%;
 }
 .edzo-adatok{
   display: flex;
@@ -383,5 +392,11 @@ main{
   height: 100%;
   border: 1px solid var(--szurke);
   object-fit: cover;
+}
+.eadatok .edzo-gombok{
+  margin: 5px 0;
+}
+.eadatok .edzo-gombok button{
+  padding: 10px;
 }
 /* edzoadatok.php vége */
