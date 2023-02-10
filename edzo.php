@@ -17,6 +17,7 @@ if (!isset($_SESSION['felh_id'])) {
 
     $vnev = $prof['vnev'];
     $knev = $prof['knev'];
+    $profilTipus = $prof['profil_tipus'];
     $kep = $prof['kep'];
     $profilkep = "<img src=\"pics/profile/" . $kep . "\" alt=\"profile\">";
 
@@ -87,6 +88,7 @@ if (!isset($_SESSION['felh_id'])) {
                 <a href="#"><i class="fa fa-comments"></i></a>
                 <span class="tooltip">Chat</span>
             </li>
+
             <li>
                 <a href="edzo.php"><i class="fa fa-male"></i></a>
                 <span class="tooltip">Edzők kezelése</span>

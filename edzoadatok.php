@@ -176,6 +176,15 @@
         <div class="eadatok">
             <?php print($kimenet) ?>
         </div>
+
+        <?php
+            if($pTipus == "edző"){
+                print "<div class=\"funkciok\">
+                    <button>Kliens edzéstervének megtekintése</button>
+                </div>
+                ";
+            }
+        ?>
     </main>
 
     <script src="js/script.js"></script>
