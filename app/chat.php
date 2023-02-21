@@ -39,7 +39,7 @@ if (!isset($_SESSION['felh_id'])) {
         <div class="chatszoveg">
         <form method="post">
             <input type="text" name="uzenet" id="uzenet">
-            <input type="submit" value="Küldés" name="kuldes" id="kuldes">
+            <input type="submit" value="Küldés" name="kuldes" id="kuldeschat">
         </form>
         </div>
     </main>

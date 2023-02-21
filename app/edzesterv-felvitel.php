@@ -18,9 +18,9 @@ if (!isset($_SESSION['felh_id'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/reg.css">
+    <link rel="stylesheet" href="../css/app.css">
     <title>Edzésterv felvitele</title>
 </head>
 <body>
@@ -37,48 +37,51 @@ if (!isset($_SESSION['felh_id'])) {
             ?>
         </div>
         <form method="post" enctype="multipart/form-data">
-            <div class="mezokep">
-                <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-                <label for="foto">Profilkép feltöltése:</label>
-                <input type="file" name="foto" id="foto">
-            </div>
             <div class="mezo">
-                <label for="neme">Neme:</label>
-                <select name="neme" id="neme">
-                    <option disabled selected>Válasszon egy lehetőséget</option>
-                    <option value="férfi">Férfi</option>
-                    <option value="nő">Nő</option>
+                <label for="edzestipus">Edzéstípus</label>
+                <select name="tipus" id="tipus">
+                    <option disabled selected>Válasszon egy edzéstípust!</option>
+                    <option value="kardio">Kardió</option>
+                    <option value="sulyos">Súlyos edzés</option>
+                    <option value="crossfit">Crossfit</option>
                 </select>
             </div>
             <div class="mezo">
-                <label for="vnev">Vezetéknév:</label>
-                <input type="text" name="vnev" id="vnev">
+                <label for="edz_terv">Edzésterv</label>
+                <textarea class="edzesterv" name="edzesterv" rows="20" cols="132"></textarea>
             </div>
             <div class="mezo">
-                <label for="knev">Keresztnév:</label>
-                <input type="text" name="knev" id="knev">
+                <label for="nap">Nap</label>
+                <select name="nap" id="nap">
+                    <option disabled selected>Válasszon ki egy napot!</option>
+                    <option value="h">Hétfő</option>
+                    <option value="k">Kedd</option>
+                    <option value="sze">Szerda</option>
+                    <option value="csu">Csütörtök</option>
+                    <option value="pe">Péntek</option>
+                    <option value="szo">Szombat</option>
+                    <option value="va">Vasárnap</option>
+                </select>
+            </div>
+            <h1 style="margin-top: 5px; margin-bottom: 5px;">Étrendösszeállítás</h1>
+            <div class="mezo">
+                <label for="edz_terv">Étrend</label>
+                <textarea class="edzesterv" name="edzesterv" rows="20" cols="132"></textarea>
             </div>
             <div class="mezo">
-                <label for="email">E-mail:</label>
-                <input type="email" name="email" id="email">
+                <label for="nap">Nap</label>
+                <select name="nap" id="nap">
+                    <option disabled selected>Válasszon ki egy napot!</option>
+                    <option value="h">Hétfő</option>
+                    <option value="k">Kedd</option>
+                    <option value="sze">Szerda</option>
+                    <option value="csu">Csütörtök</option>
+                    <option value="pe">Péntek</option>
+                    <option value="szo">Szombat</option>
+                    <option value="va">Vasárnap</option>
+                </select>
             </div>
-            <div class="mezo">
-                <label for="jelszo">Jelszó:</label>
-                <input type="password" name="jelszo" id="jelszo">
-            </div>
-            
-            <div class="mezo">
-                <label for="kepzettseg">Képzettség:</label>
-                <input type="text" name="kepzettseg" id="kepzettseg">
-            </div>
-            <div class="mezo">
-                <label for="tapasztalat">Tapasztalat:</label>
-                <input type="number" name="tapasztalat" id="tapasztalat">
-            </div>
-            <div class="mezo">
-                <label for="telefon">Telefonszám:</label>
-                <input type="tel" name="telefon" id="telefon">
-            </div>
+            <input type="submit" name="kuldes" id="kuldes" value="Küldés">
         </form>
     </main>
 
