@@ -79,11 +79,11 @@ if (!isset($_SESSION['felh_id'])) {
                 <span class="tooltip">Kezdőlap</span>
             </li>
             <li>
-                <a href="#"><i class="fa fa-book"></i></a>
+                <a href="edzesterv.php"><i class="fa fa-book"></i></a>
                 <span class="tooltip">Edzéstervek</span>
             </li>
             <li>
-                <a href="#"><i class="fa fa-comments"></i></a>
+                <a href="chat.php"><i class="fa fa-comments"></i></a>
                 <span class="tooltip">Chat</span>
             </li>
             <li>
