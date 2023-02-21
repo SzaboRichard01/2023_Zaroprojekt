@@ -61,7 +61,7 @@
             }
             $kimenet .= "</ul>\n";
         } else{
-            require("kapcsolat.php");
+            require("app/kapcsolat.php");
             $online = 0;
             $tipus = "edző";
             $sql = "INSERT INTO felhasznalok

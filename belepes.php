@@ -1,11 +1,11 @@
 <?php
     session_start();
     if(isset($_SESSION['felh_id'])){
-        header("Location: kezdolap.php");
+        header("Location: app/kezdolap.php");
     }
 
     if(isset($_POST['rendben'])){
-        require_once('kapcsolat.php');
+        require_once('app/kapcsolat.php');
 
         $email = mysqli_real_escape_string($dbconn, strip_tags(strtolower(trim($_POST['email']))));
         $jelszo = strip_tags($_POST['jelszo']);
@@ -23,7 +23,7 @@
 
             if(mysqli_num_rows($eredmeny) == 1){
                 $_SESSION['felh_id'] = $sor['felhasznalo_id'];
-                header("Location: kezdolap.php");
+                header("Location: app/kezdolap.php");
             } else{
                 $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
             }

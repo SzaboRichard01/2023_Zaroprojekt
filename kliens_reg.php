@@ -56,7 +56,7 @@
             }
             $kimenet .= "</ul>\n";
         } else{
-            require("kapcsolat.php");
+            require("app/kapcsolat.php");
             $online = 0;
             $tipus = "kliens";
             $sql = "INSERT INTO felhasznalok
