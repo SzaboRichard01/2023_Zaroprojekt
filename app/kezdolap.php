@@ -28,6 +28,9 @@ if (!isset($_SESSION['felh_id'])) {
     <main>
         <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
 
+        <div class="felkeresek">
+            <?php  require("leker/felkeresek.php"); ?>
+        </div>
     </main>
 
     <script src="../js/script.js"></script>
