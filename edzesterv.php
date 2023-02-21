@@ -101,9 +101,10 @@ if (!isset($_SESSION['felh_id'])) {
         </ul>
     </div>
     <form method="post">
-        <input type="submit" value="Új edzésterv felvitele" name="felvitel" id="felvitel">
+        <input type="submit" value="Új edzésterv felvitele" name="felvitel" id="felvitel" onclick="location.href='edzesterv-felvitel.php';">
     </form>
     <script src="js/script.js"></script>
+    <script src="js/scriptfelvitel.js"></script>
 </body>
 
 </html>
