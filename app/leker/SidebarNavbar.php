@@ -1,6 +1,6 @@
 <!-- Felső navbar -->
 <nav class="menu">
-    <a class="mcim" href="index.html">ShineGym&Fit</a>
+    <a class="mcim" href="../index.html">ShineGym&Fit</a>
     <a href="#" class="toggle-button">
         <span class="bar"></span>
         <span class="bar"></span>

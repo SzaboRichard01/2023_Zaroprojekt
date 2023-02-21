@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['felh_id'])) {
+    header("Location: ../belepes.php");
+    exit();
+} else {
+    //Saját profil adatainak lekérése
+    require("leker/sajatProfil.php");
+}
+?><!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -8,28 +17,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/reg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reg.css">
     <title>Edzésterv felvitele</title>
 </head>
 <body>
-    <!-- Menu -->
-    <nav class="menu">
-        <a class="mcim" href="index.html">ShineGym&Fit</a>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="links">
-            <ul>
-                <li><a href="index.html">Főoldal</a></li>
-                <li><a href="belepes.php">Bejelentkezés</a></li>
-                <li><a href="reg.html">Regisztráció</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- Menu vége -->
+    <!-- Felső és oldalsó menü -->
+    <?php require("leker/SidebarNavbar.php"); ?>
+
     <main>
         <h1>Edzésterv felvitele</h1>
         <div class="sikeres">
@@ -40,13 +37,6 @@
             ?>
         </div>
         <form method="post" enctype="multipart/form-data">
-            <div class="hibauzenet">
-                <?php
-                    if (isset($kimenet)) {
-                        print($kimenet);
-                    }
-                ?>
-            </div>
             <div class="mezokep">
                 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                 <label for="foto">Profilkép feltöltése:</label>
@@ -92,6 +82,6 @@
         </form>
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

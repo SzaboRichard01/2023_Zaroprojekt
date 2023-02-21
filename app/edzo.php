@@ -45,6 +45,6 @@ if (!isset($_SESSION['felh_id'])) {
     
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
