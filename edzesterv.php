@@ -100,11 +100,8 @@ if (!isset($_SESSION['felh_id'])) {
             <li class="edzesterv"><b>Ide jön az edzésterv</b></li>
         </ul>
     </div>
-    <form method="post">
-        <input type="submit" value="Új edzésterv felvitele" name="felvitel" id="felvitel" onclick="location.href='edzesterv-felvitel.php';">
-    </form>
+    <button onclick="location.href='edzesterv-felvitel.php';">Új edzésterv felvitele</button>
     <script src="js/script.js"></script>
-    <script src="js/scriptfelvitel.js"></script>
 </body>
 
 </html>
