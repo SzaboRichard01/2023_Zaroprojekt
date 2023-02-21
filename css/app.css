@@ -419,8 +419,7 @@ main{
 }
 /* chat.php vége */
 
-/*edzesterv-felvitel.php*/
-
+/* edzesterv-felvitel.php */
 form #kuldes{
   margin-top: 15px;
   height: 40px;
@@ -445,3 +444,29 @@ form #kuldes:hover{
 form .mezo #tipus{
   margin-bottom: 5px;
 }
+/* edzesterv-felvitel.php vége */
+
+/* Kezdőlap->felkeresek.php */
+.felkeres{
+  display: flex;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.2);
+  max-width: 400px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.felkeres a{
+  text-decoration: none;
+  color: black;
+}
+.felkeres:hover{
+  color: var(--zold);
+  opacity: 0.7;
+}
+.felkeres a:hover{
+  color: var(--zold);
+}
+.felkeres .felh{
+  padding: 0;
+}
+/* Kezdőlap->felkeresek.php vége */
