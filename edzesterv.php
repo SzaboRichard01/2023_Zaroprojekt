@@ -95,7 +95,14 @@ if (!isset($_SESSION['felh_id'])) {
     <main>
         <h1><?php echo "{$vnev} {$knev}"; ?> edzésterve</h1>
     </main>
-
+    <div class="container">
+        <ul>
+            <li class="edzesterv"><b>Ide jön az edzésterv</b></li>
+        </ul>
+    </div>
+    <form method="post">
+        <input type="submit" value="Új edzésterv felvitele" name="felvitel" id="felvitel">
+    </form>
     <script src="js/script.js"></script>
 </body>
 

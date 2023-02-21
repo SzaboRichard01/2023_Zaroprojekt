@@ -312,7 +312,6 @@ main{
   height: 50px;
   width: 50px;
 }
-
 /* edzok.php vége */
 
 /* edzoadatok.php */
@@ -400,3 +399,19 @@ main{
   padding: 10px;
 }
 /* edzoadatok.php vége */
+
+/*edzesterv.php*/
+ul .edzesterv{
+    margin-left: 100px;
+    list-style-type: none;
+}
+
+.container{
+    background-color: rgb(223, 223, 223);
+    height: 400px;
+}
+
+form #felvitel{
+    float: right;
+    padding: 10px;
+}
