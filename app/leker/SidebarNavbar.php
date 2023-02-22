@@ -13,9 +13,6 @@
                 <div class=\"pkep\">{$profilkep}</div>";
             ?>
         </div>
-        <ul>
-            <li><a href="kilepes.php">Kilépés</a></li>
-        </ul>
     </div>
 </nav>
 <!-- Felső navbar vége -->
