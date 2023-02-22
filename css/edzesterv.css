@@ -10,12 +10,12 @@ ul .edzesterv{
 }
 
 button{
-    float: right;
+    margin-left: 78px;
     padding: 10px;
 }
 
 button:hover{
-  float: right;
+  margin-left: 78px;
   padding: 10px;
   cursor: pointer;
 }
