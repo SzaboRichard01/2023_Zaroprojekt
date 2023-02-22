@@ -21,7 +21,7 @@
                     $FelkeresBtn = "<button disabled >Már felkérve</button>";
                 }
                 else{
-                    $FelkeresBtn = "<button onclick=\"location.href='felkeres.php?felhasznalo_id=" .$sor['felhasznalo_id']."';\">Kliens felvétele</button>";
+                    $FelkeresBtn = "<button onclick=\"location.href='muveletek/kFelkeres.php?felhasznalo_id=" .$sor['felhasznalo_id']."';\">Kliens felvétele</button>";
                 }
                 //Felkérés gomb vége
 

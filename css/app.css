@@ -479,7 +479,7 @@ form .mezo #tipus{
   display: flex;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.2);
-  padding-bottom: 5px;
+  padding: 5px 5px 5px 0;
   justify-content: space-between;
 }
 .felkeres .gombok{
