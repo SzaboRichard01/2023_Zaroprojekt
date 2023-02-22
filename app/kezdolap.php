@@ -31,12 +31,7 @@ if (!isset($_SESSION['felh_id'])) {
         <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
 
         <div class="felkeresek">
-            <form method="post">
-                <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
-                <input class="kereses-gomb" type="submit" value="Keresés">
-                <?php $kifejezes != "" ? print("<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>") : ""?>
-            </form>
-            <?php  require("leker/felkeresek.php"); ?>
+            <?php require("leker/felkeresek.php"); ?>
         </div>
     </main>
 

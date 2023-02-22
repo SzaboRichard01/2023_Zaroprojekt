@@ -58,7 +58,7 @@ main{
 
 .menu {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: fixed;
     justify-content: space-between;
     align-items: center;

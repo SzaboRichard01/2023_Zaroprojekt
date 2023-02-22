@@ -2,6 +2,16 @@
 $felh_id = $_SESSION['felh_id'];
 $pTipus = $_SESSION['p_tipus'];
 
+if($pTipus == "kliens"){
+    $kereso = "
+        <form method=\"post\">
+            <input type=\"search\" name=\"kifejezes\" id=\"kifejezes\" placeholder=\"Írjon be egy nevet a kereséshez\">
+            <input class=\"kereses-gomb\" type=\"submit\" value=\"Keresés\">
+            <?php $kifejezes != '' ? print(\"<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>\") : ''?>
+        </form>
+    ";
+}
+
 $sql = "SELECT `edzo-felhasznalo_id`, edzo_az, kliens_az, felkeres_datuma, elfogadva,
         felhasznalok.felhasznalo_id, felhasznalok.vnev, felhasznalok.knev, felhasznalok.kep
         FROM `edzo-felhasznalo`
