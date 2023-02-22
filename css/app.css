@@ -151,7 +151,7 @@ main{
 .sidebar{
   position: fixed;
   left: 0;
-  top: 49px;
+  top: 48px;
   height: 100%;
   width: 78px;
   background: var(--fekete);
