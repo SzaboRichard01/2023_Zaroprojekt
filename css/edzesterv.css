@@ -14,6 +14,12 @@ button{
     padding: 10px;
 }
 
+button:hover{
+  float: right;
+  padding: 10px;
+  cursor: pointer;
+}
+
 /*edzesterv.php responsive*/
 @media (max-width: 500px) {
   ul .edzesterv{
