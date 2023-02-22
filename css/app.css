@@ -67,6 +67,7 @@ main{
     width: 100%;
     box-shadow: 1px 1px 10px var(--fekete);
     top: 0;
+    z-index: 1;
 }
 .mcim {
     font-size: 1.5rem;
@@ -151,7 +152,7 @@ main{
 .sidebar{
   position: fixed;
   left: 0;
-  top: 48px;
+  top: 0;
   height: 100%;
   width: 78px;
   background: var(--fekete);
@@ -165,6 +166,9 @@ main{
   font-size: 28px;
   text-align: center;
   line-height: 60px;
+}
+.sidebar ul{
+  margin-top: 50px;
 }
 .sidebar li{
   position: relative;
@@ -220,7 +224,7 @@ main{
 }
 #kilepes{
     position: absolute;
-    bottom: 50px;
+    bottom: 0px;
 }
 #kilepes:hover a{
     background-color: red;
@@ -242,15 +246,16 @@ main{
   .sidebar ul{
     display: flex;
     justify-content: center;
+    margin-top: 0;
   }
   #kilepes{
-    display: none;
+    position: unset;
   }
   .sidebar li{
     margin: 8px 5px;
   }
   main{
-    margin: 15px 0 100px 0;
+    margin: 55px 0 100px 0;
   }
 }
 /* Sidebar vége */
@@ -487,3 +492,9 @@ form .mezo #tipus{
   }
 }
 /*edzesterv-felvitel.php responsive vége*/
+.felkeres button{
+  padding: 10px;
+  margin-left: 5px;
+}
+/* Kezdőlap->felkeresek.php vége */
+
