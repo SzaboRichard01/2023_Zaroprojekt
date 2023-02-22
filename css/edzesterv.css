@@ -27,5 +27,18 @@ button:hover{
     text-align: center;
     margin-left: 0;
   }
+
+  .container{
+    height: 308px;
+  }
+
+  button{
+    margin-left: 0;
+  }
+
+  button:hover{
+    margin-left: 0;
+    cursor: pointer;
+  }
 }
 /*edzesterv.php responsive vége*/
