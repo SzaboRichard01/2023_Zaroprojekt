@@ -452,13 +452,21 @@ form .mezo #tipus{
 /* edzesterv-felvitel.php vége */
 
 /* Kezdőlap->felkeresek.php */
+.felkeresek{
+  margin: 10px;
+  max-width: 430px;
+  background-color: rgba(128, 128, 128, 0.2);
+}
 .felkeres{
   display: flex;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.2);
-  max-width: 400px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  padding-bottom: 5px;
+  justify-content: space-between;
+}
+.felkeres .gombok{
+  display: flex;
+  justify-content: flex-end;
 }
 .felkeres a{
   text-decoration: none;
@@ -473,6 +481,47 @@ form .mezo #tipus{
 }
 .felkeres .felh{
   padding: 0;
+}
+.felkeres button{
+  padding: 10px;
+}
+.felkeres .felh p{
+  min-width: 150px;
+}
+.felkeresek form{
+  width: 430px;
+  display: flex;
+  margin: 0;
+}
+.felkeresek form #kifejezes{
+  width: 350px;
+}
+.felkeresek form .kereses-gomb{
+  width: 80px;
+  margin: 0;
+}
+@media(max-width: 600px){
+  .felkeresek{
+    width: 350px;
+  }
+  .felkeres{
+    width: 350px;
+  }
+  .felkeres .felh p{
+    min-width: unset;
+    width: 130px;
+    background-color: red;
+  }
+  .felkeresek .felkeres a{
+    font-size: 14px;
+  }
+  .felkeres button{
+    padding: 5px 3px;
+    font-size: 12px;
+  }
+  .felkeresek form #kifejezes{
+    width: 270px;
+  }
 }
 /* Kezdőlap->felkeresek.php vége */
 
@@ -492,7 +541,3 @@ form .mezo #tipus{
   }
 }
 /*edzesterv-felvitel.php responsive vége*/
-.felkeres button{
-  padding: 10px;
-  margin-left: 5px;
-}
