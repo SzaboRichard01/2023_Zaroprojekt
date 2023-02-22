@@ -3,16 +3,16 @@
 $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
 //Lekérdezés - a $felhTipus változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
-$eredmeny = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
+$fosszes = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
 
 //Összes edző típusú felhasználó listájának összeállítása a $kimenet változóba
 $kimenet = "";
-while($sor = mysqli_fetch_assoc($eredmeny)){
-    $kimenet .= "<a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \">
+while($felh = mysqli_fetch_assoc($fosszes)){
+    $kimenet .= "<a href=\"profilAdatok.php?felhasznalo_id=" .$felh['felhasznalo_id']." \">
     <div class=\"felh\">
-    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor['kep']. "\"></div>
-    <p>{$sor['vnev']} {$sor['knev']}</p>\n
-    </div>";
+    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felh['kep']. "\"></div>
+    <p>{$felh['vnev']} {$felh['knev']}</p>\n
+    </div></a>";
 }
 //------
 ?>
