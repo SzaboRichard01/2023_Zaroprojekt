@@ -28,7 +28,6 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <h1>Edzésterv felvitele</h1>
         <div class="sikeres">
             <?php
                 if(isset($sikeres)){
@@ -38,6 +37,7 @@ if (!isset($_SESSION['felh_id'])) {
         </div>
         <form method="post" enctype="multipart/form-data">
             <div class="mezo">
+            <h1 style="margin-top: 5px; margin-bottom: 5px; text-align: center;">Edzésterv felvitele</h1>
                 <label for="edzestipus">Edzéstípus</label>
                 <select name="tipus" id="tipus">
                     <option disabled selected>Válasszon egy edzéstípust!</option>
