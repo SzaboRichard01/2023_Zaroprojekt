@@ -1,6 +1,6 @@
 /*edzesterv.php*/
 ul .edzesterv{
-    margin-left: 100px;
+    text-align: center;
     list-style-type: none;
 }
 
@@ -10,6 +10,22 @@ ul .edzesterv{
 }
 
 button{
-    float: right;
+    margin-left: 78px;
     padding: 10px;
 }
+
+button:hover{
+  margin-left: 78px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/*edzesterv.php responsive*/
+@media (max-width: 500px) {
+  ul .edzesterv{
+    list-style-type: none;
+    text-align: center;
+    margin-left: 0;
+  }
+}
+/*edzesterv.php responsive vége*/
