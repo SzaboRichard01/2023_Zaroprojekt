@@ -16,12 +16,12 @@
                 $edzoKnev = $sor['knev'];
 
                 //Felkérés gomb - Ha már egyszer felkértük edzőnek, ne lehessen újra
-                $sqlFelkeres = mysqli_query($dbconn, "SELECT edzo_az, kliens_az FROM `edzo-felhasznalo` WHERE edzo_az = {$felh_id} AND kliens_az = {$valasztott}");
+                $sqlFelkeres = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM `edzo-felhasznalo` WHERE kuldo_az = {$felh_id} AND fogado_az = {$valasztott}");
                 if(mysqli_num_rows($sqlFelkeres) > 0){
                     $FelkeresBtn = "<button disabled >Már felkérve</button>";
                 }
                 else{
-                    $FelkeresBtn = "<button onclick=\"location.href='muveletek/kFelkeres.php?felhasznalo_id=" .$sor['felhasznalo_id']."';\">Kliens felvétele</button>";
+                    $FelkeresBtn = "<button onclick=\"location.href='muveletek/ekFelkeres.php?felhasznalo_id=" .$sor['felhasznalo_id']."';\">Kliens felvétele</button>";
                 }
                 //Felkérés gomb vége
 

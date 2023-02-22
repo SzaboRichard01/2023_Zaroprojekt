@@ -45,7 +45,7 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
                 <?php echo $kimenet ?>
             </div>
             <div class="felkeresek">
-                <h2>Edző felkérések</h2>
+                <h2>Kliens felkérések</h2>
                 <?php require("leker/felkeresek.php"); ?>
             </div>
         </div>
