@@ -13,3 +13,13 @@ button{
     float: right;
     padding: 10px;
 }
+
+/*edzesterv.php responsive*/
+@media (max-width: 500px) {
+  ul .edzesterv{
+    list-style-type: none;
+    text-align: center;
+    margin-left: 0;
+  }
+}
+/*edzesterv.php responsive vége*/

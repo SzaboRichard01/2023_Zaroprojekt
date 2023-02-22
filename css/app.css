@@ -478,7 +478,7 @@ form .mezo #tipus{
 
 /*edzesterv-felvitel.php responsive*/
 
-@media(max-width: 1850px) {
+@media (max-width: 1850px) {
   .mezo .edzesterv{
     width: 95%;
     margin-left: -80px;
@@ -496,5 +496,3 @@ form .mezo #tipus{
   padding: 10px;
   margin-left: 5px;
 }
-/* Kezdőlap->felkeresek.php vége */
-
