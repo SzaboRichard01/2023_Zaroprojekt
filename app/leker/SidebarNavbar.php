@@ -33,14 +33,25 @@
             <span class="tooltip">Chat</span>
         </li>
 
-        <li>
-            <a href="edzo.php"><i class="fa fa-male"></i></a>
-            <span class="tooltip">Edzők kezelése</span>
-        </li>
-        <li>
-            <a href="kliens.php"><i class="fa fa-users"></i></a>
-            <span class="tooltip">Kliensek kezelése</span>
-        </li>
+        <!-- A kliensek számára ne jelenjen meg a kliensek kezelése csak az edzők kezelése menüpont
+        és hasonlóan az edzőknek se jelenjen meg az edzők kezelése csak a kliensek kezelése-->
+        <?php
+        if($_SESSION['p_tipus'] == "kliens"){
+            $edzokKez = "<li>
+            <a href=\"edzo.php\"><i class=\"fa fa-male\"></i></a>
+            <span class=\"tooltip\">Edzők kezelése</span>
+            </li>";
+            print($edzokKez);
+        }
+        if($_SESSION['p_tipus'] == "edző"){
+            $kliensekKez = "<li>
+            <a href=\"kliens.php\"><i class=\"fa fa-users\"></i></a>
+            <span class=\"tooltip\">Kliensek kezelése</span>
+            </li>";
+            print($kliensekKez);
+        }
+        ?>
+        <!-- ---------- -->
 
         <li id="kilepes">
             <a href="kilepes.php"><i class="fa fa-sign-out"></i></a>

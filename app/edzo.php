@@ -1,15 +1,21 @@
 <?php
 session_start();
-if (!isset($_SESSION['felh_id'])) {
+//Lapvédelem ha senki nincs bejelentkezve vagy
+//ha a bejelentkezett profil típusa edző
+//akkor nem férhetünk hozzá a kliens.php oldalhoz
+if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "edző") {
     header("Location: ../belepes.php");
     exit();
-} else {
+}else {
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
 
     //Edző típusú felhasználók listája
     $felhTipus = "edző";
     require("leker/felhLista.php");
+
+
+    $eFelkeresKer = (isset($_POST['eFelkeresKer'])) ? $_POST['eFelkeresKer'] : "";
 }
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -41,6 +47,9 @@ if (!isset($_SESSION['felh_id'])) {
             <div class="felh-lista">
                 <?php echo $kimenet ?>
             </div>
+        </div>
+        <div class="felkeresek">
+            <?php require("leker/felkeresek.php"); ?>
         </div>
     
     </main>

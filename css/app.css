@@ -451,9 +451,27 @@ form .mezo #tipus{
 }
 /* edzesterv-felvitel.php vége */
 
+
+/*edzesterv-felvitel.php responsive*/
+
+@media (max-width: 1850px) {
+  .mezo .edzesterv{
+    width: 95%;
+    margin-left: -80px;
+    margin-bottom: 22px;
+  }
+
+  .mezo .etrend{
+    width: 95%;
+    margin-left: -56px;
+    margin-bottom: 22px;
+  }
+}
+/*edzesterv-felvitel.php responsive vége*/
+
 /* Kezdőlap->felkeresek.php */
 .felkeresek{
-  margin: 10px;
+  margin-top: 20px;
   max-width: 430px;
   background-color: rgba(128, 128, 128, 0.2);
 }
@@ -524,20 +542,3 @@ form .mezo #tipus{
   }
 }
 /* Kezdőlap->felkeresek.php vége */
-
-/*edzesterv-felvitel.php responsive*/
-
-@media (max-width: 1850px) {
-  .mezo .edzesterv{
-    width: 95%;
-    margin-left: -80px;
-    margin-bottom: 22px;
-  }
-
-  .mezo .etrend{
-    width: 95%;
-    margin-left: -56px;
-    margin-bottom: 22px;
-  }
-}
-/*edzesterv-felvitel.php responsive vége*/

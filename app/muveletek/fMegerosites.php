@@ -1,4 +1,5 @@
 <?php
+//Edző felkéréseknél az elfogadás gomb hatására az elfogadva értéket true-ra állítjuk
 require("../kapcsolat.php");
 session_start();
 $felh_id = $_SESSION['felh_id'];
