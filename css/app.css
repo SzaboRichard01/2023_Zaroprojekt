@@ -470,3 +470,20 @@ form .mezo #tipus{
   padding: 0;
 }
 /* Kezdőlap->felkeresek.php vége */
+
+/*edzesterv-felvitel.php responsive*/
+
+@media(max-width: 1850px) {
+  .mezo .edzesterv{
+    width: 95%;
+    margin-left: -80px;
+    margin-bottom: 22px;
+  }
+
+  .mezo .etrend{
+    width: 95%;
+    margin-left: -56px;
+    margin-bottom: 22px;
+  }
+}
+/*edzesterv-felvitel.php responsive vége*/

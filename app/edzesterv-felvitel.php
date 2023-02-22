@@ -66,7 +66,7 @@ if (!isset($_SESSION['felh_id'])) {
             <h1 style="margin-top: 5px; margin-bottom: 5px;">Étrendösszeállítás</h1>
             <div class="mezo">
                 <label for="edz_terv">Étrend</label>
-                <textarea class="edzesterv" name="edzesterv" rows="20" cols="132"></textarea>
+                <textarea class="etrend" name="edzesterv" rows="20" cols="132"></textarea>
             </div>
             <div class="mezo">
                 <label for="nap">Nap</label>
