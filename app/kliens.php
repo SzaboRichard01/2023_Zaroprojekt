@@ -48,6 +48,10 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
                 <h2>Kliens felkérések</h2>
                 <?php require("leker/felkeresek.php"); ?>
             </div>
+            <div class="meglevo">
+                <h2>Kliensek</h2>
+                <?php require("leker/ekMeglevo.php"); ?>
+            </div>
         </div>
     </main>
 

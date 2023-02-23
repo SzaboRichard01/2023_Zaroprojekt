@@ -52,6 +52,10 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "edző") {
             <h2>Edző felkérések</h2>
             <?php require("leker/felkeresek.php"); ?>
         </div>
+        <div class="meglevo">
+            <h2>Edzők</h2>
+            <?php require("leker/ekMeglevo.php"); ?>
+        </div>
     
     </main>
 
