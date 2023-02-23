@@ -137,8 +137,8 @@ body {
     padding: 50px;
 }
 
-.container_right{
-    text-align: right;
+.container2{
+    text-align: center;
 }
 
 .pic_app_right{
@@ -148,17 +148,12 @@ body {
     margin-right: 5px;
 }
 
-.container_left{
-    text-align: left;
-}
-
-.container_left h1{
-    font-weight: bold;
-    margin-bottom: 10px;
+.container1{
     text-align: center;
 }
 
-.container_right h1{
+.container1 h1,
+.container2 h1{
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
@@ -166,7 +161,7 @@ body {
 
 .border{
     border: 1px solid var(--zold);
-    margin-top: 4.5rem;
+    margin-top: 9rem;
     margin-left: 95px;
     margin-right: 95px;
 }
@@ -175,7 +170,6 @@ body {
     float: right;
     height: 130px;
     width: 160px;
-    margin-left: 5px;
 }
 /*(Főoldal) App leírás vége*/
 
