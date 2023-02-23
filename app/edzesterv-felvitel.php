@@ -63,7 +63,7 @@ if (!isset($_SESSION['felh_id'])) {
                     <option value="va">Vasárnap</option>
                 </select>
             </div>
-            <h1 style="margin-top: 5px; margin-bottom: 5px;">Étrendösszeállítás</h1>
+            <h1 style="margin-top: 5px; margin-bottom: 5px; text-align: center;">Étrendösszeállítás</h1>
             <div class="mezo">
                 <label for="edz_terv">Étrend</label>
                 <textarea class="etrend" name="edzesterv" rows="20" cols="132"></textarea>
