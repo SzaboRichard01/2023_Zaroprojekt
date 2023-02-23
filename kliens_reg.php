@@ -18,7 +18,7 @@
             $hibak[] = "E-mail cím megadása kötelező!";
         } else if(empty($_POST['jelszo'])){
             $hibak[] = "Jelszó megadása kötelező!";
-        } else if($_POST['jelszo'] != $_POST['jelszo_megerosit']){
+        } else if($_POST['jelszo'] != $_POST['jelszo_megerosit'] || empty($_POST['jelszo_megerosit'])){
             $hibak[] = "<p style=\"color: red;\"><strong>A jelszó nem egyezik vagy nem erősítette meg!</strong></p>";
         }
 
