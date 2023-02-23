@@ -32,11 +32,11 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <h1><?php echo "{$vnev} {$knev}"; ?> edzésterve</h1>
+        <h1><?php echo "{$vnev} {$knev}"; ?> edzésterve/étrendje</h1>
     </main>
     <div class="container">
         <ul>
-            <li class="edzesterv"><b>Ide jön az edzésterv</b></li>
+            <li class="edzesterv"><b>Ide jön az edzésterv és az étrend</b></li>
         </ul>
     </div>
     <button onclick="location.href='edzesterv-felvitel.php';">Új edzésterv felvitele</button>

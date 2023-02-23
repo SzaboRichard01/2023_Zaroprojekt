@@ -137,28 +137,27 @@ body {
     padding: 50px;
 }
 
-.container_right{
-    text-align: right;
-}
-
-.pic_app_right{
-    float: left;
-    height: 130px;
-    width: 160px;
-    margin-right: 5px;
-}
-
-.container_left{
-    text-align: left;
-}
-
-.container_left h1{
-    font-weight: bold;
-    margin-bottom: 10px;
+.container2{
     text-align: center;
 }
 
-.container_right h1{
+.container1{
+    text-align: center;
+}
+
+.container1 ul{
+    list-style-type: none;
+    color: var(--zold);
+    font-size: 25px;
+}
+
+.container1 h2{
+    margin-top: 50px;
+}
+
+.container1 h1,
+.container2 h1{
+    margin-top: -20px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
@@ -169,13 +168,6 @@ body {
     margin-top: 4.5rem;
     margin-left: 95px;
     margin-right: 95px;
-}
-
-.pic_app{
-    float: right;
-    height: 130px;
-    width: 160px;
-    margin-left: 5px;
 }
 /*(Főoldal) App leírás vége*/
 

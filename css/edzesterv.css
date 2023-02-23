@@ -4,18 +4,25 @@ ul .edzesterv{
     list-style-type: none;
 }
 
+main h1{
+  text-align: center;
+}
+
 .container{
     background-color: rgb(223, 223, 223);
     height: 400px;
+    width: 1500px;
+    margin-left: 250px;
 }
 
 button{
-    margin-left: 78px;
+    margin-left: 250px;
     padding: 10px;
+    margin-top: 2px;
 }
 
 button:hover{
-  margin-left: 78px;
+  margin-left: 250px;
   padding: 10px;
   cursor: pointer;
 }

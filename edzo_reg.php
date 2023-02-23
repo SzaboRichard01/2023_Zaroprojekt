@@ -22,6 +22,8 @@
             $hibak[] = "<p style=\"color: red;\"><strong>E-mail cím megadása kötelező!</strong></p>";
         } else if(empty($_POST['jelszo'])){
             $hibak[] = "<p style=\"color: red;\"><strong>Jelszó megadása kötelező!</strong></p>";
+        } else if($_POST['jelszo'] != $_POST['jelszo_megerosit'] || empty($_POST['jelszo_megerosit'])){
+            $hibak[] = "<p style=\"color: red;\"><strong>A jelszó nem egyezik vagy nem erősítette meg!</strong></p>";
         }
 
         $mime = array("image/jpeg", "image/gif", "image/png", "image/jpg");
@@ -152,6 +154,10 @@
             <div class="mezo">
                 <label for="jelszo">Jelszó:</label>
                 <input type="password" name="jelszo" id="jelszo">
+            </div>
+            <div class="mezo">
+                <label for="jelszo_megerosit">Jelszó megerősítése:</label>
+                <input type="password" name="jelszo_megerosit" id="jelszo_megerosit">
             </div>
             
             <div class="mezo">
