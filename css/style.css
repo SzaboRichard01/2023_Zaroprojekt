@@ -141,19 +141,13 @@ body {
     text-align: center;
 }
 
-.pic_app_right{
-    float: left;
-    height: 130px;
-    width: 160px;
-    margin-right: 5px;
-}
-
 .container1{
     text-align: center;
 }
 
 .container1 h1,
 .container2 h1{
+    margin-top: -20px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
@@ -164,12 +158,6 @@ body {
     margin-top: 9rem;
     margin-left: 95px;
     margin-right: 95px;
-}
-
-.pic_app{
-    float: right;
-    height: 130px;
-    width: 160px;
 }
 /*(Főoldal) App leírás vége*/
 
