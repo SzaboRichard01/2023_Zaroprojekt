@@ -2,23 +2,23 @@
 $felh_id = $_SESSION['felh_id'];
 $pTipus = $_SESSION['p_tipus'];
 
-$keresett = (isset($_POST['keresett'])) ? $_POST['keresett'] : "";
+$meglevoKer = (isset($_POST['meglevoKer'])) ? $_POST['meglevoKer'] : "";
 
-$FelkKereso = "<form method=\"post\">
-        <input type=\"search\" name=\"keresett\" id=\"keresett\" placeholder=\"Írjon be egy nevet a kereséshez\">
+$mKereso = "<form method=\"post\">
+        <input type=\"search\" name=\"meglevoKer\" id=\"meglevoKer\" placeholder=\"Írjon be egy nevet a kereséshez\">
         <input class=\"kereses-gomb\" type=\"submit\" value=\"Keresés\">";
         
-        $keresett != '' ? $FelkKereso .= ("<button id='kereses-vissza' class='kereses-gomb' onclick='$keresett = ''><i class='fa fa-arrow-left' aria-hidden='true'></i> Vissza</button>") : '';
-    $FelkKereso .= "</form>";
-print($FelkKereso);
-
+        $meglevoKer != '' ? $mKereso .= ("<button id='kereses-vissza' class='kereses-gomb' onclick='$meglevoKer = ''><i class='fa fa-arrow-left' aria-hidden='true'></i> Vissza</button>") : '';
+    $mKereso .= "</form>";
+print($mKereso);
 
 
 $sql = "SELECT kuldo_az, fogado_az, elfogadva
     FROM `edzo-felhasznalo`
     INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
-    WHERE fogado_az = {$felh_id} OR kuldo_az = {$felh_id} AND elfogadva = 1
-    AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'
+    WHERE CONCAT(vnev, ' ', knev) LIKE '%{$meglevoKer}%'
+    AND fogado_az = {$felh_id} OR kuldo_az = {$felh_id}
+    AND elfogadva = 1
     ORDER BY felkeres_datuma DESC";
 $eredmeny = mysqli_query($dbconn, $sql);
 $eFelkeres = "";

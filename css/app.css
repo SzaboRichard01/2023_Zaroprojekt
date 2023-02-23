@@ -284,6 +284,7 @@ main{
 .felh-lista a{
   color: black;
   text-decoration: none;
+  width: 100%;
 }
 .felh-lista a:hover{
   color: var(--zold);
@@ -293,14 +294,14 @@ main{
   display: flex;
   justify-content: start;
   align-items: center;
-  width: fit-content;
-  padding-bottom: 10px;
+  width: 100%;
+  padding: 5px 0;
 }
 .felh p{
   margin: 0 5px;
   font-weight: 600;
 }
-#kifejezes{
+#kifejezes, #keresett, #meglevoKer{
   padding: 5px;
   width: calc(100% - 85px);
 }
@@ -317,6 +318,19 @@ main{
 .pkep-meret{
   height: 50px;
   width: 50px;
+}
+.felhKeret{
+  display: flex;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.2);
+  justify-content: space-between;
+  width: 100%;
+}
+.felhKeret:hover{
+  opacity: 0.7;
+}
+.felhKeret a:hover{
+  color: var(--zold);
 }
 /* Felhasználó lista vége */
 
@@ -489,6 +503,7 @@ form .mezo #tipus{
 .felkeres a{
   text-decoration: none;
   color: black;
+  width: 100%;
 }
 .felkeres:hover{
   color: var(--zold);
@@ -510,9 +525,6 @@ form .mezo #tipus{
   width: 430px;
   display: flex;
   margin: 0;
-}
-.felkeresek form #kifejezes{
-  width: 350px;
 }
 .felkeresek form .kereses-gomb{
   width: 80px;
@@ -536,9 +548,6 @@ form .mezo #tipus{
   .felkeres button{
     padding: 5px 3px;
     font-size: 12px;
-  }
-  .felkeresek form #kifejezes{
-    width: 270px;
   }
 }
 /* Kezdőlap->felkeresek.php vége */

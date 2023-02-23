@@ -23,7 +23,7 @@ while($felh = mysqli_fetch_assoc($fosszes)){
 
 
 
-    $kimenet .= "<a href=\"profilAdatok.php?felhasznalo_id=" .$felh['felhasznalo_id']." \">
+    $kimenet .= "<div class=\"felhKeret\"><a href=\"profilAdatok.php?felhasznalo_id=" .$felh['felhasznalo_id']." \">
         <div class=\"felh\">
         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felh['kep']. "\"></div>
         <p>{$felh['vnev']} {$felh['knev']} ";
@@ -43,7 +43,7 @@ while($felh = mysqli_fetch_assoc($fosszes)){
         }
 
     $kimenet .= "</p>
-    </div></a>";
+    </div></a></div>";
 
     
 
