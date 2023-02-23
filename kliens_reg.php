@@ -18,8 +18,10 @@
             $hibak[] = "E-mail cím megadása kötelező!";
         } else if(empty($_POST['jelszo'])){
             $hibak[] = "Jelszó megadása kötelező!";
-        } else if($_POST['jelszo'] != $_POST['jelszo_megerosit'] || empty($_POST['jelszo_megerosit'])){
-            $hibak[] = "<p style=\"color: red;\"><strong>A jelszó nem egyezik vagy nem erősítette meg!</strong></p>";
+        } else if($_POST['jelszo'] != $_POST['jelszo_megerosit'] && $_POST['jelszo_megerosit'] != ""){
+            $hibak[] = "<p style=\"color: red;\"><strong>A jelszó nem egyezik!</strong></p>";
+        } else if(empty($_POST['jelszo_megerosit'])){
+            $hibak[] = "<p style=\"color: red;\"><strong>Nem erősítette meg a jelszót!</strong></p>";
         }
 
         $mime = array("image/jpeg", "image/gif", "image/png", "image/jpg");
