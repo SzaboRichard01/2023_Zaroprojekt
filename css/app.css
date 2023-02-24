@@ -436,6 +436,12 @@ main{
   width: 89px;
   padding: 10px;
 }
+
+.chatszoveg form #kuldeschat:hover{
+  color: var(--zold);
+  text-decoration: none;
+  cursor: pointer;
+}
 /* chat.php vége */
 
 /* edzesterv-felvitel.php */
@@ -462,9 +468,6 @@ form #kuldes{
 }
 
 form #kuldes:hover{
-  margin-top: 15px;
-  height: 40px;
-  width: 70px;
   color: var(--fekete);
   background-color: #a8a8a8;
   border: 1px solid var(--zold);
@@ -520,6 +523,13 @@ h2 span{
   max-width: 430px;
   background-color: rgba(128, 128, 128, 0.2);
 }
+
+.uj_felh form .kereses-gomb:hover{
+  color: var(--zold);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .felkeres{
   display: flex;
   align-items: center;

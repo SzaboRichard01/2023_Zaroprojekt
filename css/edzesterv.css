@@ -22,8 +22,9 @@ button{
 }
 
 button:hover{
-  margin-left: 250px;
-  padding: 10px;
+  cursor: pointer;
+  color: var(--zold);
+  text-decoration: none;
   cursor: pointer;
 }
 
