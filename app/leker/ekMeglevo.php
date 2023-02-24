@@ -2,6 +2,7 @@
 $felh_id = $_SESSION['felh_id'];
 $pTipus = $_SESSION['p_tipus'];
 
+//Keresőmező
 $meglevoKer = (isset($_POST['meglevoKer'])) ? $_POST['meglevoKer'] : "";
 
 $mKereso = "<form method=\"post\">
@@ -11,6 +12,7 @@ $mKereso = "<form method=\"post\">
         $meglevoKer != '' ? $mKereso .= ("<button id='kereses-vissza' class='kereses-gomb' onclick='$meglevoKer = ''><i class='fa fa-arrow-left' aria-hidden='true'></i> Vissza</button>") : '';
     $mKereso .= "</form>";
 print($mKereso);
+//-----
 
 
 $sql = "SELECT kuldo_az, fogado_az, elfogadva
@@ -43,7 +45,8 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    
+                    <button>Kliens Edzésterve</button>
+                    <button onclick=\"location.href='muveletek/mTorles.php?ef_id=". $sor2['edzo-felhasznalo_id'] ."'\">Törlés</button>
                 </div>
             </div>";
     }
@@ -58,11 +61,12 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                 <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
                     <div class=\"felh\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
-                        <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
+                        <p>{$sor2['vnev']} {$sor2['knev']}</p>
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    
+                    <button>Kliens Edzésterve</button>
+                    <button onclick=\"location.href='muveletek/mTorles.php?ef_id=". $sor2['edzo-felhasznalo_id'] ."'\">Törlés</button>
                 </div>
             </div>";
     }

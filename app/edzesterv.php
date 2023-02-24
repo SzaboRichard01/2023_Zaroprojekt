@@ -7,11 +7,8 @@ if (!isset($_SESSION['felh_id'])) {
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
 }
-
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="hu">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,22 +23,15 @@ if (!isset($_SESSION['felh_id'])) {
     <link rel="stylesheet" href="../css/edzesterv.css">
     <title>Kezdőlap - <?php echo "{$vnev} {$knev}"; ?></title>
 </head>
-
 <body>
     <!-- Felső és oldalsó menü -->
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <h1><?php echo "{$vnev} {$knev}"; ?> edzésterve/étrendje</h1>
+        <?php require("leker/edzestervF.php"); ?>
     </main>
-    <div class="container">
-        <ul>
-            <li class="edzesterv"><b>Ide jön az edzésterv és az étrend</b></li>
-        </ul>
-    </div>
-    <button onclick="location.href='edzesterv-felvitel.php';">Új edzésterv felvitele</button>
+    
 
     <script src="../js/script.js"></script>
 </body>
-
 </html>

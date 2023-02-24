@@ -439,6 +439,18 @@ main{
 /* chat.php vége */
 
 /* edzesterv-felvitel.php */
+#felvitelForm{
+  display: flex;
+  flex-direction: column;
+}
+.mezo{
+  display: flex;
+  flex-direction: column;
+}
+#et-leiras{
+  min-height: 120px;
+}
+
 form #kuldes{
   margin-top: 15px;
   height: 40px;
@@ -462,6 +474,25 @@ form #kuldes:hover{
 
 form .mezo #tipus{
   margin-bottom: 5px;
+}
+
+h2 span{
+  color: var(--zold);
+}
+
+#mezonapok{
+  background-color: rgb(49, 49, 49);
+  margin: 10px 0;
+}
+.enap, .etnap{
+  background-color: rgb(143, 143, 143);
+  margin: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.enap #edzes, #etr-etrend{
+  height: 160px;
 }
 /* edzesterv-felvitel.php vége */
 
