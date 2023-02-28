@@ -25,7 +25,6 @@ if (!isset($_SESSION['felh_id'])) {
     if(isset($_POST['kuldes'])){
         $etNeve = $_POST['et-neve'];
         $etLeiras = $_POST['et-leiras'];
-        $napok = $_POST['napok'];
 
         //Edzés - melyik nap
         isset($_POST['mnap1']) ? $mNap1 = $_POST['mnap1'] : '';
@@ -77,8 +76,8 @@ if (!isset($_SESSION['felh_id'])) {
 
 
         //edzesterv tabla insert
-        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, edzo_az, kliens_az, edzesnapok, `edzo-felhasznalo_id`)
-            VALUES ('{$etNeve}', '{$etLeiras}', '{$_SESSION['felh_id']}', '{$tKinek}', '{$napok}', '{$edzoFelhId}')");
+        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, edzo_az, kliens_az, `edzo-felhasznalo_id`)
+            VALUES ('{$etNeve}', '{$etLeiras}', '{$_SESSION['felh_id']}', '{$tKinek}', '{$edzoFelhId}')");
 
         $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE `edzo-felhasznalo_id` = {$edzoFelhId}");
         $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
@@ -154,10 +153,6 @@ if (!isset($_SESSION['felh_id'])) {
                     <option value="6">6</option>
                     <option value="7">7</option>
                 </select>
-            </div>
-            <div class="mezo">
-                <label for="napok">Edzésnapok (mely napokra szól az edzésterv)</label>
-                <input type="text" name="napok" id="napok" placeholder="Példa 3 nap esetén: Hétfő, Szerda, Péntek">
             </div>
 
             <div id="mezonapok"></div>
