@@ -34,42 +34,30 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         $sql2 = "SELECT * FROM `edzo-felhasznalo`
                 INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
                 WHERE kuldo_az = {$felh_id} AND fogado_az = {$fogadoaz}";
-        $eredmeny2 = mysqli_query($dbconn, $sql2);
-        $sor2 = mysqli_fetch_assoc($eredmeny2);
-            $eFelkeres .= "
-            <div class=\"felkeres\">
-                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
-                    <div class=\"felh\">
-                        <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
-                        <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
-                    </div>
-                </a>
-                <div class=\"gombok\">
-                    <button>Kliens Edzésterve</button>
-                    <button onclick=\"location.href='muveletek/mTorles.php?ef_id=". $sor2['edzo-felhasznalo_id'] ."'\">Törlés</button>
-                </div>
-            </div>";
     }
     else if($felh_id == $fogadoaz && $elfogadva == 1){
         $sql2 = "SELECT * FROM `edzo-felhasznalo`
         INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
         WHERE fogado_az = {$felh_id} AND kuldo_az = {$kuldoaz}";
+    }
+
+    if(isset($sql2)){
         $eredmeny2 = mysqli_query($dbconn, $sql2);
         $sor2 = mysqli_fetch_assoc($eredmeny2);
-            $eFelkeres .= "
-            <div class=\"felkeres\">
-                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
-                    <div class=\"felh\">
-                        <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
-                        <p>{$sor2['vnev']} {$sor2['knev']}</p>
-                    </div>
-                </a>
-                <div class=\"gombok\">
-                    <button>Kliens Edzésterve</button>
-                    <button onclick=\"location.href='muveletek/mTorles.php?ef_id=". $sor2['edzo-felhasznalo_id'] ."'\">Törlés</button>
+        $eFelkeres .= "
+        <div class=\"felkeres\">
+            <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
+                <div class=\"felh\">
+                    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
+                    <p>{$sor2['vnev']} {$sor2['knev']}</p>
                 </div>
-            </div>";
+            </a>
+            <div class=\"gombok\">
+                <button onclick=\"location.href='muveletek/mTorles.php?ef_id=". $sor2['edzo-felhasznalo_id'] ."'\">Törlés</button>
+            </div>
+        </div>";
     }
+    
 }
 print($eFelkeres);
 ?>

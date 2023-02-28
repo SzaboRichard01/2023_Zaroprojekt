@@ -76,8 +76,8 @@ if (!isset($_SESSION['felh_id'])) {
 
 
         //edzesterv tabla insert
-        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, edzo_az, kliens_az, `edzo-felhasznalo_id`)
-            VALUES ('{$etNeve}', '{$etLeiras}', '{$_SESSION['felh_id']}', '{$tKinek}', '{$edzoFelhId}')");
+        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, `edzo-felhasznalo_id`)
+            VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
 
         $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE `edzo-felhasznalo_id` = {$edzoFelhId}");
         $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);

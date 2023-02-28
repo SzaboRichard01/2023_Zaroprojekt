@@ -3,6 +3,13 @@
 $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
 //Lekérdezés - a $felhTipus változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
+if($_SESSION['p_tipus'] == "edző"){
+    $felhTipus = "kliens";
+}
+else{
+    $felhTipus = "edző";
+}
+
 $fosszes = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
 
 //Összes edző típusú felhasználó listájának összeállítása a $kimenet változóba

@@ -9,10 +9,6 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
 } else {
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
-
-    //Kliens típusú felhasználók listája
-    $felhTipus = "kliens";
-    require('leker/felhLista.php');
 }
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -35,15 +31,7 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     <main class="felh-main">
         <h1>Kliensek</h1>
         <div class="uj_felh">
-            <h2><i class="fa fa-search" aria-hidden="true"></i> Kliensek keresése</h2>
-            <form method="post">
-                <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
-                <input class="kereses-gomb" type="submit" value="Keresés">
-                <?php $kifejezes != "" ? print("<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>") : ""?>
-            </form>
-            <div class="felh-lista">
-                <?php echo $kimenet ?>
-            </div>
+            
             <div class="felkeresek">
                 <h2>Kliens felkérések</h2>
                 <?php require("leker/felkeresek.php"); ?>

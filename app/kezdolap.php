@@ -8,6 +8,9 @@ if (!isset($_SESSION['felh_id'])) {
     require("leker/sajatProfil.php");
 
     $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
+
+    //Kliens típusú felhasználók listája
+    require('leker/felhLista.php');
 }
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -29,6 +32,15 @@ if (!isset($_SESSION['felh_id'])) {
     <main>
         <h1>Üdvözöljük <?php echo "{$vnev} {$knev}!"; ?></h1>
 
+        <h2><i class="fa fa-search" aria-hidden="true"></i> <?php $_SESSION['p_tipus'] == "edző" ? print("Kliensek") : print("Edzők");?> keresése</h2>
+        <form method="post">
+            <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
+            <input class="kereses-gomb" type="submit" value="Keresés">
+            <?php $kifejezes != "" ? print("<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>") : ""?>
+        </form>
+        <div class="felh-lista">
+            <?php echo $kimenet ?>
+        </div>
         
     </main>
 

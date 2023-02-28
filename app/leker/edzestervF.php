@@ -17,26 +17,16 @@ if($_SESSION['p_tipus'] == "edző"){
             if($_SESSION['felh_id'] == $kuldoaz && $elfogadva == 1){
                 $sql2 = "SELECT * FROM `edzo-felhasznalo`
                     INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
-                    WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz}";
-                $eredmeny2 = mysqli_query($dbconn, $sql2);
-                $sor2 = mysqli_fetch_assoc($eredmeny2);
-
-                $kliens = "
-                <div class =\"kliens\">
-                    <div class=\"felh\">
-                        <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
-                        <p>{$sor2['vnev']} {$sor2['knev']}</p>
-                    </div>
-                    <div class=\"gombok\">
-                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2['fogado_az'] ."'\">Edzésterv felvétele</button>
-                    </div>
-                </div>";
-                $felulet .= $kliens;
+                    WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz}
+                    OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$fogadoaz}";
             }
             else if($_SESSION['felh_id'] == $fogadoaz && $elfogadva == 1){
                 $sql2 = "SELECT * FROM `edzo-felhasznalo`
                 INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
                 WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$kuldoaz}";
+            }
+
+            if(isset($sql2)){
                 $eredmeny2 = mysqli_query($dbconn, $sql2);
                 $sor2 = mysqli_fetch_assoc($eredmeny2);
 
@@ -52,7 +42,6 @@ if($_SESSION['p_tipus'] == "edző"){
                 </div>";
                 $felulet .= $kliens;
             }
-
         }
 
     $felulet .= "</div>";
