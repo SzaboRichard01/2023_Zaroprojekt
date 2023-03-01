@@ -272,6 +272,10 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 20px;
+}
+.felh-main h1{
+  width: 100%;
 }
 .uj_felh{
   display: flex;
@@ -526,10 +530,21 @@ h2 span{
 /*edzesterv-felvitel.php responsive vége*/
 
 /* Kezdőlap->felkeresek.php */
+.meglevo{
+  background-color: red;
+  min-width: 350px;
+  width: 50%;
+}
+.felh-main .container{
+  background-color: #55be3b;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
 .felkeresek{
-  margin-top: 20px;
-  max-width: 430px;
+  width: 30%;
   background-color: rgba(128, 128, 128, 0.2);
+  min-width: 350px;
 }
 
 .uj_felh form .kereses-gomb:hover{
@@ -571,7 +586,7 @@ h2 span{
   min-width: 150px;
 }
 .felkeresek form{
-  width: 430px;
+  width: 100%;
   display: flex;
   margin: 0;
 }
