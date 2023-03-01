@@ -31,13 +31,13 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     <main class="felh-main">
         <h1>Kliensek</h1>
         <div class="container">
-            <div class="felkeresek">
-                <h2>Kliens felkérések</h2>
-                <?php require("leker/felkeresek.php"); ?>
-            </div>
             <div class="meglevo">
                 <h2>Klienseim</h2>
                 <?php require("leker/ekMeglevo.php"); ?>
+            </div>
+            <div class="felkeresek">
+                <h2>Kliens felkérések</h2>
+                <?php require("leker/felkeresek.php"); ?>
             </div>
         </div>
     </main>

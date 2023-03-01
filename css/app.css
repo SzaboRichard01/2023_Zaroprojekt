@@ -531,20 +531,19 @@ h2 span{
 
 /* Kezdőlap->felkeresek.php */
 .meglevo{
-  background-color: red;
   min-width: 350px;
-  width: 50%;
+  width: 55%;
 }
 .felh-main .container{
-  background-color: #55be3b;
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .felkeresek{
-  width: 30%;
   background-color: rgba(128, 128, 128, 0.2);
   min-width: 350px;
+  width: 40%;
 }
 
 .uj_felh form .kereses-gomb:hover{
