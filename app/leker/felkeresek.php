@@ -12,9 +12,9 @@ $FelkKereso = "<form method=\"post\">
     $FelkKereso .= "</form>";
 print($FelkKereso);
 
-$sql = "SELECT `edzo-felhasznalo_id`, kuldo_az, fogado_az, felkeres_datuma, elfogadva,
+$sql = "SELECT ekkapcs_id, kuldo_az, fogado_az, felkeres_datuma, elfogadva,
     felhasznalok.felhasznalo_id, felhasznalok.vnev, felhasznalok.knev, felhasznalok.kep
-    FROM `edzo-felhasznalo`
+    FROM ekkapcs
     INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
     WHERE fogado_az = {$felh_id} AND elfogadva = 0
     AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'

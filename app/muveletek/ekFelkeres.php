@@ -25,7 +25,7 @@
     //Egyébként eltároljuk a felkérést
     else{
         $datum = date('Y-m-d h:i:s');
-        $sqlBeszuras = mysqli_query($dbconn, "INSERT INTO `edzo-felhasznalo` (kuldo_az, fogado_az, felkeres_datuma) VALUES ('{$felh_id}', '{$valasztott}', '{$datum}')");
+        $sqlBeszuras = mysqli_query($dbconn, "INSERT INTO ekkapcs (kuldo_az, fogado_az, felkeres_datuma) VALUES ('{$felh_id}', '{$valasztott}', '{$datum}')");
         header("Location: ../kliens.php");
     }
 ?>

@@ -15,7 +15,7 @@ $fosszes = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus 
 //Összes edző típusú felhasználó listájának összeállítása a $kimenet változóba
 $kimenet = "";
 while($felh = mysqli_fetch_assoc($fosszes)){
-    $fEll = "SELECT * FROM `edzo-felhasznalo`
+    $fEll = "SELECT * FROM ekkapcs
             WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felh['felhasznalo_id']}
             OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felh['felhasznalo_id']}";
     $fEllEredmeny = mysqli_query($dbconn, $fEll);

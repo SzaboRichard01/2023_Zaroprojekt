@@ -68,18 +68,18 @@ if (!isset($_SESSION['felh_id'])) {
         //---
 
 
-        $sqlId = mysqli_query($dbconn, "SELECT `edzo-felhasznalo_id` FROM `edzo-felhasznalo`
+        $sqlId = mysqli_query($dbconn, "SELECT ekkapcs_id FROM ekkapcs
             WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$tKinek}
             OR kuldo_az = {$tKinek} AND fogado_az = {$_SESSION['felh_id']}");
         $IdEr = mysqli_fetch_assoc($sqlId);
-        $edzoFelhId = $IdEr['edzo-felhasznalo_id'];
+        $edzoFelhId = $IdEr['ekkapcs_id'];
 
 
         //edzesterv tabla insert
-        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, `edzo-felhasznalo_id`)
+        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, ekkapcs_id)
             VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
 
-        $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE `edzo-felhasznalo_id` = {$edzoFelhId}");
+        $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE ekkapcs_id = {$edzoFelhId}");
         $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
         $edzestervID = $EtervIdEr['edzesterv_id'];
         

@@ -6,7 +6,7 @@ if($_SESSION['p_tipus'] == "edző"){
     <h1>Kliensek Edzéstervei</h1>
     <div>";
 
-        $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM `edzo-felhasznalo`
+        $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM ekkapcs
                 WHERE kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";
         $eredmeny = mysqli_query($dbconn, $sql);
         while($sor = mysqli_fetch_assoc($eredmeny)){
@@ -15,15 +15,19 @@ if($_SESSION['p_tipus'] == "edző"){
             $elfogadva = $sor['elfogadva'];
 
             if($_SESSION['felh_id'] == $kuldoaz && $elfogadva == 1){
-                $sql2 = "SELECT * FROM `edzo-felhasznalo`
+                $sql2 = "SELECT * FROM ekkapcs
                     INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
                     WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz}
                     OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$fogadoaz}";
+                
+                $kerdezendo = "fogado_az";
             }
             else if($_SESSION['felh_id'] == $fogadoaz && $elfogadva == 1){
-                $sql2 = "SELECT * FROM `edzo-felhasznalo`
+                $sql2 = "SELECT * FROM ekkapcs
                 INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
                 WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$kuldoaz}";
+
+                $kerdezendo = "kuldo_az";
             }
 
             if(isset($sql2)){
@@ -37,7 +41,7 @@ if($_SESSION['p_tipus'] == "edző"){
                         <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
                     </div>
                     <div class=\"gombok\">
-                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2['kuldo_az'] ."'\">Edzésterv felvétele</button>
+                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Edzésterv felvétele</button>
                     </div>
                 </div>";
                 $felulet .= $kliens;
