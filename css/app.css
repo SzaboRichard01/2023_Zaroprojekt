@@ -14,7 +14,7 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 main{
-    margin: 60px 0 15px 95px;
+    margin: 60px 0 0 95px;
 }
 
 
@@ -272,7 +272,6 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
 }
 .felh-main h1{
   width: 100%;
@@ -711,3 +710,62 @@ h2 span{
   }
 }
 /* Kezdőlap->felkeresek.php vége */
+
+/* Edzésterv megjelenítés Klienseknek */
+.edzestervek{
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 15px 0;
+}
+.edzesterv{
+  width: 300px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.edzesterv:hover .etkitol p{
+  display: block;
+}
+.edzesterv:hover .etkitol{
+  height: 50px;
+}
+.edzesterv:hover .etleirasa{
+  height: 150px;
+}
+
+.etneve{
+  text-align: center;
+  background-color: var(--fekete);
+  width: 100%;
+  height: 50px;
+  border-radius: 15px 15px 0 0;
+  padding-top: 3px;
+  color: white;
+}
+.etleirasa{
+  border-left: 1px solid var(--fekete);
+  border-right: 1px solid var(--fekete);
+  width: 100%;
+  height: 170px;
+  padding: 10px;
+}
+.etkitol{
+  position: absolute;
+  bottom: 0;
+  background-color: var(--zold);
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+}
+.etkitol p{
+  display: none;
+}
+/* ---------- */

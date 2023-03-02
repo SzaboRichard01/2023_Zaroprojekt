@@ -51,13 +51,10 @@ if($_SESSION['p_tipus'] == "edző"){
     $felulet .= "</div>";
 }
 if($_SESSION['p_tipus'] == "kliens"){
-    $felulet = "<h1>{$vnev} {$knev} edzésterve/étrendje</h1>
-    <div class=\"container\">
-        <ul>
-            <li class=\"edzesterv\"><b>Ide jön az edzésterv és az étrend</b></li>
-        </ul>
-    </div>
-    <button onclick=\"location.href='edzesterv-felvitel.php';\">Új edzésterv felvitele</button>";
+    $felulet = "<h1>{$vnev} {$knev} Edzéstervjei</h1>";
+
+    require("edzesterv/lekerdezes.php");
+    $felulet .= $etervKi;
 }
 print($felulet);
 ?>
