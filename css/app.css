@@ -818,10 +818,11 @@ h2 span{
   display: flex;
   flex-direction: column;
   width: 48%;
-  overflow-y: auto;
   border: 1px solid gray;
   border-radius: 20px;
   min-width: 350px;
+  height: 22vw;
+  overflow-y: auto;
 }
 .etEdzesek h2, .etEtrendek h2{
   background-color: rgb(68, 68, 68);
@@ -847,5 +848,8 @@ h2 span{
   margin: 5px 10px;
   padding: 10px 20px;
   box-shadow: 1px 5px 1px gray;
+}
+.etEdzes p, .etEtrend p{
+  word-wrap: break-word;
 }
 /* -------------- */
