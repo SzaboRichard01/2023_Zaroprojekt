@@ -27,7 +27,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $eVnev = $eneve['vnev'];
     $eKnev = $eneve['knev'];
 
-    $etervKi .= "<div class=\"edzesterv\" onclick=\"location.href='edzesterv/teljeset.php?edzesterv=". $etID ."'\">
+    $etervKi .= "<a href=\"teljeset.php?edzesterv=". $etID ."\"><div class=\"edzesterv\">
         <div class=\"etneve\">
             <p>Edzésterv neve</p>
             <h3>{$sor['neve']}</h3>
@@ -39,7 +39,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
             <p>Edző neve</p>
             <h3>{$eVnev} {$eKnev}</h3>
         </div>
-    </div>";
+    </div></a>";
 }
 $etervKi .= "</div>";
 ?>

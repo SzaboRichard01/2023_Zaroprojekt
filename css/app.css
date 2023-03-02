@@ -186,8 +186,9 @@ main{
   position: absolute;
   top: -20px;
   left: calc(100% + 15px);
-  z-index: 3;
-  background: #fff;
+  z-index: 5;
+  background-color: white;
+  border: 1px solid var(--zold);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   padding: 6px 12px;
   border-radius: 4px;
@@ -740,23 +741,28 @@ h2 span{
   width: 95%;
   margin: 15px 0;
 }
+.edzestervek a{
+  text-decoration: none;
+  color: unset;
+  margin: 10px;
+}
 .edzesterv{
   width: 300px;
   height: 250px;
-  margin: 10px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  z-index: -1;
 }
-.edzesterv:hover .etkitol p{
+.edzestervek a:hover .etkitol p{
   display: block;
 }
-.edzesterv:hover .etkitol{
+.edzestervek a:hover .etkitol{
   height: 50px;
 }
-.edzesterv:hover .etleirasa{
+.edzestervek a:hover .etleirasa{
   height: 150px;
 }
 
@@ -777,8 +783,6 @@ h2 span{
   padding: 10px;
 }
 .etkitol{
-  position: absolute;
-  bottom: 0;
   background-color: var(--zold);
   width: 100%;
   height: 30px;
@@ -797,7 +801,6 @@ h2 span{
   width: 80%;
   display: flex;
   flex-direction: column;
-  position: relative;
   min-height: 40vw;
   min-width: 350px;
 }
@@ -813,6 +816,7 @@ h2 span{
   background-color: rgb(248, 248, 248);
   border-left: 1px solid gray;
   border-right: 1px solid gray;
+  overflow-y: auto;
 }
 .etEdzesek, .etEtrendek{
   display: flex;
@@ -843,7 +847,6 @@ h2 span{
   border-left: 1px solid gray;
   border-right: 1px solid gray;
 }
-
 .etEdzes, .etEtrend{
   margin: 5px 10px;
   padding: 10px 20px;
