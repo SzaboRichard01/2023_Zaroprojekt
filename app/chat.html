@@ -26,22 +26,14 @@ if (!isset($_SESSION['felh_id'])) {
     <!-- Felső és oldalsó menü -->
     <?php require("leker/SidebarNavbar.php"); ?>
     
-    <main>
-        <?php
-            print("<div class=\"felh\">
-            <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor['kep']. "\"></div>
-            <p>{$sor['vnev']} {$sor['knev']}</p>\n
-            </div>");
-        ?>
-        <div class="chat">
+    <div class="wrapper">
+        <div class="left_side_container">
+
         </div>
-        <div class="chatszoveg">
-        <form method="post">
-            <input type="text" name="uzenet" id="uzenet">
-            <input type="submit" value="Küldés" name="kuldes" id="kuldeschat">
-        </form>
+        <div class="right_side_container">
+            <div class="header"></div>
         </div>
-    </main>
+    </div>
 
     <script src="../js/script.js"></script>
 </body>
