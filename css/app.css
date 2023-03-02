@@ -433,27 +433,32 @@ main{
 /* profilAdatok.php vége */
 
 /* chat.php*/
-.chat{
-  background-color: rgb(223, 223, 223);
-  width: 75%;
-  height: 700px;
+
+.wrapper{
+  margin: auto;
+  display: flex;
+  max-width: 800px;
+  min-height: 500px;
+  margin-top: 50px;
 }
 
-.chatszoveg form #uzenet{
-  width: 70%;
-  padding: 10px;
+.left_side_container{
+  flex: 1;
+  background-color: var(--fekete);
+  min-height: 500px;
 }
 
-.chatszoveg form #kuldeschat{
-  width: 89px;
-  padding: 10px;
+.right_side_container{
+  flex: 4;
+  background-color: var(--zold);
+  min-height: 500px;
 }
 
-.chatszoveg form #kuldeschat:hover{
-  color: var(--zold);
-  text-decoration: none;
-  cursor: pointer;
+.header{
+  background-color: var(--szurke);
 }
+
+
 /* chat.php vége */
 
 /* edzesterv-felvitel.php */
