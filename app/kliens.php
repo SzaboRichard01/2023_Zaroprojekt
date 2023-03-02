@@ -1,5 +1,6 @@
 <?php
 session_start();
+require("kapcsolat.php");
 //Lapvédelem ha senki nincs bejelentkezve vagy
 //ha a bejelentkezett profil típusa kliens
 //akkor nem férhetünk hozzá a kliens.php oldalhoz

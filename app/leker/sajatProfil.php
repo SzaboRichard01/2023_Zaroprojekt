@@ -3,7 +3,7 @@ if (!isset($_SESSION['felh_id'])) {
     header("Location: ../belepes.php");
     exit();
 } else {
-    require("kapcsolat.php");
+    
     $felh_id = $_SESSION['felh_id'];
 
     //Saját profil adatainak lekérdezése

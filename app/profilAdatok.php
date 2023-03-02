@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require("kapcsolat.php");
     if (!isset($_SESSION['felh_id'])) {
         header("Location: ../belepes.php");
         exit();
