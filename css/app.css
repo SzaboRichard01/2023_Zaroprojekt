@@ -452,6 +452,10 @@ main{
   padding-left: 25px;
 }
 
+.left_side_pannel .prof:hover{
+  background-color: var(--fekete);
+}
+
 .right_side_pannel{
   flex: 4;
   background-color: var(--zold);
@@ -465,6 +469,24 @@ main{
 
 .container{
   display: flex;
+}
+
+.contact{
+  width: 150px;
+  height: 500px;
+  margin-top: 40px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.header .prof{
+  margin-left: 40px;
+  padding-top: 25px;
+}
+
+.contact .prof{
+  margin-bottom: 20px;
+  margin-left: -20px;
 }
 
 .container button{

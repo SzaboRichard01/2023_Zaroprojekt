@@ -34,12 +34,38 @@ if (!isset($_SESSION['felh_id'])) {
                     <div class=\"pkep\">{$profilkep}</div>";
                 ?>
             </div>
+            <div class="contact">
+                <div class="prof" onclick="location.href='sProfil.php';">
+                    <?php
+                    print "<p>{$vnev} {$knev}</p>
+                        <div class=\"pkep\">{$profilkep}</div>";
+                    ?>
+                </div>
+                <div class="prof" onclick="location.href='sProfil.php';">
+                    <?php
+                    print "<p>{$vnev} {$knev}</p>
+                        <div class=\"pkep\">{$profilkep}</div>";
+                    ?>
+                </div>
+                <div class="prof" onclick="location.href='sProfil.php';">
+                    <?php
+                    print "<p>{$vnev} {$knev}</p>
+                        <div class=\"pkep\">{$profilkep}</div>";
+                    ?>
+                </div>
+            </div>
         </div>
         <div class="right_side_pannel">
             <div class="header">
+            <div class="prof" onclick="location.href='sProfil.php';">
+                <?php
+                print "<p>{$vnev} {$knev}</p>
+                    <div class=\"pkep\">{$profilkep}</div>";
+                ?>
+            </div>
             </div>
             <div class="container">
-                <input type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget...">
+                <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher);"></textarea>
                 <button>Küldés</button>
             </div>
         </div>
