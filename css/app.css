@@ -437,18 +437,23 @@ main{
 .wrapper{
   margin: auto;
   display: flex;
-  max-width: 800px;
-  min-height: 500px;
-  margin-top: 50px;
+  max-width: 1100px;
+  min-height: 600px;
+  margin-top: 200px;
+  margin-left: 500px;
+  color: var(--feher);
 }
 
-.left_side_container{
+.left_side_pannel{
   flex: 1;
   background-color: var(--fekete);
   min-height: 500px;
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 25px;
 }
 
-.right_side_container{
+.right_side_pannel{
   flex: 4;
   background-color: var(--zold);
   min-height: 500px;
@@ -456,8 +461,96 @@ main{
 
 .header{
   background-color: var(--szurke);
+  height: 70px;
 }
 
+.container{
+  display: flex;
+}
+
+.container button{
+  height: 50px;
+  width: 120px;
+  margin-left: 5px;
+  margin-top: 500px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: var(--szurke);
+  border: 3px solid var(--fekete);
+  padding: 5px;
+}
+
+.container button:hover{
+  cursor: pointer;
+  background-color: var(--feher);
+}
+.container #szoveg{
+  width: 720px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 500px;
+  margin-bottom: 10px; 
+  border-radius: 10px;
+  background-color: var(--szurke);
+  border: 3px solid var(--fekete);
+  padding: 5px;
+}
+
+@media (max-width: 1406px) {
+  .wrapper{
+    margin-left: 300px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .wrapper{
+    margin-left: 150px;
+  }
+}
+
+@media (max-width: 950px) {
+  .wrapper{
+    margin-left: 90px;
+  }
+}
+
+@media (max-width: 830px) {
+  .wrapper{
+    margin-left: 140px;
+    width: 600px;
+  }
+}
+
+@media (max-width: 650px) {
+  .wrapper{
+    margin-left: 100px;
+    width: 520px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper{
+    margin-top: 140px;
+    margin-left: 55px;
+    width: 400px;
+  }
+}
+
+@media (max-width: 375px) {
+  .wrapper{
+    margin-top: 85px;
+    margin-left: 15px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 414px) {
+  .wrapper{
+    margin-top: 85px;
+    margin-left: 25px;
+    width: 375px;
+  }
+}
 
 /* chat.php vége */
 

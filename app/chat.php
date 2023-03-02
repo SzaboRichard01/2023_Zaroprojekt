@@ -27,11 +27,21 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
     
     <div class="wrapper">
-        <div class="left_side_container">
-
+        <div class="left_side_pannel">
+            <div class="prof" onclick="location.href='sProfil.php';">
+                <?php
+                print "<p>{$vnev} {$knev}</p>
+                    <div class=\"pkep\">{$profilkep}</div>";
+                ?>
+            </div>
         </div>
-        <div class="right_side_container">
-            <div class="header"></div>
+        <div class="right_side_pannel">
+            <div class="header">
+            </div>
+            <div class="container">
+                <input type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget...">
+                <button>Küldés</button>
+            </div>
         </div>
     </div>
 
