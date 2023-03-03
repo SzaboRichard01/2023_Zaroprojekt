@@ -4,6 +4,25 @@
 require("kapcsolat.php");
 $kliensID = $_SESSION['felh_id'];
 
+function shorter($text, $chars_limit)
+{
+    // Check if length is larger than the character limit
+    if (strlen($text) > $chars_limit)
+    {
+        // If so, cut the string at the character limit
+        $new_text = substr($text, 0, $chars_limit);
+        // Trim off white space
+        $new_text = trim($new_text);
+        // Add at end of text ...
+        return $new_text . "...";
+    }
+    // If not just return the text as is
+    else
+    {
+    return $text;
+    }
+}
+
 $eredmeny = mysqli_query($dbconn, "SELECT edzesterv.edzesterv_id, edzesterv.neve, edzesterv.leiras, edzesterv.ekkapcs_id, kuldo_az, fogado_az
         FROM edzesterv INNER JOIN ekkapcs ON ekkapcs.ekkapcs_id = edzesterv.ekkapcs_id
         WHERE kuldo_az = '{$kliensID}'
@@ -33,7 +52,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
             <h3>{$sor['neve']}</h3>
         </div>
         <div class=\"etleirasa\">
-            <p>Leírás<br>{$sor['leiras']}</p>
+            <p>Leírás<br>". shorter($sor['leiras'], 150)."</p>
         </div>
         <div class=\"etkitol\">
             <p>Edző neve</p>

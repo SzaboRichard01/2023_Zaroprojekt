@@ -1,6 +1,4 @@
 <?php
-
-
 if($_SESSION['p_tipus'] == "edző"){
     $felulet = "
     <h1>Kliensek Edzéstervei</h1>

@@ -782,6 +782,9 @@ h2 span{
   height: 170px;
   padding: 10px;
 }
+.etleirasa p{
+  word-wrap: break-word;
+}
 .etkitol{
   background-color: var(--zold);
   width: 100%;
@@ -797,12 +800,19 @@ h2 span{
 /* ---------- */
 
 /* Teljes Edzésterv megjelenitese */
+#teljesMain, #edzestervMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .tEdzesterv{
+  margin-top: 3rem;
   width: 80%;
   display: flex;
   flex-direction: column;
   min-height: 40vw;
   min-width: 350px;
+  max-width: 1200px;
 }
 .etTartalom{
   width: 100%;
@@ -810,13 +820,13 @@ h2 span{
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 10px 0;
-  margin-bottom: 50px;
-  height: 23vw;
+  height: 100%;
   background-color: rgb(248, 248, 248);
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 .etEdzesek, .etEtrendek{
   display: flex;
@@ -825,7 +835,10 @@ h2 span{
   border: 1px solid gray;
   border-radius: 20px;
   min-width: 350px;
-  height: 22vw;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.etListak{
   overflow-y: auto;
 }
 .etEdzesek h2, .etEtrendek h2{
@@ -834,6 +847,8 @@ h2 span{
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+  border-radius: 19px 19px 0 0;
+  margin: 0;
 }
 .tEdzesterv .etkitol p{
   display: block;
@@ -844,8 +859,13 @@ h2 span{
 .etLeiras{
   padding: 10px 20px;
   height: 12vw;
+  min-height: 200px;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
+  overflow-y: auto;
+}
+.etLeiras p{
+  word-wrap: break-word;
 }
 .etEdzes, .etEtrend{
   margin: 5px 10px;
@@ -856,3 +876,51 @@ h2 span{
   word-wrap: break-word;
 }
 /* -------------- */
+
+.teljesNap{
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  background-color: white;
+  color: white;
+  width: 70%;
+  height: 50%;
+  border: 1px solid var(--szurke);
+}
+.teljesNap h3{
+  background-color: var(--zold);
+  width: calc(100% - 30px);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+}
+.teljesNap p{
+  word-wrap: break-word;
+  color: black;
+  padding: 10px 20px;
+  overflow-y: auto;
+  height: calc(100% - 50px);
+}
+.teljesNap i{
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.teljesNap i:hover{
+  cursor: pointer;
+  background-color: rgb(146, 0, 0);
+}
+.tEdzesterv a{
+  text-decoration: none;
+  color: unset;
+}

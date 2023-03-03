@@ -28,7 +28,7 @@ if (!isset($_SESSION['felh_id'])) {
     <!-- Felső és oldalsó menü -->
     <?php require("leker/SidebarNavbar.php"); ?>
 
-    <main>
+    <main id="edzestervMain">
         <?php require("leker/edzestervF.php"); ?>
     </main>
     

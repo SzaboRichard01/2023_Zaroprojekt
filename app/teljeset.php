@@ -30,15 +30,51 @@ $edzoNeve = "{$edzoEr['vnev']} {$edzoEr['knev']}";
 
 //----
 
+function shorter($text, $chars_limit)
+{
+    // Check if length is larger than the character limit
+    if (strlen($text) > $chars_limit)
+    {
+        // If so, cut the string at the character limit
+        $new_text = substr($text, 0, $chars_limit);
+        // Trim off white space
+        $new_text = trim($new_text);
+        // Add at end of text ...
+        return $new_text . "...";
+    }
+    // If not just return the text as is
+    else
+    {
+    return $text;
+    }
+}
+
 //Edzésterv edzés része
 $edzSQL = mysqli_query($dbconn, "SELECT nap, edzesterv FROM edzes WHERE edzesterv_id = {$edzestervID}");
 $etEdzes = "";
 $edzDb = mysqli_num_rows($edzSQL); //Hány darab edzésnap tartozik az adott edzéstervhez
+
+$szam = 1;
 while($edzSor = mysqli_fetch_assoc($edzSQL)){
-    $etEdzes .= "<div class=\"etEdzes\">
+    $etEdzes .= "<a href=\"teljeset.php?edzesterv={$edzestervID}&enap={$edzSor['nap']}\"><div class=\"etEdzes\">
         <h3>{$edzSor['nap']}</h3>
-        <p>{$edzSor['edzesterv']}</p>
-    </div>";
+        <p>".shorter($edzSor['edzesterv'], 25)."</p>
+    </div></a>
+    ";
+    $szam++;
+}
+$edzNapazon =  mysqli_real_escape_string($dbconn, isset($_GET['enap']) ? $_GET['enap'] : '');
+if(isset($edzNapazon) && isset($_GET['enap'])){
+    $mNapEr = mysqli_query($dbconn,"SELECT nap, edzesterv FROM edzes WHERE edzesterv_id = {$edzestervID} AND nap = '{$_GET['enap']}'");
+    $napS = mysqli_fetch_assoc($mNapEr);
+
+    $teljesNap = "
+    <div class=\"teljesNap\">
+        <h3>{$napS['nap']}</h3>
+        <p>{$napS['edzesterv']}</p>
+        <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
+    </div>
+    ";
 }
 //---
 
@@ -47,10 +83,25 @@ $etSQL = mysqli_query($dbconn, "SELECT nap, etrend FROM etrend WHERE edzesterv_i
 $etEtrend = "";
 $etDb = mysqli_num_rows($etSQL); // Hány darab értrend tartozik az adott edzéstervhez
 while($etSor = mysqli_fetch_assoc($etSQL)){
-    $etEtrend .= "<div class=\"etEtrend\">
+    $etEtrend .= "<a href=\"teljeset.php?edzesterv={$edzestervID}&etnap={$etSor['nap']}\">
+    <div class=\"etEtrend\">
         <h3>{$etSor['nap']}</h3>
-        <p>{$etSor['etrend']}</p>
-    </div>";
+        <p>".shorter($etSor['etrend'], 25)."</p>
+    </div></a>";
+}
+
+$etNapazon =  mysqli_real_escape_string($dbconn, isset($_GET['etnap']) ? $_GET['etnap'] : '');
+if(isset($etNapazon) && isset($_GET['etnap'])){
+    $mNapEt = mysqli_query($dbconn,"SELECT nap, etrend FROM etrend WHERE edzesterv_id = {$edzestervID} AND nap = '{$_GET['etnap']}'");
+    $EtnapS = mysqli_fetch_assoc($mNapEt);
+
+    $teljesNap = "
+    <div class=\"teljesNap\">
+        <h3>{$EtnapS['nap']}</h3>
+        <p>{$EtnapS['etrend']}</p>
+        <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
+    </div>
+    ";
 }
 //---
 
@@ -75,7 +126,9 @@ while($etSor = mysqli_fetch_assoc($etSQL)){
     //Felső és oldalsó menü
     require("leker/SidebarNavbar.php");
     ?>
-    <main>
+    <main id="teljesMain">
+        <?php isset($teljesNap) ? print($teljesNap) : '' ?>
+
         <div class="tEdzesterv">
             <div class="etneve">
                 <p>Edzésterv neve</p>
@@ -88,11 +141,15 @@ while($etSor = mysqli_fetch_assoc($etSQL)){
             <div class="etTartalom">
                 <div class="etEdzesek">
                     <h2>Edzés</h2>
-                    <?php print $etEdzes; ?>
+                    <div class="etListak">
+                        <?php print $etEdzes; ?>
+                    </div>
                 </div>
                 <div class="etEtrendek">
                     <h2>Étrend</h2>
-                    <?php print $etEtrend; ?>
+                    <div class="etListak">
+                        <?php print $etEtrend; ?>
+                    </div>
                 </div>
             </div>
             <div class="etkitol">
@@ -101,5 +158,14 @@ while($etSor = mysqli_fetch_assoc($etSQL)){
             </div>
         </div>
     </main>
+
+    <script>
+        function TeljesnapBezar(){
+            let teljesNap = document.querySelector(".teljesNap");
+            
+                teljesNap.style.display = "none";
+            
+        }
+    </script>
 </body>
 </html>
