@@ -80,7 +80,7 @@ if (!isset($_SESSION['felh_id'])) {
         $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, ekkapcs_id)
             VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
 
-        $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE ekkapcs_id = {$edzoFelhId}");
+        $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE ekkapcs_id = {$edzoFelhId} AND neve = '{$etNeve}'");
         $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
         $edzestervID = $EtervIdEr['edzesterv_id'];
         
