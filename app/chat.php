@@ -9,6 +9,38 @@ if (!isset($_SESSION['felh_id'])) {
     require("leker/sajatProfil.php");
 }
 
+$kifejezesChat = (isset($_POST['kifejezesChat'])) ? $_POST['kifejezesChat'] : "";
+
+if ($_SESSION['p_tipus'] == "edző") {
+    $felhChat = "kliens";
+}else{
+    $felhChat = "edző";
+}
+
+$foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
+
+$kimenetChat = "";
+while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
+    $felhEllenorzes = "SELECT * FROM ekkapcs
+                        WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
+                        OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felhasznalo['felhasznalo_id']}";
+    $felhEllEredmeny = mysqli_query($dbconn, $felhEllenorzes);
+    $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
+
+
+$felhVan = 0;
+if (mysqli_num_rows($felhEllEredmeny) > 0) {
+    $felhVan = 1;
+    $felhElfogadva = $felhEllSor['elfogadva'];
+}
+
+$kimenetChat .= "                 
+                 <div class=\"prof\">
+                 <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
+                 <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
+                 </div>";
+}
+$kimenetChat .= "";
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -29,31 +61,13 @@ if (!isset($_SESSION['felh_id'])) {
     
     <div class="wrapper">
         <div class="left_side_pannel">
-            <div class="prof" onclick="location.href='sProfil.php';">
-                <?php
-                print "<p>{$vnev} {$knev}</p>
-                    <div class=\"pkep\">{$profilkep}</div>";
-                ?>
-            </div>
+            <a class="mcim">ShineGym&Fit</a>
             <div class="contact">
-                <div class="prof" onclick="location.href='sProfil.php';">
-                    <?php
-                    print "<p>{$vnev} {$knev}</p>
-                        <div class=\"pkep\">{$profilkep}</div>";
-                    ?>
-                </div>
-                <div class="prof" onclick="location.href='sProfil.php';">
-                    <?php
-                    print "<p>{$vnev} {$knev}</p>
-                        <div class=\"pkep\">{$profilkep}</div>";
-                    ?>
-                </div>
-                <div class="prof" onclick="location.href='sProfil.php';">
-                    <?php
-                    print "<p>{$vnev} {$knev}</p>
-                        <div class=\"pkep\">{$profilkep}</div>";
-                    ?>
-                </div>
+                <form method="post">
+                <input type="search" name="kifejezesChat" id="kifejezesChat" placeholder="Írjon be egy nevet a kereséshez">
+                <button id="kereses"><i class="fa fa-search"></i></button>
+                </form>
+                <?php print $kimenetChat;?>
             </div>
         </div>
         <div class="right_side_pannel">
@@ -66,8 +80,10 @@ if (!isset($_SESSION['felh_id'])) {
             </div>
             </div>
             <div class="container">
-                <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher);"></textarea>
-                <button>Küldés</button>
+                <form method="post" class="chat-szoveg-kuldes">
+                <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
+                <input type="submit" value="Küldés" name="kuldesChat" id="kuldesChat">
+                </form>
             </div>
         </div>
     </div>
