@@ -33,10 +33,10 @@ $edzoNeve = "{$edzoEr['vnev']} {$edzoEr['knev']}";
 function shorter($text, $chars_limit)
 {
     // Check if length is larger than the character limit
-    if (strlen($text) > $chars_limit)
+    if (mb_strlen($text) > $chars_limit)
     {
         // If so, cut the string at the character limit
-        $new_text = substr($text, 0, $chars_limit);
+        $new_text = mb_substr($text, 0, $chars_limit);
         // Trim off white space
         $new_text = trim($new_text);
         // Add at end of text ...
