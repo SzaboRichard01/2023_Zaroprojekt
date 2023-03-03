@@ -49,7 +49,7 @@ if($_SESSION['p_tipus'] == "edző"){
     $felulet .= "</div>";
 }
 if($_SESSION['p_tipus'] == "kliens"){
-    $felulet = "<h1>{$vnev} {$knev} Edzéstervjei</h1>";
+    $felulet = "<h1>{$vnev} {$knev} Edzéstervei</h1>";
 
     require("edzesterv/lekerdezes.php");
     $felulet .= $etervKi;
