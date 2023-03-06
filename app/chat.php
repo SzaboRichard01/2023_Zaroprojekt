@@ -30,26 +30,28 @@ while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
     $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
 
 
-//$felhVan = 0;
-if (mysqli_num_rows($felhEllEredmeny) > 0) {
-    //$felhVan = 1;
-    $felhElfogadva = $felhEllSor['elfogadva'];
-}
+    if (mysqli_num_rows($felhEllEredmeny) > 0) {
+        $felhElfogadva = $felhEllSor['elfogadva'];
+    }
 
-$chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
-                <div class=\"prof\">
-                <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
-                <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
-                </div>
-            </a>";
+    $chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
+                    <div class=\"prof\">
+                    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
+                    <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
+                    </div>
+                </a>";
 }
 $chatLista .= "";
 //oldalsó lista vége
 
 //Chat rész
-
-
 if (isset($_GET['chat'])) {
+    $sqlValP = mysqli_query($dbconn, "SELECT vnev, knev, kep FROM felhasznalok WHERE felhasznalo_id = {$_GET['chat']}");
+    $ValP = mysqli_fetch_assoc($sqlValP);
+    $Vvnev = $ValP['vnev'];
+    $Vknev = $ValP['knev'];
+    $Vkep = $ValP['kep'];
+
     $_SESSION['chataz'] = $_GET['chat'];
     $fogadoAz = $_GET['chat'];
     if(isset($_POST['ChatUzenet'])){
@@ -59,8 +61,6 @@ if (isset($_GET['chat'])) {
         $_POST['szoveg'] = "";
     }
 }
-
-
 //Chat rész vége
 
 ?><!DOCTYPE html>
@@ -96,8 +96,7 @@ if (isset($_GET['chat'])) {
             <div class="header">
             <div class="prof" onclick="location.href='sProfil.php';">
                 <?php
-                print "<p>{$vnev} {$knev}</p>
-                    <div class=\"pkep\">{$profilkep}</div>";
+                isset($_GET['chat']) ? print "<p>{$Vvnev} {$Vknev}</p><div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div>" : '';
                 ?>
             </div>
             </div>

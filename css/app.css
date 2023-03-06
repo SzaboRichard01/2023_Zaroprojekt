@@ -479,15 +479,20 @@ main{
   display: inline-block;
   overflow: hidden;
 }
-
+.contact a{
+  text-decoration: none;
+  color: white;
+}
+.contact a:hover .prof{
+  background-color: rgba(255, 255, 255, 0.2);
+}
 .header .prof{
   margin-left: 40px;
   padding-top: 25px;
 }
 
-.contact .prof{
-  margin-bottom: 20px;
-  margin-left: 10px;
+.contact a .prof{
+  padding: 28px 10px;
 }
 
 .prof .pkep-meret{
