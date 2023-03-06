@@ -9,6 +9,7 @@ if (!isset($_SESSION['felh_id'])) {
     require("leker/sajatProfil.php");
 }
 
+//Oldalsó lista
 //Keresőmező - Ha van keresett kifejezés (név) akkor a keresett kifejezésre hasonlító találatokat jeleníti meg a teljes lista helyett
 $kifejezesChat = (isset($_POST['kifejezesChat'])) ? $_POST['kifejezesChat'] : "";
 //Lekérdezés - a $felhChat változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
@@ -19,8 +20,8 @@ if ($_SESSION['p_tipus'] == "edző") {
 }
 
 $foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
-//Összes edző típusú felhasználó listájának összeállítása a $kimenetChat változóba
-$kimenetChat = "";
+//Összes edző típusú felhasználó listájának összeállítása a $chatLista változóba
+$chatLista = "";
 while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
     $felhEllenorzes = "SELECT * FROM ekkapcs
                         WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
@@ -29,19 +30,49 @@ while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
     $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
 
 
-$felhVan = 0;
+//$felhVan = 0;
 if (mysqli_num_rows($felhEllEredmeny) > 0) {
-    $felhVan = 1;
+    //$felhVan = 1;
     $felhElfogadva = $felhEllSor['elfogadva'];
 }
 
-$kimenetChat .= "                 
-                 <div class=\"prof\">
-                 <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
-                 <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
-                 </div>";
+$chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
+                <div class=\"prof\">
+                <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
+                <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
+                </div>
+            </a>";
 }
-$kimenetChat .= "";
+$chatLista .= "";
+//oldalsó lista vége
+
+//Chat rész
+
+//Beszúrás az üzenetek táblába
+isset($_GET['chat']) ? $fogadoAz = $_GET['chat'] : ''; //fogadoAz - bejövőid
+if(isset($_POST['ChatUzenet'])){
+    
+}
+//-----
+
+//Meglévő üzenetek lekérdezése
+//Kimenő Üzenetek
+$slqMegUz = mysqli_query($dbconn, "SELECT kimeno_id, bejovo_id, uzenet FROM uzenet WHERE kimeno_id = {$_SESSION['felh_id']} AND bejovo_id = {$fogadoAz}");
+while($sorMegUz = mysqli_fetch_assoc($slqMegUz)){
+    $kimenoUz = "<div class=\"kimenoUz\">
+        <p>{$sorMegUz['uzenet']}</p>
+    </div>";
+}
+//Kimeno vége
+
+//Bejövő
+
+//Bejövő vége
+//-----
+
+
+//Chat rész vége
+
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -68,7 +99,7 @@ $kimenetChat .= "";
                 <input type="search" name="kifejezesChat" id="kifejezesChat" placeholder="Írjon be egy nevet a kereséshez">
                 <button id="kereses"><i class="fa fa-search"></i></button>
                 </form>
-                <?php print $kimenetChat;?>
+                <?php print $chatLista;?>
             </div>
         </div>
         <div class="right_side_pannel">
@@ -81,9 +112,13 @@ $kimenetChat .= "";
             </div>
             </div>
             <div class="container">
+                <div class="chatUzenetek">
+                    <!-- Üzenetek kiírása -->
+                    <?php isset($kimenoUz) ? print($kimenoUz) : '' ?>
+                </div>
                 <form method="post" class="chat-szoveg-kuldes">
                 <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
-                <input type="submit" value="Küldés" name="kuldesChat" id="kuldesChat">
+                <input type="submit" value="Küldés" name="ChatUzenet" id="ChatUzenet">
                 </form>
             </div>
         </div>
