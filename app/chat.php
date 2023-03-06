@@ -7,61 +7,63 @@ if (!isset($_SESSION['felh_id'])) {
     require("kapcsolat.php");
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
-}
-
-//Oldalsó lista
-//Keresőmező - Ha van keresett kifejezés (név) akkor a keresett kifejezésre hasonlító találatokat jeleníti meg a teljes lista helyett
-$kifejezesChat = (isset($_POST['kifejezesChat'])) ? $_POST['kifejezesChat'] : "";
-//Lekérdezés - a $felhChat változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
-if ($_SESSION['p_tipus'] == "edző") {
-    $felhChat = "kliens";
-}else{
-    $felhChat = "edző";
-}
-
-$foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
-//Összes edző típusú felhasználó listájának összeállítása a $chatLista változóba
-$chatLista = "";
-while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
-    $felhEllenorzes = "SELECT * FROM ekkapcs
-                        WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
-                        OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felhasznalo['felhasznalo_id']}";
-    $felhEllEredmeny = mysqli_query($dbconn, $felhEllenorzes);
-    $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
 
 
-    if (mysqli_num_rows($felhEllEredmeny) > 0) {
-        $felhElfogadva = $felhEllSor['elfogadva'];
+    //Oldalsó lista
+    //Keresőmező - Ha van keresett kifejezés (név) akkor a keresett kifejezésre hasonlító találatokat jeleníti meg a teljes lista helyett
+    $kifejezesChat = (isset($_POST['kifejezesChat'])) ? $_POST['kifejezesChat'] : "";
+    //Lekérdezés - a $felhChat változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
+    if ($_SESSION['p_tipus'] == "edző") {
+        $felhChat = "kliens";
+    }else{
+        $felhChat = "edző";
     }
 
-    $chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
-                    <div class=\"prof\">
-                    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
-                    <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
-                    </div>
-                </a>";
-}
-$chatLista .= "";
-//oldalsó lista vége
+    $foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
+    //Összes edző típusú felhasználó listájának összeállítása a $chatLista változóba
+    $chatLista = "";
+    while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
+        $felhEllenorzes = "SELECT * FROM ekkapcs
+                            WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
+                            OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felhasznalo['felhasznalo_id']}";
+        $felhEllEredmeny = mysqli_query($dbconn, $felhEllenorzes);
+        $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
 
-//Chat rész
-if (isset($_GET['chat'])) {
-    $sqlValP = mysqli_query($dbconn, "SELECT vnev, knev, kep FROM felhasznalok WHERE felhasznalo_id = {$_GET['chat']}");
-    $ValP = mysqli_fetch_assoc($sqlValP);
-    $Vvnev = $ValP['vnev'];
-    $Vknev = $ValP['knev'];
-    $Vkep = $ValP['kep'];
 
-    $_SESSION['chataz'] = $_GET['chat'];
-    $fogadoAz = $_GET['chat'];
-    if(isset($_POST['ChatUzenet'])){
-        $mikor = date("Y-m-d H:i:s");
-        $uzenet = $_POST['szoveg'];
-        $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenet (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
-        $_POST['szoveg'] = "";
+        if (mysqli_num_rows($felhEllEredmeny) > 0) {
+            $felhElfogadva = $felhEllSor['elfogadva'];
+        }
+
+        $chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
+                        <div class=\"prof\">
+                        <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
+                        <p>{$felhasznalo['vnev']} {$felhasznalo['knev']}</p>
+                        </div>
+                    </a>";
     }
+    $chatLista .= "";
+    //oldalsó lista vége
+
+    //Chat rész
+    if (isset($_GET['chat'])) {
+        $sqlValP = mysqli_query($dbconn, "SELECT vnev, knev, kep FROM felhasznalok WHERE felhasznalo_id = {$_GET['chat']}");
+        $ValP = mysqli_fetch_assoc($sqlValP);
+        $Vvnev = $ValP['vnev'];
+        $Vknev = $ValP['knev'];
+        $Vkep = $ValP['kep'];
+
+        $_SESSION['chataz'] = $_GET['chat'];
+        $fogadoAz = $_GET['chat'];
+        if(isset($_POST['ChatUzenet'])){
+            $mikor = date("Y-m-d H:i:s");
+            $uzenet = $_POST['szoveg'];
+            $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenet (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
+        }
+    }
+    //Chat rész vége
 }
-//Chat rész vége
+
+
 
 ?><!DOCTYPE html>
 <html lang="hu">
