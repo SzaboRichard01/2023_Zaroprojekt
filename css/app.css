@@ -548,6 +548,7 @@ main{
   background-color: var(--szurke);
   border: 3px solid var(--fekete);
   padding: 5px;
+  resize: none;
 }
 
 .chat-szoveg-kuldes{
