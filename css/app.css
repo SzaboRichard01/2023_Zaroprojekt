@@ -726,6 +726,23 @@ h2 span{
   display: flex;
   justify-content: flex-end;
 }
+
+.meglevo form #meglevoKer{
+  background-color: #d7d7d7;
+  border: 1px solid var(--fekete);
+  border-radius: 0;
+}
+
+.meglevo form .kereses-gomb{
+  background-color: #d7d7d7;
+  border: 1px solid var(--fekete);
+  border-radius: 0;
+}
+
+.meglevo form .kereses-gomb:hover{
+  color: var(--zold);
+}
+
 .felkeres a{
   text-decoration: none;
   color: black;
@@ -755,7 +772,21 @@ h2 span{
 .felkeresek form .kereses-gomb{
   width: 80px;
   margin: 0;
+  background-color: #d7d7d7;
+  border: 1px solid var(--fekete);
+  border-radius: 0;
 }
+
+.felkeresek form #keresett{
+  background-color: #d7d7d7;
+  border: 1px solid var(--fekete);
+  border-radius: 0;
+}
+
+.felkeresek form .kereses-gomb:hover{
+  color: var(--zold);
+}
+
 @media(max-width: 600px){
   .felkeresek{
     width: 350px;
