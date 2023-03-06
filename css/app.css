@@ -475,13 +475,21 @@ main{
 
 .chatUzenetek{
   padding: 0;
+  overflow-y: auto;
+  height: 600px;
+  margin-bottom: 60px;
 }
 
 .chatUzenetek .kimenoUz{
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.chatUzenetek .kimenoUz p{
+  display: flex;
   background-color: var(--szurke);
   color: var(--zold);
-  align-self: flex-end;
   border: 1px solid var(--fekete);
   border-radius: 5px;
   margin: 7px;
