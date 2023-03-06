@@ -47,34 +47,19 @@ $chatLista .= "";
 //oldalsó lista vége
 
 //Chat rész
+
+
 if (isset($_GET['chat'])) {
+    $_SESSION['chataz'] = $_GET['chat'];
     $fogadoAz = $_GET['chat'];
-//Beszúrás az üzenetek táblába
-//-----
-
-//Meglévő üzenetek lekérdezése
-//Kimenő Üzenetek
-$sqlKim = mysqli_query($dbconn, "SELECT kimeno_id, bejovo_id, uzenet FROM uzenet WHERE kimeno_id = {$_SESSION['felh_id']} AND bejovo_id = {$fogadoAz}");
-while($sorKim = mysqli_fetch_assoc($sqlKim)){
-    $kimenoUz = "<div class=\"kimenoUz\">
-        <p>{$sorKim['uzenet']}</p>
-    </div>";
-}
-//Kimeno vége
-
-//Bejövő
-
-$sqlBej = mysqli_query($dbconn, "SELECT kimeno_id, bejovo_id, uzenet FROM uzenet WHERE bejovo_id = {$_SESSION['felh_id']} AND kimeno_id = {$fogadoAz}");
-while ($sorBej = mysqli_fetch_assoc($sqlBej)) {
-    $bejovoUz = "<div class=\"bejovoUz\">
-                <p>{$sorBej['uzenet']}</p>
-            </div>";
+    if(isset($_POST['ChatUzenet'])){
+        $mikor = date("Y-m-d H:i:s");
+        $uzenet = $_POST['szoveg'];
+        $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenet (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
+        $_POST['szoveg'] = "";
+    }
 }
 
-//Bejövő vége
-//-----
-
-}
 
 //Chat rész vége
 
