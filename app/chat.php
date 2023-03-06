@@ -103,10 +103,6 @@ if (isset($_GET['chat'])) {
             <div class="container">
                 <div class="chatUzenetek">
                     <!-- Üzenetek kiírása -->
-                    <?php
-                    isset($kimenoUz) ? print($kimenoUz) : '';
-                    isset($bejovoUz) ? print($bejovoUz) : '';
-                    ?>
                 </div>
                 <form method="post" class="chat-szoveg-kuldes">
                 <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
