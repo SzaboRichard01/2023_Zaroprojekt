@@ -9,8 +9,9 @@ if (!isset($_SESSION['felh_id'])) {
     require("leker/sajatProfil.php");
 }
 
+//Keresőmező - Ha van keresett kifejezés (név) akkor a keresett kifejezésre hasonlító találatokat jeleníti meg a teljes lista helyett
 $kifejezesChat = (isset($_POST['kifejezesChat'])) ? $_POST['kifejezesChat'] : "";
-
+//Lekérdezés - a $felhChat változóban adjuk meg hogy milyen típusú profilokat akarunk lekérdezni
 if ($_SESSION['p_tipus'] == "edző") {
     $felhChat = "kliens";
 }else{
@@ -18,7 +19,7 @@ if ($_SESSION['p_tipus'] == "edző") {
 }
 
 $foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
-
+//Összes edző típusú felhasználó listájának összeállítása a $kimenetChat változóba
 $kimenetChat = "";
 while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
     $felhEllenorzes = "SELECT * FROM ekkapcs
