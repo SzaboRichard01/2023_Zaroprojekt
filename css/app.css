@@ -470,6 +470,37 @@ main{
 
 .container{
   display: flex;
+  flex-direction: column;
+}
+
+.chatUzenetek{
+  padding: 0;
+}
+
+.chatUzenetek .kimenoUz{
+  display: flex;
+  background-color: var(--szurke);
+  color: var(--zold);
+  align-self: flex-end;
+  border: 1px solid var(--fekete);
+  border-radius: 5px;
+  margin: 7px;
+  margin-left: 0;
+  padding: 5px;
+  width: 60%;
+}
+
+.chatUzenetek .bejovoUz{
+  display: flex;
+  background-color: var(--feher);
+  color: var(--fekete);
+  align-self: flex-start;
+  border: 1px solid var(--fekete);
+  border-radius: 7px;
+  margin: 7px;
+  margin-right: 0;
+  padding: 5px;
+  width: 60%;
 }
 
 .contact{
