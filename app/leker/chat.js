@@ -22,7 +22,12 @@ chatBox.onmouseleave = ()=>{
 }
 
 let url = window.location.href;
+sendBtn.style.display = "none";
+inputField.style.display = "none";
 if(url.includes("chat=")){
+    sendBtn.style.display = "unset";
+    inputField.style.display = "unset";
+
     setInterval(() =>{
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "leker/chatleker.php", true);
@@ -41,7 +46,15 @@ if(url.includes("chat=")){
     }, 500)
 }
 
-
 function scrollToBottom(){
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+//Chat üzenet elküldése enter megnyomásakor
+inputField.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendBtn.click();
+    }
+})
+//------
