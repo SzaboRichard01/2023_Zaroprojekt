@@ -39,7 +39,7 @@ if($_SESSION['p_tipus'] == "edző"){
                         <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
                     </div>
                     <div class=\"gombok\">
-                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Edzésterv felvétele</button>
+                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Új Edzésterv Felvétele</button>
                     </div>
                 </div>";
                 $felulet .= $kliens;

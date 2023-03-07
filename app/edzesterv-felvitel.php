@@ -18,10 +18,6 @@ if (!isset($_SESSION['felh_id'])) {
     $Kkep = $sorKinek['kep'];
     //--------
 
-
-
-
-
     //Ha rányomtunk a küldés gombra
     if(isset($_POST['kuldes'])){
         $etNeve = $_POST['et-neve'];
@@ -101,6 +97,8 @@ if (!isset($_SESSION['felh_id'])) {
         isset($etrNap5) && isset($etrEtrend5) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap5}', '{$etrEtrend5}', '{$edzestervID}')") : '';
         isset($etrNap6) && isset($etrEtrend6) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap6}', '{$etrEtrend6}', '{$edzestervID}')") : '';
         isset($etrNap7) && isset($etrEtrend7) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap7}', '{$etrEtrend7}', '{$edzestervID}')") : '';
+
+        $sikeres = "<p>Sikeres edzésterv felvitel!</p>";
     }
 }
 ?><!DOCTYPE html>
@@ -114,7 +112,6 @@ if (!isset($_SESSION['felh_id'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <link rel="stylesheet" href="../css/reg.css">
     <link rel="stylesheet" href="../css/app.css">
     <title>Edzésterv felvitele</title>
@@ -125,6 +122,14 @@ if (!isset($_SESSION['felh_id'])) {
 
     <main>
         <h2>Edzésterv felvitele <span><?php print("{$Kvnev} {$Kknev}"); ?></span> felhasználónak</h2>
+
+        <div class="sikeres">
+            <?php
+                if(isset($sikeres)){
+                    print $sikeres;
+                }
+            ?>
+        </div>
 
         <?php
         print("<div class=\"felh\">
