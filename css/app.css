@@ -443,7 +443,18 @@ main{
 }
 
 .left_side_pannel{
-  flex: 1;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--fekete);
+  min-height: 500px;
+  text-align: center;
+  padding-top: 15px;
+}
+.OsszeZpanel{
+  width: 50px;
+  display: flex;
+  flex-direction: column;
   background-color: var(--fekete);
   min-height: 500px;
   text-align: center;
@@ -455,7 +466,8 @@ main{
 }
 
 .right_side_pannel{
-  flex: 4;
+  min-width: 350px;
+  width: 100%;
   background-color: var(--zold);
   min-height: 500px;
   position: relative;
@@ -565,37 +577,42 @@ main{
   cursor: pointer;
 }
 
-.container input{
+.container #ChatUzenet{
   height: 50px;
-  width: 120px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  border-radius: 10px;
-  background-color: var(--szurke);
-  border: 3px solid var(--fekete);
-  padding: 5px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  border: 0;
+  border: 1px solid black;
+  outline: none;
 }
 
-.container input:hover{
+.container #ChatUzenet:hover{
   cursor: pointer;
-  background-color: var(--feher);
+  background-color: var(--fekete);
+  color: white;
 }
 .container #szoveg{
-  width: 600px;
+  width: calc(100% - 50px);
   height: 50px;
-  margin-left: 19px;
-  margin-bottom: -21px; 
-  border-radius: 10px;
-  background-color: var(--szurke);
-  border: 3px solid var(--fekete);
-  padding: 5px;
   resize: none;
+  background-color: white;
+  color: black!important;
+  padding: 0 5px;
+  border: 0;
+  border: 1px solid black;
+  outline: none;
 }
+
 
 .chat-szoveg-kuldes{
   position: absolute;
   bottom: 0;
+  background-color: red;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 1539px) {
@@ -1057,3 +1074,5 @@ h2 span{
   color: rgb(0, 17, 0);
 }
 /* ------------ */
+
+/* Chat responsive */
