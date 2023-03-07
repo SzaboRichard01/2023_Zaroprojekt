@@ -28,10 +28,6 @@ button:hover{
   cursor: pointer;
 }
 
-#edzestervMain div{
-  background-color: rgb(223, 223, 223);
-}
-
 /*edzesterv.php responsive*/
 @media (max-width: 500px) {
   ul .edzesterv{

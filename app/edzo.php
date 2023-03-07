@@ -11,11 +11,6 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "edző") {
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
 
-    //Edző típusú felhasználók listája
-    $felhTipus = "edző";
-    require("leker/felhLista.php");
-
-
     $eFelkeresKer = (isset($_POST['eFelkeresKer'])) ? $_POST['eFelkeresKer'] : "";
 }
 ?><!DOCTYPE html>
