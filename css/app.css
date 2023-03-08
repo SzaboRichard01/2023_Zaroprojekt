@@ -39,10 +39,13 @@ main{
     padding: 5px;
     height: 50px;
     background-color: var(--fekete);
+    opacity: 1;
+    transition: 0.3s;
 }
 .prof:hover{
     background-color: var(--szurke);
     cursor: pointer;
+    transition: 0.3s;
 }
 .pkep img{
     height: 100%;
