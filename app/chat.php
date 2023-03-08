@@ -54,7 +54,7 @@ if (!isset($_SESSION['felh_id'])) {
         
         $_SESSION['chataz'] = $_GET['chat'];
         $fogadoAz = $_GET['chat'];
-        if(isset($_POST['ChatUzenet']) && $_POST['ChatUzenet'] != ""){
+        if(isset($_POST['ChatUzenet']) && $_POST['szoveg'] != ""){
             $mikor = date("Y-m-d H:i:s");
             $uzenet = $_POST['szoveg'];
             $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenet (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");

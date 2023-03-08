@@ -285,7 +285,7 @@ main{
   width: 90%;
 }
 .felh-lista{
-  /* background-color: rgba(199, 199, 199, 0.3); */
+  background-color: rgb(0, 0, 0);
   border-left: 5px solid var(--zold);
   display: flex;
   align-items: flex-start;
