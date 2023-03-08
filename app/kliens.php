@@ -31,7 +31,7 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     
     <main class="felh-main">
         <h1>Kliensek</h1>
-        <div class="container">
+        <div class="kliensCont">
             <div class="meglevo">
                 <h2>Klienseim</h2>
                 <?php require("leker/ekMeglevo.php"); ?>
