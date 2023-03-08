@@ -29,6 +29,11 @@
                 $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
             }
         }
+
+        if (isset($_POST['bejel'])) {
+            setcookie("email", "{$_POST['email']}", time()+3600);
+            setcookie("jelszo", "{$_POST['jelszo']}", time()+3600);
+        }
     }
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -78,6 +83,10 @@
                 <label for="jelszo">Jelszó:</label>
                 <input type="password" name="jelszo" id="jelszo" required>
             </div>
+            <div class="mezo">
+                <label for="emlekezzram">Maradjak bejelentkezve</label>
+            </div>
+                <input type="checkbox" name="bejel" id="bejel" required>
             <div class="mezo">
                 <input type="submit" value="Belépés" id="rendben" name="rendben">
             </div>

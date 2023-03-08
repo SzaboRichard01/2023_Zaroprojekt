@@ -84,6 +84,7 @@ main .mezo #rendben:hover{
     background-color: var(--szurke);
     color: var(--zold);
 }
+
 .sikeres{
     font-size: 18px;
     margin-top: 20px;
