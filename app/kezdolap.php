@@ -42,7 +42,6 @@ if (!isset($_SESSION['felh_id'])) {
         <div class="felh-lista">
             <?php echo $kimenet ?>
         </div>
-        
     </main>
 
     <script src="../js/script.js"></script>

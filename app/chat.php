@@ -51,10 +51,10 @@ if (!isset($_SESSION['felh_id'])) {
         $Vvnev = $ValP['vnev'];
         $Vknev = $ValP['knev'];
         $Vkep = $ValP['kep'];
-
+        
         $_SESSION['chataz'] = $_GET['chat'];
         $fogadoAz = $_GET['chat'];
-        if(isset($_POST['ChatUzenet'])){
+        if(isset($_POST['ChatUzenet']) && $_POST['ChatUzenet'] != ""){
             $mikor = date("Y-m-d H:i:s");
             $uzenet = $_POST['szoveg'];
             $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenet (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
@@ -98,7 +98,7 @@ if (!isset($_SESSION['felh_id'])) {
             <div class="header">
             <div class="prof" onclick="location.href='sProfil.php';">
                 <?php
-                isset($_GET['chat']) ? print "<p>{$Vvnev} {$Vknev}</p><div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div>" : '';
+                isset($_GET['chat']) ? print "<div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div><p>{$Vvnev} {$Vknev}</p>" : '';
                 ?>
             </div>
             </div>
