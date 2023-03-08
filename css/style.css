@@ -57,7 +57,7 @@ body {
     color: var(--zold);
     padding: 1rem;
     background-color: var(--fekete);
-    opacity: 0.6;
+    opacity: 1;
     transition: 0.3s;
 }
 
