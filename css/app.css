@@ -39,10 +39,13 @@ main{
     padding: 5px;
     height: 50px;
     background-color: var(--fekete);
+    opacity: 1;
+    transition: 0.3s;
 }
 .prof:hover{
     background-color: var(--szurke);
     cursor: pointer;
+    transition: 0.3s;
 }
 .pkep img{
     height: 100%;
@@ -355,11 +358,12 @@ p span{
 .felhKeret{
   display: flex;
   align-items: center;
+  background-color: rgba(128, 128, 128, 0.2);
   justify-content: space-between;
   width: 100%;
 }
 .felhKeret:hover{
-  background-color: var(--fekete);
+  opacity: 0.7;
 }
 .felhKeret a:hover{
   color: var(--zold);
@@ -502,9 +506,8 @@ p span{
 }
 
 .header{
-  background-color: var(--fekete);
+  background-color: var(--szurke);
   height: 70px;
-  display: flex;
 }
 
 .container{
@@ -568,16 +571,10 @@ p span{
   background-color: rgba(255, 255, 255, 0.2);
 }
 .header .prof{
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
+  margin-left: 40px;
+  padding-top: 25px;
 }
-.header .prof:hover{
-  background-color: var(--szurke);
-}
-.header .prof .pkep{
-  margin-right: 10px;
-}
+
 .contact a .prof{
   padding: 28px 10px;
 }
