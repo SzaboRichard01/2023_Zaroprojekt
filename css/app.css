@@ -285,14 +285,13 @@ main{
   width: 90%;
 }
 .felh-lista{
-  background-color: rgb(0, 0, 0);
-  border-left: 5px solid var(--zold);
+  background-color: rgba(199, 199, 199, 0.3);
+  padding: 20px 15px 10px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   max-height: 320px;
   overflow-y: auto;
-  border-radius: 30px 0 0 30px;
 }
 .felh-lista a{
   color: black;
@@ -307,7 +306,7 @@ main{
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 70%;
+  width: 100%;
   padding: 5px 0;
 }
 .felh p{
@@ -335,11 +334,12 @@ main{
 .felhKeret{
   display: flex;
   align-items: center;
+  background-color: rgba(128, 128, 128, 0.2);
   justify-content: space-between;
   width: 100%;
 }
 .felhKeret:hover{
-  background-color: var(--fekete);
+  opacity: 0.7;
 }
 .felhKeret a:hover{
   color: var(--zold);
@@ -482,9 +482,8 @@ main{
 }
 
 .header{
-  background-color: var(--fekete);
+  background-color: var(--szurke);
   height: 70px;
-  display: flex;
 }
 
 .container{
@@ -548,16 +547,10 @@ main{
   background-color: rgba(255, 255, 255, 0.2);
 }
 .header .prof{
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
+  margin-left: 40px;
+  padding-top: 25px;
 }
-.header .prof:hover{
-  background-color: var(--szurke);
-}
-.header .prof .pkep{
-  margin-right: 10px;
-}
+
 .contact a .prof{
   padding: 28px 10px;
 }
@@ -782,7 +775,6 @@ h2 span{
   justify-content: space-between;
 }
 .felkeresek{
-  margin-top: 15px;
   background-color: rgba(128, 128, 128, 0.2);
   min-width: 350px;
   width: 40%;
