@@ -98,6 +98,16 @@ main{
     padding: 1rem;
     background-color: var(--fekete);
 }
+
+.links .prof{
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.links .prof:hover{
+  transition: 0.3s;
+}
+
 .links li:hover {
     background-color: #555;
 }
