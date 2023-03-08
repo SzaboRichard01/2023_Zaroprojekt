@@ -284,6 +284,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 #kezdoMain{
   display: flex;
@@ -565,10 +566,11 @@ p span{
 
 .contact{
   width: 330px;
-  height: 500px;
+  height: 100%;
   margin-top: 10px;
-  display: inline-block;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 .contact a{
   text-decoration: none;
@@ -811,9 +813,18 @@ h2{
 }
 .meglevo{
   min-width: 350px;
-  background-color: red;
   width: calc(100% - 420px);
+  height: calc(80vh - 100px);
   margin-right: 20px;
+  background-color: rgb(240, 240, 240);
+  border-left: 5px solid var(--fekete);
+  border-bottom: 5px solid var(--zold);
+  border-radius: 20px;
+  overflow-y: auto;
+}
+.meglevo .mkliens a{
+  text-decoration: none;
+  color: black;
 }
 .felkeresek{
   background-color: var(--fekete);
@@ -822,6 +833,7 @@ h2{
   border-radius: 20px;
   height: calc(80vh - 100px);
   padding: 10px 0;
+  overflow-y: auto;
 }
 
 .uj_felh form .kereses-gomb:hover{
@@ -835,6 +847,8 @@ h2{
   align-items: center;
   padding: 5px 5px 5px 0;
   justify-content: space-between;
+}
+.felkeresek .felkeres .felh p{
   color: white;
 }
 .felkeres .gombok{
@@ -883,6 +897,7 @@ h2{
   width: 100%;
   display: flex;
   margin: 0;
+  flex-wrap: wrap;
 }
 .felkeresek form .kereses-gomb{
   width: 80px;
@@ -892,10 +907,10 @@ h2{
   border-radius: 0;
 }
 
-.felkeresek form #keresett{
-  background-color: #d7d7d7;
+.felkeresek form #FelKeresett{
   border: 1px solid var(--fekete);
   border-radius: 0;
+  width: calc(100% - 80px);
 }
 
 .felkeresek form .kereses-gomb:hover{

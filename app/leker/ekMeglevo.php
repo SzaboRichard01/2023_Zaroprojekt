@@ -33,7 +33,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         
         if($sor2 > 1){
             $eFelkeres .= "
-            <div class=\"felkeres\">
+            <div class=\"mkliens\">
                 <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
                     <div class=\"felh\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
@@ -55,7 +55,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         $sor2 = mysqli_fetch_assoc($eredmeny2);
         if($sor2 > 1){
             $eFelkeres .= "
-            <div class=\"felkeres\">
+            <div class=\"mkliens\">
                 <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
                     <div class=\"felh\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>

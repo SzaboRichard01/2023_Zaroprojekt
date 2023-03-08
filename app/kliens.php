@@ -31,7 +31,7 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     <?php require("leker/SidebarNavbar.php"); ?>
     
     <main class="felh-main">
-        <h1>Kliensek</h1>
+        <h1>Kliensek kezelése</h1>
         <div class="kliensCont">
             <div class="meglevo">
                 <h2>Klienseim</h2>
