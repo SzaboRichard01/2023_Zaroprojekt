@@ -275,8 +275,16 @@ main{
   flex-direction: column;
   align-items: center;
 }
-.felh-main h1{
-  width: 100%;
+#kezdoMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1{
+  margin-bottom: 20px;
+}
+h1 span{
+  color: var(--zold);
 }
 .uj_felh{
   display: flex;
@@ -285,13 +293,27 @@ main{
   width: 90%;
 }
 .felh-lista{
-  background-color: rgba(199, 199, 199, 0.3);
-  padding: 20px 15px 10px;
+  background-color: rgb(241, 241, 241);
+  border-bottom: 5px solid var(--zold);
+  border-left: 5px solid var(--fekete);
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   max-height: 320px;
   overflow-y: auto;
+  border-radius: 30px 0 0 30px;
+  width: 70%;
+  min-width: 350px;
+}
+p span{
+  color: var(--zold);
+}
+.felh-lista form{
+  width: 90%;
+  margin: 10px auto;
+}
+.felh-lista h2{
+  margin: auto;
 }
 .felh-lista a{
   color: black;
@@ -306,7 +328,6 @@ main{
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 100%;
   padding: 5px 0;
 }
 .felh p{
@@ -770,20 +791,27 @@ h2 span{
 /*edzesterv-felvitel.php responsive vége*/
 
 /* Kezdőlap->felkeresek.php */
-.meglevo{
-  min-width: 350px;
-  width: 55%;
-}
-.felh-main .container{
+.felh-main .kliensCont{
   width: 95%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+h2{
+  text-align: center;
+}
+.meglevo{
+  min-width: 350px;
+  background-color: red;
+  width: calc(100% - 420px);
+  margin-right: 20px;
 }
 .felkeresek{
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: var(--fekete);
   min-width: 350px;
-  width: 40%;
+  color: white;
+  border-radius: 20px;
+  height: calc(80vh - 100px);
+  padding: 10px 0;
 }
 
 .uj_felh form .kereses-gomb:hover{
@@ -795,9 +823,9 @@ h2 span{
 .felkeres{
   display: flex;
   align-items: center;
-  background-color: rgba(128, 128, 128, 0.2);
   padding: 5px 5px 5px 0;
   justify-content: space-between;
+  color: white;
 }
 .felkeres .gombok{
   display: flex;
@@ -1092,4 +1120,52 @@ h2 span{
 }
 /* ------------ */
 
-/* Chat responsive */
+.sKliensekL{
+  width: 90%;
+  border-radius: 20px;
+  padding: 15px 0;
+  min-width: 350px;
+  max-width: 1300px;
+  border-bottom: 5px;
+  border-left: 5px solid var(--fekete);
+  border-bottom: 5px solid var(--zold);
+  background-color: rgb(240, 240, 240);
+  height: calc(80vh - 100px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.kliens{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+.kliens:hover{
+  background-color: var(--fekete);
+  color: white;
+}
+.kliens .felh{
+  width: calc(100% - 350px);
+  min-width: 350px;
+}
+.kliens .gombok{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: calc(100% - 350px);
+  flex-wrap: wrap;
+  width: 350px;
+}
+.kliens .gombok button{
+  margin: 3px;
+  border-radius: 0;
+  font-size: 14px;
+  background-color: var(--zold);
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  border: 0;
+}
+.kliens .gombok button:hover{
+  border-color: var(--fekete);
+  color: black;
+}
