@@ -782,6 +782,7 @@ h2 span{
   justify-content: space-between;
 }
 .felkeresek{
+  margin-top: 15px;
   background-color: rgba(128, 128, 128, 0.2);
   min-width: 350px;
   width: 40%;
