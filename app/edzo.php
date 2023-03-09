@@ -12,6 +12,12 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "edző") {
     require("leker/sajatProfil.php");
 
     $eFelkeresKer = (isset($_POST['eFelkeresKer'])) ? $_POST['eFelkeresKer'] : "";
+
+
+    if(isset($_GET['eftorlendo'])){
+        require("muveletek/mTorles.php");
+        header("Location: edzo.php");
+    }
 }
 ?><!DOCTYPE html>
 <html lang="hu">

@@ -23,7 +23,7 @@ if (!isset($_SESSION['felh_id'])) {
     <link rel="shortcut icon" href="../pics/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/edzesterv.css">
-    <title>Kezdőlap - <?php echo "{$vnev} {$knev}"; ?></title>
+    <title>Edzéstervek - <?php echo "{$vnev} {$knev}"; ?></title>
 </head>
 <body>
     <!-- Felső és oldalsó menü -->

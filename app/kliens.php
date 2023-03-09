@@ -10,6 +10,12 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
 } else {
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
+
+
+    if(isset($_GET['eftorlendo'])){
+        require("muveletek/mTorles.php");
+        header("Location: kliens.php");
+    }
 }
 ?><!DOCTYPE html>
 <html lang="hu">

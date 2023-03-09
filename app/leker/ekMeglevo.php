@@ -32,6 +32,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         $sor2 = mysqli_fetch_assoc($eredmeny2);
         
         if($sor2 > 1){
+            $teljesnev = "{$sor2['vnev']} {$sor2['knev']}";
             $eFelkeres .= "
             <div class=\"mkliens\">
                 <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \" title=\"Profil megtekintése\">
@@ -41,8 +42,8 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    <button>Csevegés</button>
-                    <button>Törlés</button>
+                    <button onclick=\"location.href='chat.php?chat={$sor2['felhasznalo_id']}'\">Csevegés</button>
+                    <button onclick=\"MeglevoTorles({$sor2['ekkapcs_id']}, '{$teljesnev}')\">Törlés</button>
                 </div>
             </div>";
         }
@@ -55,6 +56,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         $eredmeny2 = mysqli_query($dbconn, $sql2);
         $sor2 = mysqli_fetch_assoc($eredmeny2);
         if($sor2 > 1){
+            $teljesnev = "{$sor2['vnev']} {$sor2['knev']}";
             $eFelkeres .= "
             <div class=\"mkliens\">
                 <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \" title=\"Profil megtekintése\">
@@ -64,8 +66,8 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    <button>Csevegés</button>
-                    <button>Törlés</button>
+                    <button onclick=\"location.href='chat.php?chat={$sor2['felhasznalo_id']}'\">Csevegés</button>
+                    <button onclick=\"MeglevoTorles({$sor2['ekkapcs_id']}, '{$teljesnev}')\">Törlés</button>
                 </div>
             </div>";
         }

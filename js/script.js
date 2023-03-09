@@ -24,3 +24,9 @@ function etrendNap(selectObject2){
   }
   document.querySelector('#etrendnapok').innerHTML = mezok;
 }
+
+function MeglevoTorles(torlendo, teljesnev) {
+  if(confirm("Biztosan törölni szeretné?\nEzzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve!") == true){
+    location.href = "?eftorlendo=" + torlendo;
+  }
+}
