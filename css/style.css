@@ -163,6 +163,10 @@ body {
     text-decoration: none;
 }
 
+.wrapper1 .container1 .regLink:hover{
+    opacity: 0.6;
+}
+
 .container1 h1,
 .container2 h1{
     margin-top: -20px;
