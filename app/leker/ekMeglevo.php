@@ -34,14 +34,15 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         if($sor2 > 1){
             $eFelkeres .= "
             <div class=\"mkliens\">
-                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
+                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \" title=\"Profil megtekintése\">
                     <div class=\"felh\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
                         <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    
+                    <button>Csevegés</button>
+                    <button>Törlés</button>
                 </div>
             </div>";
         }
@@ -56,14 +57,15 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         if($sor2 > 1){
             $eFelkeres .= "
             <div class=\"mkliens\">
-                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \">
+                <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']." \" title=\"Profil megtekintése\">
                     <div class=\"felh\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
                         <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
                     </div>
                 </a>
                 <div class=\"gombok\">
-                    
+                    <button>Csevegés</button>
+                    <button>Törlés</button>
                 </div>
             </div>";
         }

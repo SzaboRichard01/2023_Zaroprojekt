@@ -822,9 +822,27 @@ h2{
   border-radius: 20px;
   overflow-y: auto;
 }
+.meglevo .mkliens{
+  display: flex;
+  justify-content: space-between;
+}
+.meglevo .mkliens .gombok{
+  display: flex;
+  align-items: center;
+}
+.meglevo .mkliens .gombok button{
+  padding: 10px;
+}
 .meglevo .mkliens a{
   text-decoration: none;
   color: black;
+}
+.meglevo .mkliens:hover{
+  background-color: var(--fekete);
+  color: white;
+}
+.meglevo .mkliens:hover .felh p{
+  color: white;
 }
 .felkeresek{
   background-color: var(--fekete);
@@ -1164,12 +1182,16 @@ h2{
   flex-wrap: wrap;
   padding: 0 10px;
 }
+.kliens a{
+  text-decoration: none;
+  color: unset;
+  width: calc(100% - 350px);
+}
 .kliens:hover{
   background-color: var(--fekete);
   color: white;
 }
 .kliens .felh{
-  width: calc(100% - 350px);
   min-width: 350px;
 }
 .kliens .gombok{

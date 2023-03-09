@@ -32,14 +32,16 @@ if($_SESSION['p_tipus'] == "edző"){
 
                 $kliens = "
                 <div class =\"kliens\">
-                    <div class=\"felh\">
-                        <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
-                        <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
-                    </div>
-                    <div class=\"gombok\">
-                        <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Új Edzésterv Felvétele</button>
-                        <button>Edzéstervek</button>
-                    </div>
+                    <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']. "\">
+                        <div class=\"felh\">
+                            <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
+                            <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
+                        </div>
+                    </a>
+                        <div class=\"gombok\">
+                            <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Új Edzésterv Felvétele</button>
+                            <button>Edzéstervek</button>
+                        </div>
                 </div>";
                 $felulet .= $kliens;
             }
