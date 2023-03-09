@@ -83,37 +83,38 @@ if (!isset($_SESSION['felh_id'])) {
 <body>
     <!-- Felső és oldalsó menü -->
     <?php require("leker/SidebarNavbar.php"); ?>
-    
-    <div class="wrapper">
-        <div class="left_side_pannel">
-            <a class="mcim">ShineGym&Fit</a>
-            <div class="contact">
-                <form method="post">
-                <input type="search" name="kifejezesChat" id="kifejezesChat" placeholder="Írjon be egy nevet a kereséshez">
-                <button id="kereses"><i class="fa fa-search"></i></button>
-                </form>
-                <?php print $chatLista;?>
-            </div>
-        </div>
-        <div class="right_side_pannel">
-            <div class="header">
-            <div class="prof" onclick="location.href='sProfil.php';">
-                <?php
-                isset($_GET['chat']) ? print "<div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div><p>{$Vvnev} {$Vknev}</p>" : '';
-                ?>
-            </div>
-            </div>
-            <div class="container">
-                <div class="chatUzenetek">
-                    <!-- Üzenetek kiírása -->
+    <main class="chatMain">
+        <div class="chatWrapper">
+            <div class="left_side_pannel">
+                <a class="mcim">ShineGym&Fit</a>
+                <div class="contact">
+                    <form method="post">
+                    <input type="search" name="kifejezesChat" id="kifejezesChat" placeholder="Írjon be egy nevet a kereséshez">
+                    <button id="kereses"><i class="fa fa-search"></i></button>
+                    </form>
+                    <?php print $chatLista;?>
                 </div>
-                <form method="post" class="chat-szoveg-kuldes">
-                <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
-                <button type="submit" name="ChatUzenet" id="ChatUzenet" title="Küldés"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                </form>
+            </div>
+            <div class="right_side_pannel">
+                <div class="header">
+                <div class="prof" onclick="location.href='sProfil.php';">
+                    <?php
+                    isset($_GET['chat']) ? print "<div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div><p>{$Vvnev} {$Vknev}</p>" : '';
+                    ?>
+                </div>
+                </div>
+                <div class="container">
+                    <div class="chatUzenetek">
+                        <!-- Üzenetek kiírása -->
+                    </div>
+                    <form method="post" class="chat-szoveg-kuldes">
+                    <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
+                    <button type="submit" name="ChatUzenet" id="ChatUzenet" title="Küldés"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="leker/chat.js"></script>
     <script src="../js/script.js"></script>

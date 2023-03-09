@@ -465,23 +465,29 @@ p span{
 /* profilAdatok.php vége */
 
 /* chat.php*/
-
-.wrapper{
-  margin: 70px auto;
+.chatMain{
   display: flex;
+  justify-content: center;
+}
+.chatWrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
   max-width: 1100px;
-  min-height: 600px;
   color: var(--feher);
+  margin-right: 15px;
 }
 
 .left_side_pannel{
-  width: 350px;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   background-color: var(--fekete);
-  min-height: 500px;
   text-align: center;
   padding-top: 15px;
+  height: calc(80vh - 100px);
+  overflow-y: auto;
 }
 .OsszeZpanel{
   width: 50px;
@@ -503,12 +509,15 @@ p span{
   padding: 5px;
   height: 50px;
 }
+.right_side_pannel .prof{
+  justify-content: flex-start;
+}
 
 .right_side_pannel{
   min-width: 350px;
-  width: 100%;
+  width: calc(100% - 350px);
   background-color: var(--zold);
-  min-height: 500px;
+  height: calc(80vh - 100px);
   position: relative;
 }
 
@@ -526,8 +535,7 @@ p span{
 .chatUzenetek{
   padding: 0;
   overflow-y: auto;
-  height: 600px;
-  margin-bottom: 60px;
+  height: calc(80vh - 220px);
 }
 
 .chatUzenetek .kimenoUz{
@@ -570,7 +578,6 @@ p span{
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 .contact a{
   text-decoration: none;
@@ -660,71 +667,37 @@ p span{
 .chat-szoveg-kuldes{
   position: absolute;
   bottom: 0;
-  background-color: red;
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-@media (max-width: 1539px) {
-  .wrapper{
-    margin-left: 200px;
+@media (max-width: 794px) {
+  .left_side_pannel{
+    height: calc(20vh);
+    margin-bottom: 10px;
   }
-}
-
-@media (max-width: 1406px) {
-  .wrapper{
-    margin-left: 175px;
+  .left_side_pannel .mcim{
+    display: none;
   }
-}
-
-@media (max-width: 1262px) {
-  .wrapper{
-    margin-left: 110px;
+  .left_side_pannel .contact{
+    margin: 0;
   }
-}
-
-@media (max-width: 1155px) {
-  .wrapper{
-    margin-left: 85px;
+  .left_side_pannel .contact a{
+    margin: 0;
   }
-}
 
-@media (max-width: 830px) {
-  .wrapper{
-    margin-left: 140px;
-    width: 600px;
+  .right_side_pannel{
+    height: calc(80vh - 170px);
   }
-}
-
-@media (max-width: 650px) {
-  .wrapper{
-    margin-left: 100px;
-    width: 520px;
+  .right_side_pannel .chatUzenetek{
+    height: calc(80vh - 290px);
   }
-}
-
-@media (max-width: 500px) {
-  .wrapper{
-    margin-top: 140px;
-    margin-left: 55px;
-    width: 400px;
+  .chatWrapper{
+    margin: 0;
   }
-}
-
-@media (max-width: 375px) {
-  .wrapper{
-    margin-top: 85px;
-    margin-left: 15px;
-    width: 350px;
-  }
-}
-
-@media (max-width: 414px) {
-  .wrapper{
-    margin-top: 85px;
-    margin-left: 25px;
-    width: 375px;
+  .contact #kifejezesChat{
+    margin-bottom: 10px;
   }
 }
 
@@ -816,7 +789,7 @@ h2{
   min-width: 350px;
   width: calc(100% - 420px);
   height: calc(80vh - 100px);
-  margin-right: 20px;
+  margin: 0 20px 20px 0;
   background-color: rgb(240, 240, 240);
   border-left: 5px solid var(--fekete);
   border-bottom: 5px solid var(--zold);
@@ -853,6 +826,7 @@ h2{
   height: calc(80vh - 100px);
   padding: 10px 0;
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .uj_felh form .kereses-gomb:hover{
