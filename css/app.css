@@ -575,6 +575,7 @@ p span{
 .contact a{
   text-decoration: none;
   color: white;
+  margin-bottom: 15px;
 }
 .contact a:hover .prof{
   background-color: rgba(255, 255, 255, 0.2);
