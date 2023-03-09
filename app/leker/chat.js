@@ -24,10 +24,13 @@ chatBox.onmouseleave = ()=>{
 let url = window.location.href;
 sendBtn.style.display = "none";
 inputField.style.display = "none";
+
+//Chat ablak megjelenÍtése, az URL-ben létezik a "chat=". 
 if(url.includes("chat=")){
     sendBtn.style.display = "unset";
     inputField.style.display = "unset";
-
+    
+    //AJAX a chat felülethez
     setInterval(() =>{
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "leker/chatleker.php", true);
