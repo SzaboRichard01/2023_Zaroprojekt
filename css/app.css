@@ -546,8 +546,8 @@ p span{
 }
 
 .chatUzenetek .kimenoUz p{
-  background-color: var(--szurke);
-  color: var(--zold);
+  background-color: var(--fekete);
+  color: white;
   border: 1px solid var(--fekete);
   border-radius: 5px;
   margin: 7px;
