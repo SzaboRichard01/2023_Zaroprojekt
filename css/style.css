@@ -16,6 +16,23 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+body::-webkit-scrollbar{
+    width: 10px;
+    background-color: var(--fekete);
+}
+
+body::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--zold);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background-color: #3d8a2a;
+}
 /* Menu */
 .menu {
     display: flex;

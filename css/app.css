@@ -375,6 +375,41 @@ p span{
 .felhKeret a:hover{
   color: var(--zold);
 }
+
+.scrollbar::-webkit-scrollbar{
+  width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track{
+  border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb{
+  background-color: var(--szurke);
+  border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover{
+  background-color: rgb(63, 62, 62);
+}
+
+.scrollbar-feher::-webkit-scrollbar{
+  width: 10px;
+}
+
+.scrollbar-feher::-webkit-scrollbar-track{
+  border-radius: 10px;
+}
+
+.scrollbar-feher::-webkit-scrollbar-thumb{
+  background-color: var(--feher);
+  border-radius: 10px;
+}
+
+.scrollbar-feher::-webkit-scrollbar-thumb:hover{
+  background-color: var(--szurke);
+  border-radius: 10px;
+}
 /* Felhasználó lista vége */
 
 /* profilAdatok.php */
@@ -623,7 +658,18 @@ p span{
   background-color: rgb(63, 62, 62);
 }
 
+.chatUzenetek::-webkit-scrollbar{
+  width: 10px;
+}
 
+.chatUzenetek::-webkit-scrollbar-track{
+  border-radius: 10px;
+}
+
+.chatUzenetek::-webkit-scrollbar-thumb{
+  background-color: var(--fekete);
+  border-radius: 10px;
+}
 
 .contact #kifejezesChat{
   margin-bottom: 50px;

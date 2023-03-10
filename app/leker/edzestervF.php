@@ -2,7 +2,7 @@
 if($_SESSION['p_tipus'] == "edző"){
     $felulet = "
     <h1>Kliensek Edzéstervei</h1>
-    <div class=\"sKliensekL\">";
+    <div class=\"sKliensekL scrollbar\">";
 
         $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM ekkapcs
                 WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";
