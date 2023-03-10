@@ -32,7 +32,7 @@ if($_SESSION['p_tipus'] == "edző"){
                 if($sor2 != 0){
                     $kliens = "
                     <div class =\"kliens\">
-                        <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']. "\">
+                        <a href=\"profilAdatok.php?felhasznalo_id=" .$sor2['felhasznalo_id']. "\" title=\"Profil megtekintése\">
                             <div class=\"felh\">
                                 <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor2['kep']. "\"></div>
                                 <p>{$sor2['vnev']} {$sor2['knev']}</p>\n
@@ -40,7 +40,7 @@ if($_SESSION['p_tipus'] == "edző"){
                         </a>
                             <div class=\"gombok\">
                                 <button onclick=\"location.href='edzesterv-felvitel.php?felvitel=". $sor2[$kerdezendo] ."'\">Új Edzésterv Felvétele</button>
-                                <button>Edzéstervek</button>
+                                <button onclick=\"location.href='etervM.php?kliens=". $sor2[$kerdezendo] ."'\">Edzéstervek</button>
                             </div>
                     </div>";
                     $felulet .= $kliens;

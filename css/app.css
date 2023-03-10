@@ -1091,6 +1091,10 @@ h2{
 .etEdzes p, .etEtrend p{
   word-wrap: break-word;
 }
+
+#teljesMain .btnEterv{
+  padding: 10px;
+}
 /* -------------- */
 
 .teljesNap{

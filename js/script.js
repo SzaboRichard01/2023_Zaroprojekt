@@ -30,3 +30,10 @@ function MeglevoTorles(torlendo, teljesnev) {
     location.href = "?eftorlendo=" + torlendo;
   }
 }
+
+//Edzésterv törlése
+function btnEtervTorles(nev, etneve, etervid){
+  if(confirm("Biztosan törölni szeretné "+ nev +" kliensének " + etneve+" nevű edzéstervét?") == true){
+    location.href = "muveletek/edzestervTorles.php?edzesterv=" + etervid;
+  }
+}

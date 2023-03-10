@@ -117,7 +117,7 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="../pics/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/app.css">
-    <title>Étrend</title>
+    <title>Edzésterv</title>
 </head>
 <body>
     <?php
@@ -128,7 +128,25 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
     require("leker/SidebarNavbar.php");
     ?>
     <main id="teljesMain">
-        <?php isset($teljesNap) ? print($teljesNap) : '' ?>
+        <div class="sikeres">
+            <?php
+                if(isset($_SESSION['sikeresMod'])){
+                    print $_SESSION['sikeresMod'];
+                    unset($_SESSION['sikeresMod']);
+                }
+            ?>
+        </div>
+
+        <?php
+        if($_SESSION['p_tipus'] == "edző"){
+            print "<div class=\"gombok\">
+                <button onclick=\"location.href='muveletek/etszerk.php?etid={$edzestervID}'\" class=\"btnEterv\" title=\"Edzésterv szekesztése\">Szerkesztés</button>
+                <button class=\"btnEterv\" title=\"Edzésterv törlése\" onclick=\"btnEtervTorles('{$edzoNeve}', '{$etNeve}', {$edzestervID})\">Törlés</button>
+            </div>";
+        }
+
+        isset($teljesNap) ? print($teljesNap) : '';
+        ?>
 
         <div class="tEdzesterv">
             <div class="etneve">
@@ -154,7 +172,7 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
                 </div>
             </div>
             <div class="etkitol">
-                <p>Edző neve</p>
+                <p><?php $_SESSION['p_tipus'] == "edző" ? print("Kliens neve"): print("Edző neve"); ?></p>
                 <h3><?php print $edzoNeve; ?></h3>
             </div>
         </div>
@@ -168,5 +186,6 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
             
         }
     </script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $kuldoaz = $sor['kuldo_az'];
     $eFelkeres .= "
     <div class=\"felkeres\">
-        <a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \">
+        <a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \" title=\"Profil megtekintése\">
             <div class=\"felh\">
                 <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor['kep']. "\"></div>
                 <p>{$sor['vnev']} {$sor['knev']}</p>\n
