@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("../kapcsolat.php");
+require("kapcsolat.php");
 
 //require("leker/sajatProfil.php");
 
@@ -44,7 +44,7 @@ if(isset($_POST['kuldes'])){
     $update = mysqli_query($dbconn, "UPDATE edzesterv SET neve = '{$Neve}', leiras = '{$Leirasa}' WHERE edzesterv_id = {$etID}");
 
     $_SESSION['sikeresMod'] = "<p>Sikeres módosítás!</p>";
-    header("Location: ../teljeset.php?edzesterv={$etID}");
+    header("Location: teljeset.php?edzesterv={$etID}");
 }
 
 ?><!DOCTYPE html>
@@ -58,14 +58,14 @@ if(isset($_POST['kuldes'])){
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="../pics/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/reg.css">
-    <link rel="stylesheet" href="../../css/app.css">
+    <link rel="stylesheet" href="../css/reg.css">
+    <link rel="stylesheet" href="../css/app.css">
     <title>Szerkesztés</title>
 </head>
 <body>
     <?php
-    require("../leker/sajatProfil.php");
-    require("../leker/SidebarNavbar.php");
+    require("leker/sajatProfil.php");
+    require("leker/SidebarNavbar.php");
     ?>
     <main>
         <?php
