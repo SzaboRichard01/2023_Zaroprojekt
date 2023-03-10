@@ -39,11 +39,11 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     <main class="felh-main">
         <h1>Kliensek kezelése</h1>
         <div class="kliensCont">
-            <div class="meglevo">
+            <div class="meglevo scrollbar">
                 <h2>Klienseim</h2>
                 <?php require("leker/ekMeglevo.php"); ?>
             </div>
-            <div class="felkeresek">
+            <div class="felkeresek scrollbar-feher">
                 <h2>Kliens felkérések</h2>
                 <?php require("leker/felkeresek.php"); ?>
             </div>

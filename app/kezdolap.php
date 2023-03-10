@@ -33,7 +33,7 @@ if (!isset($_SESSION['felh_id'])) {
     
     <main id="kezdoMain">
         <h1>Üdvözöljük <span><?php echo "{$vnev} {$knev}!"; ?></span></h1>
-        <div class="felh-lista">
+        <div class="felh-lista scrollbar">
             <h2><i class="fa fa-search" aria-hidden="true"></i> <?php $_SESSION['p_tipus'] == "edző" ? print("Kliensek") : print("Edzők");?> keresése</h2>
             <form method="post">
                 <input type="search" name="kifejezes" id="kifejezes" placeholder="Írjon be egy nevet a kereséshez">
