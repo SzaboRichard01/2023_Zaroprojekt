@@ -17,9 +17,15 @@ $kuldoAz = $kapcsSor['kuldo_az'];
 $fogadoAz = $kapcsSor['fogado_az'];
 if($kuldoAz == $_SESSION['felh_id']){
     $edzoID = $fogadoAz;
+
+    //Edző profilnál
+    $kliensID = $fogadoAz;
 }
 else{
     $edzoID = $kuldoAz;
+
+    //Edző profilnál
+    $kliensID = $kuldoAz;
 }
 //----
 
@@ -140,6 +146,7 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
         <?php
         if($_SESSION['p_tipus'] == "edző"){
             print "<div class=\"gombok\">
+                <button onclick=\"location.href='etervM.php?kliens={$kliensID}'\">Vissza</button>
                 <button onclick=\"location.href='etszerk.php?etid={$edzestervID}'\" class=\"btnEterv\" title=\"Edzésterv szekesztése\">Szerkesztés</button>
                 <button class=\"btnEterv\" title=\"Edzésterv törlése\" onclick=\"btnEtervTorles('{$edzoNeve}', '{$etNeve}', {$edzestervID})\">Törlés</button>
             </div>";

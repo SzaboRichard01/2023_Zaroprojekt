@@ -1,8 +1,20 @@
 <?php
 if($_SESSION['p_tipus'] == "edző"){
+
+    $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
+
     $felulet = "
     <h1>Kliensek Edzéstervei</h1>
-    <div class=\"sKliensekL scrollbar\">";
+    <div class=\"sKliensekL scrollbar\">
+    <form method=\"post\">
+        <input type=\"search\" name=\"kifejezes\" id=\"kifejezes\" placeholder=\"Írjon be egy nevet a kereséshez\">
+        <input class=\"kereses-gomb\" type=\"submit\" value=\"Keresés\">";
+
+            $kifejezes != "" ? $felulet .= "<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>" : "";
+            $kifejezes != "" ? $felulet .= "<p>Találatok <span>\"{$kifejezes}\"</span> kifejezésre:</p>" : '';
+
+    $felulet .= "</form>
+    ";
 
         $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM ekkapcs
                 WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";
@@ -14,14 +26,16 @@ if($_SESSION['p_tipus'] == "edző"){
             if($kuldoaz == $_SESSION['felh_id']){
                 $sql2 = "SELECT * FROM ekkapcs
                     INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
-                    WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz} AND elfogadva = 1";
+                    WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'
+                    AND kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz} AND elfogadva = 1";
                 
                 $kerdezendo = "fogado_az";
             }
             else if($_SESSION['felh_id'] == $fogadoaz){
                 $sql2 = "SELECT * FROM ekkapcs
                 INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
-                WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$kuldoaz} AND elfogadva = 1";
+                WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'
+                AND fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$kuldoaz} AND elfogadva = 1";
 
                 $kerdezendo = "kuldo_az";
             }
