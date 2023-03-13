@@ -1141,7 +1141,7 @@ h2{
   word-wrap: break-word;
 }
 
-#teljesMain .btnEterv{
+#teljesMain .btnEterv, #teljesMain #btnTeljesetV{
   padding: 10px;
 }
 /* -------------- */
