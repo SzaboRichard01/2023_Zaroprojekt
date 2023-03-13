@@ -1,11 +1,11 @@
 <?php
     if(isset($_POST['reg'])){
         if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo'])){
-            $nem = $_POST['neme'];
-            $vnev = $_POST['vnev'];
-            $knev = $_POST['knev'];
-            $email = $_POST['email'];
-            $jelszo = $_POST['jelszo'];
+            $nem = strip_tags($_POST['neme']);
+            $vnev = strip_tags(ucfirst($_POST['vnev']));
+            $knev = strip_tags(ucfirst($_POST['knev']));
+            $email = strip_tags(strtolower($_POST['email']));
+            $jelszo = strip_tags($_POST['jelszo']);
         }
 
         if(empty($_POST['neme'])){

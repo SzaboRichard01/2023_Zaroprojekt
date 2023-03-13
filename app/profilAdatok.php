@@ -50,46 +50,56 @@
                     </div>
                     <div class=\"adatok-tabla\">
                         <table>
-                            <tr>
-                                <th>Vezetéknév:</th>
-                                <td>{$sor['vnev']}</td>
-                            </tr>
-                            <tr>
-                                <th>Keresztnév:</th>
-                                <td>{$sor['knev']}</td>
-                            </tr>
-                            <tr>
-                                <th>Profil típusa:</th>
-                                <td>{$sor['profil_tipus']}</td>
-                            </tr>
-                            <tr>
-                                <th>E-mail:</th>
-                                <td>{$sor['email']}</td>
-                            </tr>";
+                        <tr>
+                            <th>Vezetéknév:</th>
+                            <td>{$sor['vnev']}</td>
+                        </tr>
+                        <tr>
+                            <th>Keresztnév:</th>
+                            <td>{$sor['knev']}</td>
+                        </tr>
+                        <tr>
+                            <th>E-mail:</th>
+                            <td>{$sor['email']}</td>
+                        </tr>
+                        <tr>
+                            <th>Profil típusa:</th>
+                            <td>{$sor['profil_tipus']}</td>
+                        </tr>
+                        <tr>
+                            <th>Nem:</th>
+                            <td>{$sor['nem']}</td>
+                        </tr>";
 
-                            //Csak akkor írja ki a Képzettséget, Tapasztalatot, Telefonszámot ha a profil típusa edző
+                            //Csak akkor írja ki a Bemutatkozót, Telefonszámot ha a profil típusa edző
                             if($sor['profil_tipus'] == "edző"){
                                 $kimenet .= "<tr>
-                                    <th>Képzettség:</th>
-                                    <td>{$sor['kepzettseg']}</td>
-                                </tr>
-                                <tr>
-                                    <th>Tapasztalat:</th>
-                                    <td>{$sor['tapasztalat']}</td>
-                                </tr>
-                                <tr>
-                                    <th>Telefon:</th>
-                                    <td>{$telefon}</td>
-                                </tr>";
+                                    <th>Telefon:</th>";
+
+                                    $sor['telefon'] == "" ? $kimenet .= "<td>Nincs megadva</td>" : $kimenet .= "<td>{$sor['telefon']}</td>";
+
+                                $kimenet .= "</tr>
+                                </table>
+                                </div>
+                                
+                                <div class=\"bemutatkozo\">
+                                <h2>Bemutatkozó:</h2>";
+
+                                $sor['bemutatkozo'] == "" ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
+
+                                $kimenet .= "</div>";
+                            }
+                            else{
+                                $kimenet .= "</table>
+                                </div>
+                                </div>";
                             }
                             //-----------------
-                $kimenet .= "</table>
-                    </div>
-                </div>
+                $kimenet .= "
                 <div class=\"edzo-gombok\">
                     {$FelkeresBtn}
-                    <button>Csevegés</button>
-                    <button>Edző tiltása</button>
+                    <button onclick=\"location.href='chat.php?chat={$sor['felhasznalo_id']}'\">Csevegés</button>
+                    <button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>
                 </div>";
             }
         }
@@ -118,7 +128,7 @@
         <?php
             if($profilTipus == "edző"){
                 print "<div class=\"funkciok\">
-                    <button>Kliens edzéstervének megtekintése</button>
+                    
                 </div>
                 ";
             }

@@ -1,15 +1,14 @@
 <?php
     if(isset($_POST['reg'])){
-        if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo']) && !empty($_POST['kepzettseg'] && !empty($_POST['tapasztalat']))){
-            $nem = $_POST['neme'];
-            $vnev = $_POST['vnev'];
-            $knev = $_POST['knev'];
-            $email = $_POST['email'];
-            $jelszo = $_POST['jelszo'];
+        if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo'])){
+            $nem = strip_tags($_POST['neme']);
+            $vnev = strip_tags(ucfirst($_POST['vnev']));
+            $knev = strip_tags(ucfirst($_POST['knev']));
+            $email = strip_tags(strtolower($_POST['email']));
+            $jelszo = strip_tags($_POST['jelszo']);
 
-            $kepzettseg = $_POST['kepzettseg'];
-            $tapasztalat = $_POST['tapasztalat'];
-            $telefon = $_POST['telefon'];
+            $bemutatkozo = $_POST['bemutatkozo'];
+            $telefon = strip_tags($_POST['telefon']);
         }
 
         if(empty($_POST['neme'])){
@@ -69,9 +68,9 @@
             $online = 0;
             $tipus = "edző";
             $sql = "INSERT INTO felhasznalok
-                    (vnev, knev, email, jelszo, profil_tipus, kep, nem, online, kepzettseg, tapasztalat, telefon)
+                    (vnev, knev, email, jelszo, profil_tipus, kep, nem, online, bemutatkozo, telefon)
                     VALUES
-                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '{$online}', '$kepzettseg', '$tapasztalat', '$telefon')";
+                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '{$online}', '$bemutatkozo', '$telefon')";
             mysqli_query($dbconn, $sql);
 
             move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");
@@ -164,12 +163,8 @@
             </div>
             
             <div class="mezo">
-                <label for="kepzettseg">Képzettség:</label>
-                <input type="text" name="kepzettseg" id="kepzettseg">
-            </div>
-            <div class="mezo">
-                <label for="tapasztalat">Tapasztalat:</label>
-                <input type="number" name="tapasztalat" id="tapasztalat">
+                <label for="bemutatkozo">Rövid bemutatkozó:</label>
+                <textarea name="bemutatkozo" id="bemutatkozo"></textarea>
             </div>
             <div class="mezo">
                 <label for="telefon">Telefonszám:</label>

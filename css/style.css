@@ -211,21 +211,26 @@ body::-webkit-scrollbar-thumb:hover{
     overflow: auto;
 }
 
-.counters .container{
-    display: grid;
-    grid-gap: 90px;
-    grid-template-columns: repeat(4, 1fr);
+.counters{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    text-align: center;
+    background-color: var(--fekete);
+    margin-bottom: 50px;
+    padding: 50px 0;
 }
-
-.container div .fa{
-    font-size: 36px;
+.szamlalo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 250px;
+    color: var(--zold);
+    padding: 10px;
 }
-
 .counters i{
     margin-bottom: 10px;
+    font-size: 36px;
 }
 
 .counters .counter{
@@ -237,33 +242,34 @@ body::-webkit-scrollbar-thumb:hover{
 /*(Főoldal) Footer*/
 .footer-container{
     width: 100%;
-    height: 200px;
     background-color: var(--fekete);
     color: var(--feher);
-    margin: auto;
 }
-
-.footer-container .left,
-.footer-container .right{
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    text-align: center;
-    list-style-type: none;
-}
-
 
 .border-footer{
     border: 1px solid var(--zold);
-    margin-left: 95px;
-    margin-right: 95px;
-    margin-top: 2rem;
+    margin: 2rem 95px 0 95px;
+}
+
+.listak{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.lista{
+    width: 350px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-container h2{
     color: var(--zold);
     font-weight: bold;
     text-align: center;
-    margin-bottom: 15px;
+    padding: 10px 0;
 }
 
 .footer-container p{
@@ -277,7 +283,8 @@ body::-webkit-scrollbar-thumb:hover{
 }
 
 .footer-container ul li{
-    margin-top: 15px;
+    margin: 5px 0;
+    font-size: 16px;
 }
 /*(Főoldal) Footer vége*/
 

@@ -7,7 +7,7 @@ if (!isset($_SESSION['felh_id'])) {
     $felh_id = $_SESSION['felh_id'];
 
     //Saját profil adatainak lekérdezése
-    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online, kepzettseg, tapasztalat, telefon
+    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online, bemutatkozo, telefon
             FROM felhasznalok
             WHERE felhasznalo_id = {$felh_id}";
     $eredmeny = mysqli_query($dbconn, $sql);
@@ -22,8 +22,7 @@ if (!isset($_SESSION['felh_id'])) {
     $online = $sor['online'];
 
     if($profilTipus == 'edző'){
-        $kepzettseg = $sor['kepzettseg'];
-        $tapasztalat = $sor['tapasztalat'];
+        $bemutatkozo = $sor['bemutatkozo'];
         $telefon = $sor['telefon'];
     }
     //------------------------
@@ -61,26 +60,31 @@ if (!isset($_SESSION['felh_id'])) {
                     <th>Nem:</th>
                     <td>{$sor['nem']}</td>
                 </tr>";
-    //Csak akkor írja ki a Képzettséget, Tapasztalatot, Telefonszámot ha a profil típusa edző
+    //Csak akkor írja ki a Bemutatkozót, Telefonszámot ha a profil típusa edző
     if($sor['profil_tipus'] == "edző"){
-    $kimenet .= "<tr>
-                    <th>Képzettség:</th>
-                    <td>{$sor['kepzettseg']}</td>
-                </tr>
-                <tr>
-                    <th>Tapasztalat:</th>
-                    <td>{$sor['tapasztalat']} év</td>
-                </tr>
-                <tr>
-                    <th>Telefon:</th>
-                    <td>{$sor['telefon']}</td>
-                </tr>";
+        $kimenet .= "<tr>
+        <th>Telefon:</th>";
+
+        $sor['telefon'] == "" ? $kimenet .= "<td>Nincs megadva</td>" : $kimenet .= "<td>{$sor['telefon']}</td>";
+
+        $kimenet .= "</tr>
+        </table>
+        </div>
+        
+        <div class=\"bemutatkozo\">
+        <h2>Bemutatkozó:</h2>";
+
+        $sor['bemutatkozo'] == "" ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
+
+        $kimenet .= "</div>";
+    }
+    else{
+        $kimenet .= "</table>
+        </div>
+        </div>";
     }
     //---------------------
-    $kimenet .= "</table>
-    </div>
-    </div>";
-    //------------
+    
             
     //Profilkép összeállítása
     $profilkep = "<img src=\"../pics/profile/" . $kep . "\" alt=\"\">";
