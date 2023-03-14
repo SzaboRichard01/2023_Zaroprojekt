@@ -19,20 +19,15 @@ if (!isset($_SESSION['felh_id'])) {
         $felhChat = "edző";
     }
 
-    $foszzesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
+    $fosszesChat = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhChat}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezesChat}%'");
     //Összes edző típusú felhasználó listájának összeállítása a $chatLista változóba
     $chatLista = "";
-    while($felhasznalo = mysqli_fetch_assoc($foszzesChat)) {
+    while($felhasznalo = mysqli_fetch_assoc($fosszesChat)) {
         $felhEllenorzes = "SELECT * FROM ekkapcs
                             WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
                             OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felhasznalo['felhasznalo_id']}";
         $felhEllEredmeny = mysqli_query($dbconn, $felhEllenorzes);
         $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
-
-
-        if (mysqli_num_rows($felhEllEredmeny) > 0) {
-            $felhElfogadva = $felhEllSor['elfogadva'];
-        }
 
         $chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
                         <div class=\"prof\">
@@ -108,7 +103,7 @@ if (!isset($_SESSION['felh_id'])) {
                         <!-- Üzenetek kiírása -->
                     </div>
                     <form method="post" class="chat-szoveg-kuldes">
-                    <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
+                    <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; padding-top: 13px;"></textarea>
                     <button type="submit" name="ChatUzenet" id="ChatUzenet" title="Küldés"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </form>
                 </div>
