@@ -12,7 +12,7 @@ else{
 
 $fosszes = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
 
-//Összes edző típusú felhasználó listájának összeállítása a $kimenet változóba
+//Összes megfelelő típusú felhasználó listájának összeállítása a $kimenet változóba
 $kimenet = "";
 while($felh = mysqli_fetch_assoc($fosszes)){
     $fEll = "SELECT * FROM ekkapcs

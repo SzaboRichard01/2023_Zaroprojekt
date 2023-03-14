@@ -65,8 +65,7 @@ while($edzSor = mysqli_fetch_assoc($edzSQL)){
     $etEdzes .= "<a href=\"teljeset.php?edzesterv={$edzestervID}&enap={$edzSor['nap']}\"><div class=\"etEdzes\">
         <h3>{$edzSor['nap']}</h3>
         <p>".shorter($edzSor['edzesterv'], 25)."</p>
-    </div></a>
-    ";
+    </div></a>";
     $szam++;
 }
 $edzNapazon =  mysqli_real_escape_string($dbconn, isset($_GET['enap']) ? $_GET['enap'] : '');

@@ -37,3 +37,9 @@ function btnEtervTorles(nev, etneve, etervid){
     location.href = "muveletek/edzestervTorles.php?edzesterv=" + etervid;
   }
 }
+
+
+function tevTeljesBezar(){
+  let tevTeljes = document.querySelector(".tevTeljes");
+  tevTeljes.style.display = "none";
+}

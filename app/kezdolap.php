@@ -10,7 +10,7 @@ if (!isset($_SESSION['felh_id'])) {
 
     $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
-    //Kliens típusú felhasználók listája
+    //felhasználók listája
     require('leker/felhLista.php');
 }
 ?><!DOCTYPE html>
@@ -32,6 +32,16 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
     
     <main id="kezdoMain">
+
+        <div class="sikeres">
+            <?php
+                if(isset($_SESSION['tevrogz'])){
+                    print $_SESSION['tevrogz'];
+                    unset($_SESSION['tevrogz']);
+                }
+            ?>
+        </div>
+
         <h1>Üdvözöljük <span><?php echo "{$vnev} {$knev}!"; ?></span></h1>
         <div class="felh-lista scrollbar">
             <h2><i class="fa fa-search" aria-hidden="true"></i> <?php $_SESSION['p_tipus'] == "edző" ? print("Kliensek") : print("Edzők");?> keresése</h2>
@@ -46,6 +56,32 @@ if (!isset($_SESSION['felh_id'])) {
 
             <?php echo $kimenet ?>
         </div>
+
+        <div class="tevk">
+            
+
+            <?php require("leker/tevekenysegek.php"); ?>
+
+        </div>
+
+        <?php
+           
+            if(isset($_GET['tev'])){
+                $tevAzon =  mysqli_real_escape_string($dbconn, $_GET['tev']);
+                $valTevsql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = '{$tevAzon}'");
+                $sTev = mysqli_fetch_assoc($valTevsql);
+        
+                $tevTeljes = "<div class=\"tevTeljes\">
+                    <p class=\"tdatum\">{$sTev['datum']}</p>
+                    <div class=\"tleiras\">
+                        <p>{$sTev['leiras']}</p>
+                    </div>
+                    <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
+                </div>";
+
+                print $tevTeljes;
+            }
+        ?>
     </main>
 
     <script src="../js/script.js"></script>
