@@ -103,7 +103,7 @@ if (!isset($_SESSION['felh_id'])) {
                         <!-- Üzenetek kiírása -->
                     </div>
                     <form method="post" class="chat-szoveg-kuldes">
-                    <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; color: var(--feher); padding-top: 13px;"></textarea>
+                    <textarea type="text" name="szoveg" id="szoveg" placeholder="Ide írja a szöveget..." style="font-family: 'Nunito', sans-serif; padding-top: 13px;"></textarea>
                     <button type="submit" name="ChatUzenet" id="ChatUzenet" title="Küldés"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </form>
                 </div>
