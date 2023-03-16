@@ -2,7 +2,6 @@
 session_start();
 require("kapcsolat.php");
 
-
 //Saját profil adatainak lekérése
 require("leker/sajatProfil.php");
 
@@ -36,6 +35,7 @@ if(isset($_POST['rogzites'])){
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
+        <button onclick="location.href='kezdolap.php'" id="tevRogzVissza"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza a kezdőlapra</button>
         <form method="post">
             <div class="mezo">
                 <label for="datum">Dátum (Melyik nap):</label>
@@ -46,9 +46,7 @@ if(isset($_POST['rogzites'])){
                 <textarea name="tev" id="tev"></textarea>
             </div>
             <input type="submit" value="Rögzítés" name="rogzites" id="rogzites">
-            
         </form>
-        <button onclick="location.href='kezdolap.php'" id="tevRogzVissza">Vissza</button>
     </main>
 </body>
 </html>

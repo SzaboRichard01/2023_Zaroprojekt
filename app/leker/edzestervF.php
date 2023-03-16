@@ -67,7 +67,7 @@ if($_SESSION['p_tipus'] == "edző"){
 if($_SESSION['p_tipus'] == "kliens"){
     $felulet = "<h1>{$vnev} {$knev} Edzéstervei</h1>";
 
-    require("edzesterv/lekerdezes.php");
+    require("edzestervekLeker.php");
     $felulet .= $etervKi;
 }
 print($felulet);

@@ -34,7 +34,7 @@
     $res_data = mysqli_query($dbconn,$sql);
 
     $tevKimenet = "<div class=\"tevk\"><h2>Tevékenységek</h2>
-    <button id=\"ujtevr\" onclick=\"location.href='tevRogzitese.php'\">Új rögzítése</button>
+    <button onclick=\"location.href='tevRogzitese.php'\">Új rögzítése</button>
     <div class=\"tevekenysegek\">";
     if(mysqli_num_rows($res_data) != 0){
         while($sorTev = mysqli_fetch_array($res_data)){
