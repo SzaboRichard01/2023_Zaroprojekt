@@ -54,5 +54,6 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "edző") {
     </main>
 
     <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
