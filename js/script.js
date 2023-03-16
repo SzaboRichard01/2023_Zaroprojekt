@@ -25,31 +25,24 @@ function etrendNap(selectObject2){
   document.querySelector('#etrendnapok').innerHTML = mezok;
 }
 
+//Meglévő kapcsolat törlése
 function MeglevoTorles(torlendo, teljesnev) {
-  // if(confirm("Biztosan törölni szeretné?\nEzzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve!") == true){
-  //   location.href = "?eftorlendo=" + torlendo;
-  // }
-
   Swal.fire({
     title: 'Biztosan törölni szeretné?',
     text: "Ezzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve! Ezt a műveletet nem tudja majd visszavonni!",
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
+    confirmButtonColor: '#55be3b',
+    cancelButtonColor: '#080B0C',
     confirmButtonText: 'Törlés',
     cancelButtonText: 'Mégsem'
   }).then((result) => {
     if (result.isConfirmed) {
       location.href = "?eftorlendo=" + torlendo;
-      Swal.fire(
-        'Törölve!',
-        'Your file has been deleted.',
-        'success'
-      )
     }
   })
 }
+//------
 
 //Edzésterv törlése
 function btnEtervTorles(nev, etneve, etervid){
