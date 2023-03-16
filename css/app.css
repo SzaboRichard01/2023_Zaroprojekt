@@ -38,6 +38,9 @@ button:disabled{
 }
 
 
+textarea{
+  height: 200px;
+}
 /* Felső Navbar */
 
 /* -    profile rész */
@@ -505,7 +508,7 @@ p span{
 .tleiras p{
   word-wrap: break-word;
 }
-.tevTeljes i{
+.tevTeljes .bezar{
   background-color: red;
   color: white;
   font-size: 30px;
@@ -518,7 +521,7 @@ p span{
   top: 0;
   right: 0;
 }
-.tevTeljes i:hover{
+.tevTeljes .bezar:hover{
   background-color: rgb(175, 2, 2);
   cursor: pointer;
 }
@@ -535,6 +538,23 @@ p span{
 .mezo #tev{
   height: 200px;
 }
+.tevTeljGombok{
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+.tevTeljGombok button{
+  height: 50px;
+  width: 50px;
+  margin: 0;
+}
+.tevTeljGombok button:hover{
+  background-color: green;
+  color: black;
+}
+.tevTeljGombok button i{
+ font-size: 25px;
+}
 /* --------- */
 
 /* profilAdatok.php */
@@ -547,9 +567,10 @@ p span{
   display: flex;
 }
 .felh-nev button{
-  padding: 10px;
   font-size: 16px;
   min-width: 100px;
+  border-radius: 10px 0 0 10px;
+  margin: 0;
 }
 .fadatok .felh-nev .nev{
   font-size: 25px;

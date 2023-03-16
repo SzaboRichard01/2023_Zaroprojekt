@@ -71,7 +71,11 @@ if (!isset($_SESSION['felh_id'])) {
                     <div class=\"tleiras\">
                         <p>{$sTev['leiras']}</p>
                     </div>
-                    <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
+                    <i class=\"fa fa-times bezar\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
+                    <div class=\"tevTeljGombok\">
+                        <button onclick=\"tevTejlTorles('{$sTev['datum']}', {$tevAzon})\" title=\"Törlés\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>
+                        <button title=\"Módosítás\" onclick=\"location.href='muveletek/tevModositas.php?tevid={$tevAzon}'\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>
+                    </div>
                 </div>";
 
                 print $tevTeljes;
@@ -80,5 +84,6 @@ if (!isset($_SESSION['felh_id'])) {
     </main>
 
     <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -86,3 +86,20 @@ function tevTeljesBezar(){
   let tevTeljes = document.querySelector(".tevTeljes");
   tevTeljes.style.display = "none";
 }
+
+function tevTejlTorles(datum, tevazon){
+  Swal.fire({
+    title: 'Biztosan törölni szeretné?',
+    text: "Ezzel törlődik "+ datum +" napján rögzített tevékenysége! Ezt a műveletet nem tudja majd visszavonni!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#55be3b',
+    cancelButtonColor: '#080B0C',
+    confirmButtonText: 'Törlés',
+    cancelButtonText: 'Mégsem'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href = "muveletek/tevTorlese.php?tevaz=" + tevazon;
+    }
+  })
+}
