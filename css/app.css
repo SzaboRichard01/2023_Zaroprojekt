@@ -1017,10 +1017,9 @@ h2{
 }
 .meglevo .mkliens:hover{
   background-color: var(--fekete);
-  color: white;
 }
 .meglevo .mkliens:hover .felh p{
-  color: white;
+  color: var(--zold);
 }
 .felkeresek{
   background-color: var(--fekete);
