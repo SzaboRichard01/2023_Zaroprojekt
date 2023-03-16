@@ -65,6 +65,7 @@ textarea{
 .prof:hover{
     background-color: var(--szurke);
     cursor: pointer;
+    color: var(--zold);
 }
 .pkep img{
     height: 100%;
@@ -685,8 +686,11 @@ p span{
 
 .left_side_pannel .prof:hover{
   background-color: var(--fekete);
+  color: var(--zold);
+  transition: 0.3s;
 }
 .left_side_pannel .prof{
+  transition: 0.3s;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -695,6 +699,12 @@ p span{
 }
 .right_side_pannel .prof{
   justify-content: flex-start;
+  transition: 0.3s;
+}
+
+.right_side_pannel .prof:hover{
+  transition: 0.3s;
+  color: var(--zold);
 }
 
 .right_side_pannel{
@@ -1028,10 +1038,9 @@ h2{
 }
 .meglevo .mkliens:hover{
   background-color: var(--fekete);
-  color: white;
 }
 .meglevo .mkliens:hover .felh p{
-  color: white;
+  color: var(--zold);
 }
 .felkeresek{
   background-color: var(--fekete);
@@ -1386,7 +1395,7 @@ h2{
 }
 .kliens:hover{
   background-color: var(--fekete);
-  color: white;
+  color: var(--zold);
 }
 .kliens a{
   width: calc(100% - 350px);
