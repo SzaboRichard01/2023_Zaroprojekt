@@ -33,7 +33,7 @@
     LIMIT $offset, $no_of_records_per_page";
     $res_data = mysqli_query($dbconn,$sql);
 
-    $tevKimenet = "<h2>Tevékenységek</h2>
+    $tevKimenet = "<div class=\"tevk\"><h2>Tevékenységek</h2>
     <button id=\"ujtevr\" onclick=\"location.href='tevRogzitese.php'\">Új rögzítése</button>
     <div class=\"tevekenysegek\">";
     if(mysqli_num_rows($res_data) != 0){
@@ -59,34 +59,26 @@
     $tevKimenet .= "
     <div class=\"lapozo\">
         <button onclick=\"location.href='?lap=1'\"";
-        
         if($lap <= 1){ $tevKimenet .= 'disabled'; }
-        
         $tevKimenet .= ">Első</button>
+
         <button ";
-        
         if($lap <= 1){ $tevKimenet .= 'disabled '; }
-        
         $tevKimenet .= "onclick=\"location.href='";
         if($lap <= 1){ $tevKimenet .= '#'; } else { $tevKimenet .= "?lap=".($lap - 1); }
         $tevKimenet .= "'\">Előző</button>";
-
 
         $tevKimenet .= "<button ";
         if($lap >= $total_pages){ $tevKimenet .= 'disabled '; }
         $tevKimenet .= "onclick=\"location.href='";
         if($lap >= $total_pages){ $tevKimenet .= '#'; } else { $tevKimenet .= "?lap=".($lap + 1); }
-        
         $tevKimenet .= "'\">Következő</button>";
 
 
         $tevKimenet .= "<button onclick=\"location.href='?lap={$total_pages}'\"";
-        
         if($lap >= $total_pages){ $tevKimenet .= 'disabled'; }
-        
         $tevKimenet .= ">Utolsó</button>
-
-    </div>";
+    </div></div>";
     //---------
 
     print $tevKimenet;

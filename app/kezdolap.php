@@ -56,15 +56,10 @@ if (!isset($_SESSION['felh_id'])) {
 
             <?php echo $kimenet ?>
         </div>
-
-        <div class="tevk">
-            
-
-            <?php require("leker/tevekenysegek.php"); ?>
-
-        </div>
-
         <?php
+            if($_SESSION['p_tipus'] == "kliens"){
+                require("leker/tevekenysegek.php");
+            }
            
             if(isset($_GET['tev'])){
                 $tevAzon =  mysqli_real_escape_string($dbconn, $_GET['tev']);

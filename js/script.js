@@ -26,9 +26,29 @@ function etrendNap(selectObject2){
 }
 
 function MeglevoTorles(torlendo, teljesnev) {
-  if(confirm("Biztosan törölni szeretné?\nEzzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve!") == true){
-    location.href = "?eftorlendo=" + torlendo;
-  }
+  // if(confirm("Biztosan törölni szeretné?\nEzzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve!") == true){
+  //   location.href = "?eftorlendo=" + torlendo;
+  // }
+
+  Swal.fire({
+    title: 'Biztosan törölni szeretné?',
+    text: "Ezzel törlődik "+teljesnev+" profilhoz kapcsolódó összes edzésterve! Ezt a műveletet nem tudja majd visszavonni!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Törlés',
+    cancelButtonText: 'Mégsem'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href = "?eftorlendo=" + torlendo;
+      Swal.fire(
+        'Törölve!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
 }
 
 //Edzésterv törlése
