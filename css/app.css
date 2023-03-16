@@ -666,6 +666,7 @@ p span{
   background-color: var(--fekete);
 }
 .left_side_pannel .prof{
+  transition: 0.3s;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -674,6 +675,7 @@ p span{
 }
 .right_side_pannel .prof{
   justify-content: flex-start;
+  transition: 0.3s;
 }
 
 .right_side_pannel{
