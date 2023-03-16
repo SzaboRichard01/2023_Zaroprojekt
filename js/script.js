@@ -53,12 +53,16 @@ function MeglevoTorles(torlendo, teljesnev) {
 
 function btnElfogad(azonosito, teljNev) {
   Swal.fire({
+    title: 'Elfogadva!',
+    text: "Elfogadtad " + teljNev + " felkérését!",
     icon: 'success',
-    title: 'Elfogadva',
-    text: 'Elfogadtad ' + teljNev + ' felkérését!',
+    confirmButtonColor: '#d33',
+    confirmButtonText: 'OK',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href='muveletek/fMegerosites.php?kuldo_az=' + azonosito;
+    }
   })
-  location.href='muveletek/fMegerosites.php?kuldo_az=' + azonosito;
-
 }
 
 
