@@ -51,13 +51,24 @@ function MeglevoTorles(torlendo, teljesnev) {
   })
 }
 
+function btnElfogad(azonosito, teljNev) {
+  Swal.fire({
+    icon: 'success',
+    title: 'Elfogadva',
+    text: 'Elfogadtad ' + teljNev + ' felkérését!',
+  })
+  location.href='muveletek/fMegerosites.php?kuldo_az=' + azonosito;
+
+}
+
+
+
 //Edzésterv törlése
 function btnEtervTorles(nev, etneve, etervid){
   if(confirm("Biztosan törölni szeretné "+ nev +" kliensének " + etneve+" nevű edzéstervét?") == true){
     location.href = "muveletek/edzestervTorles.php?edzesterv=" + etervid;
   }
 }
-
 
 function tevTeljesBezar(){
   let tevTeljes = document.querySelector(".tevTeljes");

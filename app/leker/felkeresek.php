@@ -23,6 +23,7 @@ $eredmeny = mysqli_query($dbconn, $sql);
 $eFelkeres = "";
 while($sor = mysqli_fetch_assoc($eredmeny)){
     $kuldoaz = $sor['kuldo_az'];
+    $teljesnev = "{$sor['vnev']} {$sor['knev']}";
     $eFelkeres .= "
     <div class=\"felkeres\">
         <a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \" title=\"Profil megtekintése\">
@@ -32,7 +33,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
             </div>
         </a>
         <div class=\"gombok\">
-            <button onclick=\"location.href='muveletek/fMegerosites.php?kuldo_az={$kuldoaz}'\">Elfogadás</button>
+            <button onclick=\"btnElfogad({$kuldoaz}, '{$teljesnev}')\">Elfogadás</button>
             <button onclick=\"location.href='muveletek/fElutasitas.php?kuldo_az={$kuldoaz}'\">Elutasítás</button>
         </div>
     </div>";
