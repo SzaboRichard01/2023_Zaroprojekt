@@ -664,6 +664,7 @@ p span{
 
 .left_side_pannel .prof:hover{
   background-color: var(--fekete);
+  color: var(--zold);
   transition: 0.3s;
 }
 .left_side_pannel .prof{
@@ -681,6 +682,7 @@ p span{
 
 .right_side_pannel .prof:hover{
   transition: 0.3s;
+  color: var(--zold);
 }
 
 .right_side_pannel{
