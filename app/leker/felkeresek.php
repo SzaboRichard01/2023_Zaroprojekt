@@ -34,7 +34,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         </a>
         <div class=\"gombok\">
             <button onclick=\"btnElfogad({$kuldoaz}, '{$teljesnev}')\">Elfogadás</button>
-            <button onclick=\"location.href='muveletek/fElutasitas.php?kuldo_az={$kuldoaz}'\">Elutasítás</button>
+            <button onclick=\"btnElutasit({$kuldoaz}, '{$teljesnev}')\">Elutasítás</button>
         </div>
     </div>";
 }

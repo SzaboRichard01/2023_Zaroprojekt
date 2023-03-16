@@ -49,7 +49,7 @@ function btnElfogad(azonosito, teljNev) {
     title: 'Elfogadva!',
     text: "Elfogadtad " + teljNev + " felkérését!",
     icon: 'success',
-    confirmButtonColor: '#d33',
+    confirmButtonColor: '#55be3b',
     confirmButtonText: 'OK',
   }).then((result) => {
     if (result.isConfirmed) {
@@ -58,7 +58,22 @@ function btnElfogad(azonosito, teljNev) {
   })
 }
 
-
+function btnElutasit(az, tNev) {
+  Swal.fire({
+    title: 'Biztosan elutasítja?',
+    text: "Ezzel elutasítja "+tNev+" felkérését!",
+    icon: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#55be3b',
+    cancelButtonColor: '#080B0C',
+    confirmButtonText: 'Igen',
+    cancelButtonText: 'Nem'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href='muveletek/fElutasitas.php?kuldo_az=' + az;
+    }
+  })
+}
 
 //Edzésterv törlése
 function btnEtervTorles(nev, etneve, etervid){
