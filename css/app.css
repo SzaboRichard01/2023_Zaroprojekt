@@ -1372,7 +1372,7 @@ h2{
 }
 .kliens:hover{
   background-color: var(--fekete);
-  color: white;
+  color: var(--zold);
 }
 .kliens a{
   width: calc(100% - 350px);
