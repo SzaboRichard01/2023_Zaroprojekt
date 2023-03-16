@@ -664,6 +664,7 @@ p span{
 
 .left_side_pannel .prof:hover{
   background-color: var(--fekete);
+  transition: 0.3s;
 }
 .left_side_pannel .prof{
   transition: 0.3s;
@@ -675,6 +676,10 @@ p span{
 }
 .right_side_pannel .prof{
   justify-content: flex-start;
+  transition: 0.3s;
+}
+
+.right_side_pannel .prof:hover{
   transition: 0.3s;
 }
 
