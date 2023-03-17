@@ -24,14 +24,14 @@ $kKnev = $kneve['knev'];
 //--------
 
 
-$eredmeny = mysqli_query($dbconn, "SELECT edzesterv.edzesterv_id, edzesterv.neve, edzesterv.leiras, edzesterv.ekkapcs_id, kuldo_az, fogado_az
-FROM edzesterv INNER JOIN ekkapcs ON ekkapcs.ekkapcs_id = edzesterv.ekkapcs_id
+$eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
+FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
 WHERE kuldo_az = '{$kliensID}' AND fogado_az = {$_SESSION['felh_id']}
 OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']}");
 if(mysqli_num_rows($eredmeny) != 0){
     $etervKi = "<div class=\"edzestervek\">";
     while($sor = mysqli_fetch_assoc($eredmeny)){
-        $etID = $sor['edzesterv_id'];
+        $etID = $sor['terv_id'];
 
         $etervKi .= "<a href=\"teljeset.php?edzesterv=". $etID ."\"><div class=\"edzesterv\">
             <div class=\"etneve\">

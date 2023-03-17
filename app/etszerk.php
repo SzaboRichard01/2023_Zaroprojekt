@@ -17,7 +17,7 @@ $etID = $_GET['etid'];
 $modForm = "<form method=\"post\">";
 
 //Edzésterv adatai
-$eredmeny = mysqli_query($dbconn, "SELECT neve, leiras FROM edzesterv WHERE edzesterv_id = {$etID}");
+$eredmeny = mysqli_query($dbconn, "SELECT neve, leiras FROM terv WHERE terv_id = {$etID}");
     $sor = mysqli_fetch_assoc($eredmeny);
     $etNeve = $sor['neve'];
     $etLeiras = $sor['leiras'];
@@ -41,7 +41,7 @@ $modForm .= "<input type=\"submit\" name=\"kuldes\" id=\"kuldes\" value=\"Küld�
 if(isset($_POST['kuldes'])){
     $Neve = $_POST['etneve'];
     $Leirasa = $_POST['etleiras'];
-    $update = mysqli_query($dbconn, "UPDATE edzesterv SET neve = '{$Neve}', leiras = '{$Leirasa}' WHERE edzesterv_id = {$etID}");
+    $update = mysqli_query($dbconn, "UPDATE terv SET neve = '{$Neve}', leiras = '{$Leirasa}' WHERE terv_id = {$etID}");
 
     $_SESSION['sikeresMod'] = "<p>Sikeres módosítás!</p>";
     header("Location: teljeset.php?edzesterv={$etID}");

@@ -5,11 +5,11 @@ require("../kapcsolat.php");
 $TervID = $_GET['edzesterv'];
 
 //hova vezessen majd vissza
-$sqlKapcsID = mysqli_query($dbconn, "SELECT ekkapcs_id FROM edzesterv WHERE edzesterv_id = {$TervID}");
+$sqlKapcsID = mysqli_query($dbconn, "SELECT kapcs_id FROM terv WHERE terv_id = {$TervID}");
 $sorKapcsID = mysqli_fetch_assoc($sqlKapcsID);
-$kapcsID = $sorKapcsID['ekkapcs_id'];
+$kapcsID = $sorKapcsID['kapcs_id'];
 
-$sqlKi = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM ekkapcs WHERE ekkapcs_id = {$kapcsID}");
+$sqlKi = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM edzoklienskapcs WHERE kapcs_id = {$kapcsID}");
 $sorKi = mysqli_fetch_assoc($sqlKi);
 $kuldoID = $sorKi['kuldo_az'];
 $fogadoID = $sorKi['fogado_az'];
@@ -22,7 +22,7 @@ else{
 }
 //----
 
-$sqlTorles = mysqli_query($dbconn, "DELETE FROM edzesterv WHERE edzesterv_id = {$TervID}");
+$sqlTorles = mysqli_query($dbconn, "DELETE FROM terv WHERE terv_id = {$TervID}");
 
 header("Location: ../etervM.php?kliens={$kliensAZ}");
 ?>

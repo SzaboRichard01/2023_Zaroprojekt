@@ -4,27 +4,19 @@
 require("kapcsolat.php");
 $kliensID = $_SESSION['felh_id'];
 
-function shorter($text, $chars_limit)
-{
-    // Check if length is larger than the character limit
-    if (mb_strlen($text) > $chars_limit)
-    {
-        // If so, cut the string at the character limit
+function shorter($text, $chars_limit){
+    if (mb_strlen($text) > $chars_limit){
         $new_text = mb_substr($text, 0, $chars_limit);
-        // Trim off white space
         $new_text = trim($new_text);
-        // Add at end of text ...
         return $new_text . "...";
     }
-    // If not just return the text as is
-    else
-    {
-    return $text;
+    else{
+        return $text;
     }
 }
 
-$eredmeny = mysqli_query($dbconn, "SELECT edzesterv.edzesterv_id, edzesterv.neve, edzesterv.leiras, edzesterv.ekkapcs_id, kuldo_az, fogado_az
-        FROM edzesterv INNER JOIN ekkapcs ON ekkapcs.ekkapcs_id = edzesterv.ekkapcs_id
+$eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
+        FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
         WHERE kuldo_az = '{$kliensID}'
         OR fogado_az = '{$kliensID}'");
 
@@ -39,7 +31,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
         $edzoID = $kuldoAz;
     }
 
-    $etID = $sor['edzesterv_id'];
+    $etID = $sor['terv_id'];
 
     $edzoneve = mysqli_query($dbconn, "SELECT vnev, knev FROM felhasznalok WHERE felhasznalo_id = {$edzoID}");
     $eneve = mysqli_fetch_assoc($edzoneve);

@@ -14,7 +14,7 @@ print($MKereso);
 //------
 
 $sql = "SELECT kuldo_az, fogado_az, elfogadva
-    FROM ekkapcs
+    FROM edzoklienskapcs
     WHERE elfogadva = 1
     ORDER BY felkeres_datuma DESC";
 $eredmeny = mysqli_query($dbconn, $sql);
@@ -24,7 +24,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $fogadoaz = $sor['fogado_az'];
 
     if($felh_id == $kuldoaz){
-        $sql2 = "SELECT * FROM ekkapcs
+        $sql2 = "SELECT * FROM edzoklienskapcs
                 INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
                 WHERE kuldo_az = {$felh_id} AND fogado_az = {$fogadoaz}
                 AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'";
@@ -43,13 +43,13 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                 </a>
                 <div class=\"gombok\">
                     <button onclick=\"location.href='chat.php?chat={$sor2['felhasznalo_id']}'\">Csevegés</button>
-                    <button onclick=\"MeglevoTorles({$sor2['ekkapcs_id']}, '{$teljesnev}')\">Törlés</button>
+                    <button onclick=\"MeglevoTorles({$sor2['kapcs_id']}, '{$teljesnev}')\">Törlés</button>
                 </div>
             </div>";
         }
     }
     if($felh_id == $fogadoaz){
-        $sql2 = "SELECT * FROM ekkapcs
+        $sql2 = "SELECT * FROM edzoklienskapcs
         INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
         WHERE fogado_az = {$felh_id} AND kuldo_az = {$kuldoaz}
         AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'";
@@ -67,7 +67,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
                 </a>
                 <div class=\"gombok\">
                     <button onclick=\"location.href='chat.php?chat={$sor2['felhasznalo_id']}'\">Csevegés</button>
-                    <button onclick=\"MeglevoTorles({$sor2['ekkapcs_id']}, '{$teljesnev}')\">Törlés</button>
+                    <button onclick=\"MeglevoTorles({$sor2['kapcs_id']}, '{$teljesnev}')\">Törlés</button>
                 </div>
             </div>";
         }

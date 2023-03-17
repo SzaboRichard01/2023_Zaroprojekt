@@ -65,38 +65,38 @@ if (!isset($_SESSION['felh_id'])) {
         //---
 
 
-        $sqlId = mysqli_query($dbconn, "SELECT ekkapcs_id FROM ekkapcs
+        $sqlId = mysqli_query($dbconn, "SELECT kapcs_id FROM edzoklienskapcs
             WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$tKinek}
             OR kuldo_az = {$tKinek} AND fogado_az = {$_SESSION['felh_id']}");
         $IdEr = mysqli_fetch_assoc($sqlId);
-        $edzoFelhId = $IdEr['ekkapcs_id'];
+        $edzoFelhId = $IdEr['kapcs_id'];
 
 
-        //edzesterv tabla insert
-        $sqlEterv = mysqli_query($dbconn, "INSERT INTO edzesterv (neve, leiras, ekkapcs_id)
+        //terv tabla insert
+        $sqlEterv = mysqli_query($dbconn, "INSERT INTO terv (neve, leiras, kapcs_id)
             VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
 
-        $sqlEtervId = mysqli_query($dbconn, "SELECT edzesterv_id FROM edzesterv WHERE ekkapcs_id = {$edzoFelhId} AND neve = '{$etNeve}'");
+        $sqlEtervId = mysqli_query($dbconn, "SELECT terv_id FROM terv WHERE kapcs_id = {$edzoFelhId} AND neve = '{$etNeve}'");
         $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
-        $edzestervID = $EtervIdEr['edzesterv_id'];
+        $edzestervID = $EtervIdEr['terv_id'];
         
-        //edzes tabla insert
-        isset($mNap1) && isset($edzes1) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap1}', '{$edzes1}', '{$edzestervID}')") : '';
-        isset($mNap2) && isset($edzes2) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap2}', '{$edzes2}', '{$edzestervID}')") : '';
-        isset($mNap3) && isset($edzes3) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap3}', '{$edzes3}', '{$edzestervID}')") : '';
-        isset($mNap4) && isset($edzes4) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap4}', '{$edzes4}', '{$edzestervID}')") : '';
-        isset($mNap5) && isset($edzes5) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap5}', '{$edzes5}', '{$edzestervID}')") : '';
-        isset($mNap6) && isset($edzes6) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap6}', '{$edzes6}', '{$edzestervID}')") : '';
-        isset($mNap7) && isset($edzes7) ? mysqli_query($dbconn, "INSERT INTO edzes (nap, edzesterv, edzesterv_id) VALUES ('{$mNap7}', '{$edzes7}', '{$edzestervID}')") : '';
+        //edzestervek tabla insert
+        isset($mNap1) && isset($edzes1) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap1}', '{$edzes1}', '{$edzestervID}')") : '';
+        isset($mNap2) && isset($edzes2) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap2}', '{$edzes2}', '{$edzestervID}')") : '';
+        isset($mNap3) && isset($edzes3) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap3}', '{$edzes3}', '{$edzestervID}')") : '';
+        isset($mNap4) && isset($edzes4) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap4}', '{$edzes4}', '{$edzestervID}')") : '';
+        isset($mNap5) && isset($edzes5) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap5}', '{$edzes5}', '{$edzestervID}')") : '';
+        isset($mNap6) && isset($edzes6) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap6}', '{$edzes6}', '{$edzestervID}')") : '';
+        isset($mNap7) && isset($edzes7) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap7}', '{$edzes7}', '{$edzestervID}')") : '';
 
-        //etrend tabla insert
-        isset($etrNap1) && isset($etrEtrend1) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap1}', '{$etrEtrend1}', '{$edzestervID}')") : '';
-        isset($etrNap2) && isset($etrEtrend2) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap2}', '{$etrEtrend2}', '{$edzestervID}')") : '';
-        isset($etrNap3) && isset($etrEtrend3) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap3}', '{$etrEtrend3}', '{$edzestervID}')") : '';
-        isset($etrNap4) && isset($etrEtrend4) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap4}', '{$etrEtrend4}', '{$edzestervID}')") : '';
-        isset($etrNap5) && isset($etrEtrend5) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap5}', '{$etrEtrend5}', '{$edzestervID}')") : '';
-        isset($etrNap6) && isset($etrEtrend6) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap6}', '{$etrEtrend6}', '{$edzestervID}')") : '';
-        isset($etrNap7) && isset($etrEtrend7) ? mysqli_query($dbconn, "INSERT INTO etrend (nap, etrend, edzesterv_id) VALUES ('{$etrNap7}', '{$etrEtrend7}', '{$edzestervID}')") : '';
+        //etrendek tabla insert
+        isset($etrNap1) && isset($etrEtrend1) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap1}', '{$etrEtrend1}', '{$edzestervID}')") : '';
+        isset($etrNap2) && isset($etrEtrend2) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap2}', '{$etrEtrend2}', '{$edzestervID}')") : '';
+        isset($etrNap3) && isset($etrEtrend3) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap3}', '{$etrEtrend3}', '{$edzestervID}')") : '';
+        isset($etrNap4) && isset($etrEtrend4) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap4}', '{$etrEtrend4}', '{$edzestervID}')") : '';
+        isset($etrNap5) && isset($etrEtrend5) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap5}', '{$etrEtrend5}', '{$edzestervID}')") : '';
+        isset($etrNap6) && isset($etrEtrend6) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap6}', '{$etrEtrend6}', '{$edzestervID}')") : '';
+        isset($etrNap7) && isset($etrEtrend7) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap7}', '{$etrEtrend7}', '{$edzestervID}')") : '';
 
         $sikeres = "<p>Sikeres edzésterv felvitel!</p>";
     }

@@ -6,7 +6,7 @@ session_start();
     if (isset($_SESSION['chataz'])) {
         $fogadoAz = $_SESSION['chataz'];
         
-        $sqlKim = mysqli_query($dbconn, "SELECT kimeno_id, bejovo_id, uzenet FROM uzenet WHERE kimeno_id = {$_SESSION['felh_id']} AND bejovo_id = {$fogadoAz}
+        $sqlKim = mysqli_query($dbconn, "SELECT kimeno_id, bejovo_id, uzenet FROM uzenetek WHERE kimeno_id = {$_SESSION['felh_id']} AND bejovo_id = {$fogadoAz}
         OR bejovo_id = {$_SESSION['felh_id']} AND kimeno_id = {$fogadoAz}");
         $kiiras = "";
         while($sorKim = mysqli_fetch_assoc($sqlKim)){

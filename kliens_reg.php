@@ -126,7 +126,7 @@
                 <input type="file" name="foto" id="foto">
             </div>
             <div class="mezo">
-                <label for="neme">Neme:</label>
+                <label for="neme">Neme:*</label>
                 <select name="neme" id="neme">
                     <option disabled selected>Válasszon egy lehetőséget</option>
                     <option value="férfi">Férfi</option>
@@ -134,26 +134,26 @@
                 </select>
             </div>
             <div class="mezo">
-                <label for="vnev">Vezetéknév:</label>
+                <label for="vnev">Vezetéknév:*</label>
                 <input type="text" name="vnev" id="vnev">
             </div>
             <div class="mezo">
-                <label for="knev">Keresztnév:</label>
+                <label for="knev">Keresztnév:*</label>
                 <input type="text" name="knev" id="knev">
             </div>
             <div class="mezo">
-                <label for="email">E-mail:</label>
+                <label for="email">E-mail:*</label>
                 <input type="email" name="email" id="email">
             </div>
             <div class="mezo">
-                <label for="jelszo">Jelszó:</label>
+                <label for="jelszo">Jelszó:*</label>
                 <input type="password" name="jelszo" id="jelszo">
             </div>
             <div class="mezo">
-                <label for="jelszo_megerosit">Jelszó megerősítése:</label>
+                <label for="jelszo_megerosit">Jelszó megerősítése:*</label>
                 <input type="password" name="jelszo_megerosit" id="jelszo_megerosit">
             </div>
-
+            <em>A csillaggal * jelölt mezők kitöltése kötelező!</em>
             <input type="submit" value="Regisztráció" name="reg" id="reg">
             <p>Már van fiókja? <a href="belepes.php">Jelentkezzen be!</a></p>
         </form>

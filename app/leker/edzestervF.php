@@ -16,7 +16,7 @@ if($_SESSION['p_tipus'] == "edző"){
     $felulet .= "</form>
     ";
 
-        $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM ekkapcs
+        $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM edzoklienskapcs
                 WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";
         $eredmeny = mysqli_query($dbconn, $sql);
         while($sor = mysqli_fetch_assoc($eredmeny)){
@@ -24,7 +24,7 @@ if($_SESSION['p_tipus'] == "edző"){
             $fogadoaz = $sor['fogado_az'];
 
             if($kuldoaz == $_SESSION['felh_id']){
-                $sql2 = "SELECT * FROM ekkapcs
+                $sql2 = "SELECT * FROM edzoklienskapcs
                     INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
                     WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'
                     AND kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$fogadoaz} AND elfogadva = 1";
@@ -32,7 +32,7 @@ if($_SESSION['p_tipus'] == "edző"){
                 $kerdezendo = "fogado_az";
             }
             else if($_SESSION['felh_id'] == $fogadoaz){
-                $sql2 = "SELECT * FROM ekkapcs
+                $sql2 = "SELECT * FROM edzoklienskapcs
                 INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
                 WHERE CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'
                 AND fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$kuldoaz} AND elfogadva = 1";

@@ -4,14 +4,14 @@ require("kapcsolat.php");
 $edzestervID =  mysqli_real_escape_string($dbconn, $_GET['edzesterv']);
 
 //Edzésterv alap adatai
-$etSQL = mysqli_query($dbconn, "SELECT neve, leiras, ekkapcs_id FROM edzesterv WHERE edzesterv_id = {$edzestervID}");
+$etSQL = mysqli_query($dbconn, "SELECT neve, leiras, kapcs_id FROM terv WHERE terv_id = {$edzestervID}");
 $etA = mysqli_fetch_assoc($etSQL);
 $etNeve = $etA['neve'];
 $etLeiras = $etA['leiras'];
-$ekkapcsID = $etA['ekkapcs_id'];
+$ekkapcsID = $etA['kapcs_id'];
 
 //Melyik az edző
-$sqlKapcs = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM ekkapcs WHERE ekkapcs_id = {$ekkapcsID}");
+$sqlKapcs = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM edzoklienskapcs WHERE kapcs_id = {$ekkapcsID}");
 $kapcsSor = mysqli_fetch_assoc($sqlKapcs);
 $kuldoAz = $kapcsSor['kuldo_az'];
 $fogadoAz = $kapcsSor['fogado_az'];
@@ -36,27 +36,19 @@ $edzoNeve = "{$edzoEr['vnev']} {$edzoEr['knev']}";
 
 //----
 
-function shorter($text, $chars_limit)
-{
-    // Check if length is larger than the character limit
-    if (mb_strlen($text) > $chars_limit)
-    {
-        // If so, cut the string at the character limit
+function shorter($text, $chars_limit){
+    if (mb_strlen($text) > $chars_limit){
         $new_text = mb_substr($text, 0, $chars_limit);
-        // Trim off white space
         $new_text = trim($new_text);
-        // Add at end of text ...
         return $new_text . "...";
     }
-    // If not just return the text as is
-    else
-    {
+    else{
     return $text;
     }
 }
 
-//Edzésterv edzés része
-$edzSQL = mysqli_query($dbconn, "SELECT nap, edzesterv FROM edzes WHERE edzesterv_id = {$edzestervID}");
+//Terv edzés része
+$edzSQL = mysqli_query($dbconn, "SELECT nap, edzesterv FROM edzestervek WHERE terv_id = {$edzestervID}");
 $etEdzes = "";
 $edzDb = mysqli_num_rows($edzSQL); //Hány darab edzésnap tartozik az adott edzéstervhez
 
@@ -70,7 +62,7 @@ while($edzSor = mysqli_fetch_assoc($edzSQL)){
 }
 $edzNapazon =  mysqli_real_escape_string($dbconn, isset($_GET['enap']) ? $_GET['enap'] : '');
 if(isset($edzNapazon) && isset($_GET['enap'])){
-    $mNapEr = mysqli_query($dbconn,"SELECT nap, edzesterv FROM edzes WHERE edzesterv_id = {$edzestervID} AND nap = '{$_GET['enap']}'");
+    $mNapEr = mysqli_query($dbconn,"SELECT nap, edzesterv FROM edzestervek WHERE terv_id = {$edzestervID} AND nap = '{$_GET['enap']}'");
     $napS = mysqli_fetch_assoc($mNapEr);
 
     $teljesNap = "
@@ -84,7 +76,7 @@ if(isset($edzNapazon) && isset($_GET['enap'])){
 //---
 
 //Edzésterv étrend része
-$etSQL = mysqli_query($dbconn, "SELECT nap, etrend FROM etrend WHERE edzesterv_id = {$edzestervID}");
+$etSQL = mysqli_query($dbconn, "SELECT nap, etrend FROM etrendek WHERE terv_id = {$edzestervID}");
 $etEtrend = "";
 $etDb = mysqli_num_rows($etSQL); // Hány darab értrend tartozik az adott edzéstervhez
 while($etSor = mysqli_fetch_assoc($etSQL)){
@@ -97,7 +89,7 @@ while($etSor = mysqli_fetch_assoc($etSQL)){
 
 $etNapazon =  mysqli_real_escape_string($dbconn, isset($_GET['etnap']) ? $_GET['etnap'] : '');
 if(isset($etNapazon) && isset($_GET['etnap'])){
-    $mNapEt = mysqli_query($dbconn,"SELECT nap, etrend FROM etrend WHERE edzesterv_id = {$edzestervID} AND nap = '{$_GET['etnap']}'");
+    $mNapEt = mysqli_query($dbconn,"SELECT nap, etrend FROM etrendek WHERE terv_id = {$edzestervID} AND nap = '{$_GET['etnap']}'");
     $EtnapS = mysqli_fetch_assoc($mNapEt);
 
     $teljesNap = "
