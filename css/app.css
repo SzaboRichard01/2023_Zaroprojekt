@@ -37,10 +37,6 @@ button:disabled{
   cursor: unset;
 }
 
-
-textarea{
-  height: 200px;
-}
 /* Felső Navbar */
 
 /* -    profile rész */
@@ -1285,6 +1281,24 @@ h2{
   border-right: 1px solid gray;
   overflow-y: auto;
 }
+
+.etLeiras table{
+  color: black;
+  border: 1px solid black;
+}
+.etLeiras table td{
+  background-color: var(--zold);
+  padding: 10px;
+}
+.etLeiras table thead td{
+  background-color: var(--fekete);
+  color: white;
+}
+
+.etLeiras img{
+  min-width: 300px;
+  width: 80%;
+}
 .etLeiras p{
   word-wrap: break-word;
 }
@@ -1309,9 +1323,39 @@ h2{
   background-color: white;
   color: white;
   width: 70%;
-  height: 50%;
+  height: 50vh;
+  min-height: 200px;
   border: 1px solid var(--szurke);
+  min-width: 350px;
 }
+@media(max-width: 450px){
+  .teljesNap{
+    left: 15px;
+    right: 15px;
+    width: calc(100% - 30px);
+  }
+}
+.teljesNap .teljnapterv{
+  overflow: auto;
+  word-wrap: break-word;
+  color: black;
+  padding: 10px 20px;
+  height: calc(100% - 50px);
+}
+
+.teljesNap table{
+  color: black;
+  border: 1px solid black;
+}
+.teljesNap table td{
+  background-color: var(--zold);
+  padding: 10px;
+}
+.teljesNap table thead td{
+  background-color: var(--fekete);
+  color: white;
+}
+
 .teljesNap h3{
   background-color: var(--zold);
   width: calc(100% - 30px);
@@ -1320,13 +1364,6 @@ h2{
   align-items: center;
   padding: 10px;
   color: white;
-}
-.teljesNap p{
-  word-wrap: break-word;
-  color: black;
-  padding: 10px 20px;
-  overflow-y: auto;
-  height: calc(100% - 50px);
 }
 .teljesNap i{
   font-size: 30px;

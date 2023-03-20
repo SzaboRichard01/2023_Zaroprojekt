@@ -39,7 +39,7 @@ if(mysqli_num_rows($eredmeny) != 0){
                 <h3>{$sor['neve']}</h3>
             </div>
             <div class=\"etleirasa\">
-                <p>Leírás<br>". shorter($sor['leiras'], 150)."</p>
+                <p>Leírás<br>". shorter(strip_tags($sor['leiras']), 150)."</p>
             </div>
             <div class=\"etkitol\">
                 <p>Kliens neve</p>

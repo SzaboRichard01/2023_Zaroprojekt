@@ -38,19 +38,21 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $eVnev = $eneve['vnev'];
     $eKnev = $eneve['knev'];
 
-    $etervKi .= "<a href=\"teljeset.php?edzesterv=". $etID ."\"><div class=\"edzesterv\">
+    $etervKi .= "<a href=\"teljeset.php?edzesterv={$etID}\">
+    <div class=\"edzesterv\">
         <div class=\"etneve\">
             <p>Edzésterv neve</p>
             <h3>{$sor['neve']}</h3>
         </div>
         <div class=\"etleirasa\">
-            <p>Leírás<br>". shorter($sor['leiras'], 150)."</p>
+            <p>Leírás<br>". shorter(strip_tags($sor['leiras']), 150)."</p>
         </div>
         <div class=\"etkitol\">
             <p>Edző neve</p>
             <h3>{$eVnev} {$eKnev}</h3>
         </div>
-    </div></a>";
+    </div>
+    </a>";
 }
 $etervKi .= "</div>";
 ?>

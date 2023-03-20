@@ -2,16 +2,6 @@
 session_start();
 require("kapcsolat.php");
 
-//require("leker/sajatProfil.php");
-
-//Lekérdezendő kliens adatai
-// $kliensID = $_GET['kliens'];
-// $kliensneve = mysqli_query($dbconn, "SELECT vnev, knev FROM felhasznalok WHERE felhasznalo_id = {$kliensID}");
-// $kneve = mysqli_fetch_assoc($kliensneve);
-// $kVnev = $kneve['vnev'];
-// $kKnev = $kneve['knev'];
-//--------
-
 $etID = $_GET['etid'];
 
 $modForm = "<form method=\"post\">";
@@ -33,8 +23,7 @@ $eredmeny = mysqli_query($dbconn, "SELECT neve, leiras FROM terv WHERE terv_id =
 //-----
 
 
-$modForm .= "<input type=\"submit\" name=\"kuldes\" id=\"kuldes\" value=\"Küldés\">
-<input type=\"reset\" value=\"Mégsem\">
+$modForm .= "<input type=\"submit\" name=\"kuldes\" id=\"kuldes\" value=\"Mentés\">
 </form>";
 
 
@@ -68,9 +57,8 @@ if(isset($_POST['kuldes'])){
     require("leker/SidebarNavbar.php");
     ?>
     <main>
-        <?php
-        print $modForm;
-        ?>
+        <button onclick="location.href='edzesterv.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
+        <?php print $modForm; ?>
     </main>
 </body>
 </html>

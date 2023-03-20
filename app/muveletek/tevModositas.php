@@ -32,6 +32,7 @@ if(isset($_POST['modosit'])){
 </head>
 <body>
     <main>
+        <button onclick="location.href='../kezdolap.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
         <form method="post">
             <div class="mezo">
                 <label for="dat">Dátum:</label>
@@ -41,7 +42,7 @@ if(isset($_POST['modosit'])){
                 <label for="leir">Leírás:</label>
                 <textarea name="leir" id="leir"><?php print $kLeiras; ?></textarea>
             </div>
-            <input type="submit" value="Módosítás" name="modosit" id="modosit">
+            <input type="submit" value="Mentés" name="modosit" id="modosit">
         </form>
     </main>
 </body>

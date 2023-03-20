@@ -35,7 +35,7 @@ if(isset($_POST['rogzites'])){
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <button onclick="location.href='kezdolap.php'" id="tevRogzVissza"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza a kezdőlapra</button>
+        <button onclick="location.href='kezdolap.php'" id="tevRogzVissza"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
         <form method="post">
             <div class="mezo">
                 <label for="datum">Dátum (Melyik nap):</label>

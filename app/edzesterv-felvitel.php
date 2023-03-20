@@ -115,6 +115,39 @@ if (!isset($_SESSION['felh_id'])) {
     <link rel="shortcut icon" href="../pics/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/reg.css">
     <link rel="stylesheet" href="../css/app.css">
+
+    <link rel="stylesheet" href="redactor/redactor.css">
+
+    <script src="../js/jquery-1.9.0.min.js"></script>
+    <script src="redactor/redactor.min.js"></script>
+    <script>
+        $(document).ready(
+            function() {
+                $('textarea#et-leiras').redactor({
+                    minHeight: 300
+                });
+            }
+        );
+
+        function redactorEdz(){
+            let szam = document.getElementById("hnap").value;
+            for (let index = 1; index <= szam; index++) {
+                $('textarea#edzes'+index).redactor({
+                minHeight: 300
+            });
+            }
+        }
+
+        function redactorEtrend() {
+            let szam = document.getElementById("etrendnap").value;
+            for (let index = 1; index <= szam; index++) {
+                $('textarea#etr-etrend'+index).redactor({
+                minHeight: 300
+            });
+            }
+        }
+    </script>
+
     <title>Edzésterv felvitele</title>
 </head>
 <body>
@@ -140,17 +173,24 @@ if (!isset($_SESSION['felh_id'])) {
         ?>
 
         <form method="post" enctype="multipart/form-data" id="felvitelForm">
+            <!-- Edzésterv -->
+            <h2>Edzésterv</h2>
             <div class="mezo">
-                <label for="et-neve">Edzésterv neve</label>
+                <label for="et-neve">Edzésterv neve:*</label>
                 <input type="text" name="et-neve" id="et-neve" require>
             </div>
-            <div class="mezo">
-                <label for="et-leiras">Leírás (nem kötelező)</label>
+            <!-- <div class="mezo">
+                <label for="et-leiras">Leírás:</label>
                 <textarea name="et-leiras" id="et-leiras"></textarea>
-            </div>
+            </div> -->            
             <div class="mezo">
-                <label for="hnap">Hány edzésnap legyen egy héten?</label>
-                <select name="hnap" id="hnap" onchange="hanyNap(this)">
+                <label for="et-leiras">Leírás:*</label><br>
+                <textarea name="et-leiras" id="et-leiras" style="min-height: 300px;"></textarea>
+            </div>
+            <!-- ---------------------------------------------- -->
+            <div class="mezo">
+                <label for="hnap">Hány edzésnap legyen egy héten?*</label>
+                <select name="hnap" id="hnap" onchange="hanyNap(this), redactorEdz()">
                     <option disabled selected>Válasszon egy számot!</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -161,14 +201,14 @@ if (!isset($_SESSION['felh_id'])) {
                     <option value="7">7</option>
                 </select>
             </div>
-
             <div id="mezonapok"></div>
+            <!-- ------------ -->
 
             <!-- Értrend -->
             <h2>Étrend</h2>
             <div class="mezo">
-                <label for="etrendnap">Hány napra szeretne értendet rögzíteni?</label>
-                <select name="etrendnap" id="etrendnap" onchange="etrendNap(this)">
+                <label for="etrendnap">Hány napra szeretne értendet rögzíteni?*</label>
+                <select name="etrendnap" id="etrendnap" onchange="etrendNap(this), redactorEtrend()">
                     <option disabled selected>Válasszon egy számot!</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -181,7 +221,9 @@ if (!isset($_SESSION['felh_id'])) {
             </div>
 
             <div id="etrendnapok"></div>
+            <!-- ------ -->
 
+            <em>A csillaggal * jelölt mezők kitöltése kötelező!</em>
             <input type="submit" name="kuldes" id="kuldes" value="Küldés">
         </form>
     </main>

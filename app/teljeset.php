@@ -56,7 +56,7 @@ $szam = 1;
 while($edzSor = mysqli_fetch_assoc($edzSQL)){
     $etEdzes .= "<a href=\"teljeset.php?edzesterv={$edzestervID}&enap={$edzSor['nap']}\"><div class=\"etEdzes\">
         <h3>{$edzSor['nap']}</h3>
-        <p>".shorter($edzSor['edzesterv'], 25)."</p>
+        <p>".shorter(strip_tags($edzSor['edzesterv']), 25)."</p>
     </div></a>";
     $szam++;
 }
@@ -68,7 +68,7 @@ if(isset($edzNapazon) && isset($_GET['enap'])){
     $teljesNap = "
     <div class=\"teljesNap\">
         <h3>{$napS['nap']}</h3>
-        <p>{$napS['edzesterv']}</p>
+        <div class=\"teljnapterv\">{$napS['edzesterv']}</div>
         <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
     </div>
     ";
@@ -83,7 +83,7 @@ while($etSor = mysqli_fetch_assoc($etSQL)){
     $etEtrend .= "<a href=\"teljeset.php?edzesterv={$edzestervID}&etnap={$etSor['nap']}\">
     <div class=\"etEtrend\">
         <h3>{$etSor['nap']}</h3>
-        <p>".shorter($etSor['etrend'], 25)."</p>
+        <p>".shorter(strip_tags($etSor['etrend']), 25)."</p>
     </div></a>";
 }
 
@@ -95,7 +95,7 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
     $teljesNap = "
     <div class=\"teljesNap\">
         <h3>{$EtnapS['nap']}</h3>
-        <p>{$EtnapS['etrend']}</p>
+        <div class=\"teljnapterv\">{$EtnapS['etrend']}</div>
         <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
     </div>
     ";
