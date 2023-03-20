@@ -59,7 +59,7 @@
             <ul>
                 <li><a href="index.html">Főoldal</a></li>
                 <li><a href="belepes.php">Bejelentkezés</a></li>
-                <li><a href="reg.html">Regisztráció</a></li>
+                <li><a href="regisztracio.php">Regisztráció</a></li>
             </ul>
         </div>
     </nav>

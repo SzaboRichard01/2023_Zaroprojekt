@@ -135,3 +135,11 @@ main .mezo #rendben:hover{
     height: 200px;
 }
 /* reg.html vége */
+
+#bemutatkozoIcon:hover #bemutatkozoPelda{
+    
+    background-color: red;
+}
+#bemutatkozoPelda{
+    
+}
