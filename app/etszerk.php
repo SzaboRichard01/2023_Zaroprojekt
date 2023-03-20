@@ -49,6 +49,21 @@ if(isset($_POST['kuldes'])){
     <link rel="shortcut icon" href="../pics/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/reg.css">
     <link rel="stylesheet" href="../css/app.css">
+
+    <link rel="stylesheet" href="redactor/redactor.css">
+
+    <script src="../js/jquery-1.9.0.min.js"></script>
+    <script src="redactor/redactor.min.js"></script>
+    <script>
+        $(document).ready(
+            function() {
+                $('textarea#etleiras').redactor({
+                    minHeight: 300
+                });
+            }
+        );
+    </script>
+
     <title>Szerkesztés</title>
 </head>
 <body>

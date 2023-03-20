@@ -7,7 +7,7 @@ if (!isset($_SESSION['felh_id'])) {
     $felh_id = $_SESSION['felh_id'];
 
     //Saját profil adatainak lekérdezése
-    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, online, bemutatkozo, telefon
+    $sql = "SELECT vnev, knev, email, profil_tipus, kep, nem, bemutatkozo, telefon
             FROM felhasznalok
             WHERE felhasznalo_id = {$felh_id}";
     $eredmeny = mysqli_query($dbconn, $sql);
@@ -19,7 +19,6 @@ if (!isset($_SESSION['felh_id'])) {
     $profilTipus = $sor['profil_tipus'];
     $kep = $sor['kep'];
     $nem = $sor['nem'];
-    $online = $sor['online'];
 
     if($profilTipus == 'edző'){
         $bemutatkozo = $sor['bemutatkozo'];

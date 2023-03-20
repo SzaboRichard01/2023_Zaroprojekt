@@ -65,12 +65,11 @@
             $kimenet .= "</ul>\n";
         } else{
             require("app/kapcsolat.php");
-            $online = 0;
             $tipus = "edző";
             $sql = "INSERT INTO felhasznalok
-                    (vnev, knev, email, jelszo, profil_tipus, kep, nem, online, bemutatkozo, telefon)
+                    (vnev, knev, email, jelszo, profil_tipus, kep, nem, bemutatkozo, telefon)
                     VALUES
-                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '{$online}', '$bemutatkozo', '$telefon')";
+                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '$bemutatkozo', '$telefon')";
             mysqli_query($dbconn, $sql);
 
             move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");

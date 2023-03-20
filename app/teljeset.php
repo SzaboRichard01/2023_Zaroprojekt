@@ -138,7 +138,7 @@ if(isset($etNapazon) && isset($_GET['etnap'])){
         if($_SESSION['p_tipus'] == "edző"){
             print "<div class=\"gombok\">
                 <button onclick=\"location.href='etervM.php?kliens={$kliensID}'\" id=\"btnTeljesetV\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
-                <button onclick=\"location.href='etszerk.php?etid={$edzestervID}'\" class=\"btnEterv\" title=\"Edzésterv szekesztése\">Szerkesztés</button>
+                <button onclick=\"location.href='etszerk.php?etid={$edzestervID}'\" class=\"btnEterv\" title=\"Név és leírás szerkesztése\">Szerkesztés</button>
                 <button class=\"btnEterv\" title=\"Edzésterv törlése\" onclick=\"btnEtervTorles('{$edzoNeve}', '{$etNeve}', {$edzestervID})\">Törlés</button>
             </div>";
         }

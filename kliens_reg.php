@@ -61,12 +61,11 @@
             $kimenet .= "</ul>\n";
         } else{
             require("app/kapcsolat.php");
-            $online = 0;
             $tipus = "kliens";
             $sql = "INSERT INTO felhasznalok
-                    (vnev, knev, email, jelszo, profil_tipus, kep, nem, online)
+                    (vnev, knev, email, jelszo, profil_tipus, kep, nem)
                     VALUES
-                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '{$online}')";
+                    ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}')";
             mysqli_query($dbconn, $sql);
 
             move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");
