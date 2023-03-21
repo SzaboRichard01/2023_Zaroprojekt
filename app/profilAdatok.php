@@ -28,15 +28,6 @@
                 }
                 //Felkérés gomb vége
 
-                //Telefonszám
-                $telefon = "";
-                if($sor['telefon'] != 0){
-                    $telefon = $sor['telefon'];
-                }
-                else{
-                    $telefon = "Nincs megadva";
-                }
-                //----------
 
                 $kimenet .= "
                 <div class=\"felh-nev\">
@@ -71,8 +62,8 @@
                             <td>{$sor['nem']}</td>
                         </tr>";
 
-                            //Csak akkor írja ki a Bemutatkozót, Telefonszámot ha a profil típusa edző
-                            if($sor['profil_tipus'] == "edző"){
+                            //Ha a profil típusa kliens ellenőrizzük hogy van e megadva bemutatkozó szövege és telefonszáma
+                            if($sor['profil_tipus'] == "kliens"){
                                 $kimenet .= "<tr>
                                     <th>Telefon:</th>";
 
@@ -85,22 +76,39 @@
                                 <div class=\"bemutatkozo\">
                                 <h2>Bemutatkozó:</h2>";
 
-                                $sor['bemutatkozo'] == "" ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
+                                strlen($sor['bemutatkozo']) < 50 ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
 
                                 $kimenet .= "</div>";
                             }
                             else{
-                                $kimenet .= "</table>
+                                $kimenet .= "<tr>
+                                    <th>Telefon:</th>
+                                    <td>{$sor['telefon']}</td>
+                                </tr></table>
                                 </div>
+
+                                <div class=\"bemutatkozo\">
+                                <h2>Bemutatkozó:</h2>
+                                <p>{$sor['bemutatkozo']}</p>
                                 </div>";
                             }
                             //-----------------
-                $kimenet .= "
-                <div class=\"edzo-gombok\">
-                    {$FelkeresBtn}
-                    <button onclick=\"location.href='chat.php?chat={$sor['felhasznalo_id']}'\">Csevegés</button>
-                    <button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>
-                </div>";
+                if($_SESSION['p_tipus'] == "edző"){
+                    $kimenet .= "
+                    <div class=\"edzo-gombok\">
+                        {$FelkeresBtn}
+                        <button onclick=\"location.href='chat.php?chat={$sor['felhasznalo_id']}'\">Csevegés</button>";
+
+                        //Csak akkor tudjuk megnézni a kliens edzésterveit ha már van edző-kliens kapcsolat
+                        $sqlKliense = mysqli_query($dbconn, "SELECT elfogadva FROM edzoklienskapcs WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$valasztott}
+                        OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$valasztott}");
+                        if(mysqli_num_rows($sqlKliense) > 0){
+                            $kimenet .= "<button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>";
+                        }
+                        //--------
+                    
+                    $kimenet .= "</div>";
+                }
             }
         }
     }

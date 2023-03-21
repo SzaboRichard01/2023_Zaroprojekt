@@ -566,7 +566,7 @@ p span{
 .felh-nev button{
   font-size: 16px;
   min-width: 100px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 5px 0 0 0;
   margin: 0;
 }
 .fadatok .felh-nev .nev{
@@ -642,6 +642,19 @@ p span{
 }
 #etervBtn{
   padding: 10px;
+}
+
+
+
+
+#btnAdatokSz{
+  width: 50px;
+  min-width: unset;
+  padding: 10px;
+  border-radius: 0 5px 0 0;
+}
+#btnAdatokSz i{
+  font-size: 35px;
 }
 /* profilAdatok.php vége */
 

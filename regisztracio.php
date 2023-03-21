@@ -15,36 +15,49 @@ if(isset($_POST['reg'])){
     }
 
     if(empty($_POST['ptipus'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Nem választotta ki, hogy milyen típusú profilt szeretne!</strong></p>";
+        $hibak[] = "<p>Nem választotta ki, hogy milyen típusú profilt szeretne!</p>";
     }
     if(empty($_POST['neme'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a nemét!</strong></p>";
+        $hibak[] = "<p>Nem adta meg a nemét!</p>";
     }
     if(empty($_POST['vnev'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a vezetéknevét!</strong></p>";
+        $hibak[] = "<p>Nem adta meg a vezetéknevét!</p>";
     }
     if(empty($_POST['knev'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Nem adta meg a keresztnevét!</strong></p>";
+        $hibak[] = "<p>Nem adta meg a keresztnevét!</p>";
     }
     if(empty($_POST['email'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>E-mail cím megadása kötelező!</strong></p>";
+        $hibak[] = "<p>E-mail cím megadása kötelező!</p>";
     }
     if(empty($_POST['jelszo'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Jelszó megadása kötelező!</strong></p>";
+        $hibak[] = "<p>Jelszó megadása kötelező!</p>";
     }
     if($_POST['jelszo'] != $_POST['jelszo_megerosit'] && $_POST['jelszo_megerosit'] != ""){
-        $hibak[] = "<p style=\"color: red;\"><strong>A jelszó nem egyezik!</strong></p>";
+        $hibak[] = "<p>A jelszavak nem egyeznek!</p>";
     }
     if(empty($_POST['jelszo_megerosit'])){
-        $hibak[] = "<p style=\"color: red;\"><strong>Nem erősítette meg a jelszót!</strong></p>";
+        $hibak[] = "<p>Nem erősítette meg a jelszót!</p>";
+    }
+
+    if(isset($_POST['ptipus'])){
+        if($_POST['ptipus'] == "edző"){
+            if($_POST['bemutatkozo'] == ""){
+                $hibak[] = "<p>Edző profil esetén kötelező megadnia egy rövid bemutatkozót!</p>";
+            }else if(strlen($_POST['bemutatkozo']) < 50){
+                $hibak[] = "<p>A bemutatkozó túl rövid!</p>";
+            }
+            if($_POST['telefon'] == ""){
+                $hibak[] = "<p>Edző profil esetén kötelező megadnia a telefonszámát!</p>";
+            }
+        }
     }
 
     $mime = array("image/jpeg", "image/gif", "image/png", "image/jpg");
     if($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000){
-        $hibak[] = "<p style=\"color: red;\"><strong>A kép mérete nagyobb mint 2 MB!</strong></p>";
+        $hibak[] = "<p>A kép mérete nagyobb mint 2 MB!</p>";
     }
     if($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000 && !in_array($_FILES['foto']['type'], $mime)){
-        $hibak[] = "<p style=\"color: red;\"><strong>A kép formulátuma nem megfelelő!</strong></p>";
+        $hibak[] = "<p>A kép formulátuma nem megfelelő!</p>";
     }
 
     switch ($_FILES['foto']['type']) {
@@ -102,6 +115,20 @@ if(isset($_POST['reg'])){
     <link rel="shortcut icon" href="pics/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reg.css">
+
+    <link rel="stylesheet" href="app/redactor/redactor.css">
+
+    <script src="js/jquery-1.9.0.min.js"></script>
+    <script src="app/redactor/redactor.min.js"></script>
+    <script>
+        $(document).ready(
+            function() {
+                $('textarea#bemutatkozo').redactor({
+                    minHeight: 300
+                });
+            }
+        );
+    </script>
     <title>Regisztráció</title>
 </head>
 <body>
@@ -182,13 +209,24 @@ if(isset($_POST['reg'])){
             </div>
             
             <div class="mezo">
-                <label for="bemutatkozo">Rövid bemutatkozó: <i id="bemutatkozoIcon" class="fa fa-question-circle-o" aria-hidden="true"></i></label>
-                <p id="bemutatkozoPelda">Edző profil esetén tartalmazhatja: végzettséget, szakmai tapasztalatot...<br>
-                Kliens profil esetén: Elérendő cél, jelenlegi állapot, betegségek...</p>
+                <div class="tip">
+                    <label for="bemutatkozo">Rövid bemutatkozó:</label>
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Edző profil esetén (kötelező) tartalmazhatja: végzettséget, szakmai tapasztalatot...<br>
+                        Kliens profil esetén (választható): Elérendő cél, jelenlegi állapot, sérülések, betegségek...</span>
+                    </div>
+                </div>
                 <textarea name="bemutatkozo" id="bemutatkozo"></textarea>
             </div>
             <div class="mezo">
-                <label for="telefon">Telefonszám:</label>
+                <div class="tip">
+                    <label for="telefon">Telefonszám:</label>
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Csak edző profil esetén kötelező!</span>
+                    </div>
+                </div>
                 <input type="tel" name="telefon" id="telefon">
             </div>
             <em>A csillaggal * jelölt mezők kitöltése kötelező!</em>

@@ -29,8 +29,9 @@ if (!isset($_SESSION['felh_id'])) {
     //Saját profil felületének összeállítása a $kimenet változóba
     $kimenet = "
     <div class=\"felh-nev\">
-        <button onclick=\"location.href='kezdolap.php';\";><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
+        <button id=\"spBtnVissza\" onclick=\"location.href='kezdolap.php';\"; title=\"Vissza a kezdőlapra\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
         <p class=\"nev\">{$sor['vnev']} {$sor['knev']}</p>
+        <button id=\"btnAdatokSz\" onclick=\"location.href='muveletek/sAdatModosit.php'\" title=\"Adatok módosítása\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>
     </div>
     <div class=\"felh-adatok\">
         <div class=\"fadatok-pkep\">
@@ -59,12 +60,13 @@ if (!isset($_SESSION['felh_id'])) {
                     <th>Nem:</th>
                     <td>{$sor['nem']}</td>
                 </tr>";
-    //Csak akkor írja ki a Bemutatkozót, Telefonszámot ha a profil típusa edző
-    if($sor['profil_tipus'] == "edző"){
+    
+    //Ha a profil típusa kliens ellenőrizzük hogy van e megadva bemutatkozó szövege és telefonszáma
+    if($sor['profil_tipus'] == "kliens"){
         $kimenet .= "<tr>
-        <th>Telefon:</th>";
+            <th>Telefon:</th>";
 
-        $sor['telefon'] == "" ? $kimenet .= "<td>Nincs megadva</td>" : $kimenet .= "<td>{$sor['telefon']}</td>";
+            $sor['telefon'] == "" ? $kimenet .= "<td>Nincs megadva</td>" : $kimenet .= "<td>{$sor['telefon']}</td>";
 
         $kimenet .= "</tr>
         </table>
@@ -73,21 +75,26 @@ if (!isset($_SESSION['felh_id'])) {
         <div class=\"bemutatkozo\">
         <h2>Bemutatkozó:</h2>";
 
-        $sor['bemutatkozo'] == "" ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
+        strlen($sor['bemutatkozo']) < 50 ? $kimenet .= "<p>Nincs megadva</p>" : $kimenet .= "<p>{$sor['bemutatkozo']}</p>";
 
         $kimenet .= "</div>";
     }
     else{
-        $kimenet .= "</table>
+        $kimenet .= "<tr>
+            <th>Telefon:</th>
+            <td>{$sor['telefon']}</td>
+        </tr></table>
         </div>
+
+        <div class=\"bemutatkozo\">
+        <h2>Bemutatkozó:</h2>
+        <p>{$sor['bemutatkozo']}</p>
         </div>";
     }
-    //---------------------
+    //-----------------
     
             
     //Profilkép összeállítása
     $profilkep = "<img src=\"../pics/profile/" . $kep . "\" alt=\"\">";
-
-    //header("Location: ../sProfil.php");
 }
 ?>

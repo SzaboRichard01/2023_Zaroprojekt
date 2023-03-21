@@ -26,6 +26,14 @@ if (!isset($_SESSION['felh_id'])) {
 
     <main>
         <h1>Saját profil adatai</h1>
+        <div class="sikeres">
+            <?php
+                if(isset($_SESSION['sikAdatMod'])){
+                    print $_SESSION['sikAdatMod'];
+                    unset($_SESSION['sikAdatMod']);
+                }
+            ?>
+        </div>
         <!-- Saját profil adatainak megjelenítése a $kimenet változóból -->
         <div class="fadatok">
             <?php print($kimenet) ?>
