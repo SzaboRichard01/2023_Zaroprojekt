@@ -45,7 +45,7 @@
     
                 $tevKimenet .= "<div class=\"tev\" onclick=\"location.href='{$link}'\">
                     <p class=\"tdatum\">{$tDatum}</p>
-                    <p class=\"tleiras\">". shorter($tLeiras, 190) ."</p>
+                    <div class=\"tleiras\">". shorter(strip_tags($tLeiras), 190) ."</div>
                 </div>";
         }
     }

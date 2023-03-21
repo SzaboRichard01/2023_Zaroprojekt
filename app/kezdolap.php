@@ -68,9 +68,9 @@ if (!isset($_SESSION['felh_id'])) {
         
                 $tevTeljes = "<div class=\"tevTeljes\">
                     <p class=\"tdatum\">{$sTev['datum']}</p>
-                    <div class=\"tleiras\">
-                        <p>{$sTev['leiras']}</p>
-                    </div>
+                    <div class=\"tleiras\">".
+                        $sTev['leiras']
+                    ."</div>
                     <i class=\"fa fa-times bezar\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
                     <div class=\"tevTeljGombok\">
                         <button onclick=\"tevTejlTorles('{$sTev['datum']}', {$tevAzon})\" title=\"Törlés\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>
