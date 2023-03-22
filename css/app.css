@@ -1060,6 +1060,7 @@ h2{
   border-bottom: 5px solid var(--zold);
   border-radius: 20px;
   overflow-y: auto;
+  padding: 10px;
 }
 .meglevo .mkliens{
   display: flex;
@@ -1098,6 +1099,7 @@ h2{
   align-items: center;
   padding: 5px 5px 5px 0;
   justify-content: space-between;
+  transition: 0.2s;
 }
 .felkeresek .felkeres .felh p{
   color: white;
@@ -1109,7 +1111,7 @@ h2{
 .meglevo form{
   display: flex;
   flex-wrap: wrap;
-  margin: 0 10px;
+  margin: 10px auto;
 }
 
 .meglevo form #meglevoKer{
@@ -1125,7 +1127,7 @@ h2{
 }
 .felkeres:hover{
   color: var(--zold);
-  opacity: 0.7;
+  background-color: rgb(49, 49, 49);
 }
 .felkeres a:hover{
   color: var(--zold);
@@ -1142,7 +1144,7 @@ h2{
 .felkeresek form{
   width: 90%;
   display: flex;
-  margin: auto;
+  margin:  10px auto;
   flex-wrap: wrap;
 }
 
@@ -1572,4 +1574,9 @@ h2{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.nincsMF{
+  text-align: center;
+  margin-top: 10px;
 }

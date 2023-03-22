@@ -21,22 +21,28 @@ $sql = "SELECT kapcs_id, kuldo_az, fogado_az, felkeres_datuma, elfogadva,
     ORDER BY felkeres_datuma DESC";
 $eredmeny = mysqli_query($dbconn, $sql);
 $eFelkeres = "";
-while($sor = mysqli_fetch_assoc($eredmeny)){
-    $kuldoaz = $sor['kuldo_az'];
-    $teljesnev = "{$sor['vnev']} {$sor['knev']}";
-    $eFelkeres .= "
-    <div class=\"felkeres\">
-        <a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \" title=\"Profil megtekintése\">
-            <div class=\"felh\">
-                <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor['kep']. "\"></div>
-                <p>{$sor['vnev']} {$sor['knev']}</p>\n
+if(mysqli_num_rows($eredmeny) != 0){
+    while($sor = mysqli_fetch_assoc($eredmeny)){
+        $kuldoaz = $sor['kuldo_az'];
+        $teljesnev = "{$sor['vnev']} {$sor['knev']}";
+        $eFelkeres .= "
+        <div class=\"felkeres\">
+            <a href=\"profilAdatok.php?felhasznalo_id=" .$sor['felhasznalo_id']." \" title=\"Profil megtekintése\">
+                <div class=\"felh\">
+                    <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$sor['kep']. "\"></div>
+                    <p>{$sor['vnev']} {$sor['knev']}</p>\n
+                </div>
+            </a>
+            <div class=\"gombok\">
+                <button onclick=\"btnElfogad({$kuldoaz}, '{$teljesnev}')\">Elfogadás</button>
+                <button onclick=\"btnElutasit({$kuldoaz}, '{$teljesnev}')\">Elutasítás</button>
             </div>
-        </a>
-        <div class=\"gombok\">
-            <button onclick=\"btnElfogad({$kuldoaz}, '{$teljesnev}')\">Elfogadás</button>
-            <button onclick=\"btnElutasit({$kuldoaz}, '{$teljesnev}')\">Elutasítás</button>
-        </div>
-    </div>";
+        </div>";
+    }
 }
+else{
+    $eFelkeres .= "<p class=\"nincsMF\">Nincsenek felkérések!</p>";
+}
+
 print($eFelkeres);
 ?>
