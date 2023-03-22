@@ -77,10 +77,21 @@ function btnElutasit(az, tNev) {
 
 //Edzésterv törlése
 function btnEtervTorles(nev, etneve, etervid){
-  if(confirm("Biztosan törölni szeretné "+ nev +" kliensének " + etneve+" nevű edzéstervét?") == true){
-    location.href = "muveletek/edzestervTorles.php?edzesterv=" + etervid;
-  }
+  Swal.fire({
+    title: 'Biztosan törölni szeretné?',
+    text: "Ezzel törlődik "+ nev +" kliensének "+ etneve +" nevű edzésterve! Ezt a műveletet nem tudja majd visszavonni!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#55be3b',
+    cancelButtonColor: '#080B0C',
+    confirmButtonText: 'Törlés'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href = "muveletek/edzestervTorles.php?edzesterv=" + etervid;
+    }
+  })
 }
+//----------
 
 function tevTeljesBezar(){
   let tevTeljes = document.querySelector(".tevTeljes");

@@ -207,6 +207,7 @@ if(isset($_POST['mentes'])){
 </head>
 <body>
     <main>
+        <button id="SaModVissza" onclick="location.href='../sProfil.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
         <div class="hibauzenet">
             <?php
                 if (isset($kimenet)) {

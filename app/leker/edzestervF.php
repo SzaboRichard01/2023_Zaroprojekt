@@ -13,8 +13,7 @@ if($_SESSION['p_tipus'] == "edző"){
             $kifejezes != "" ? $felulet .= "<button id=\"kereses-vissza\" class=\"kereses-gomb\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>" : "";
             $kifejezes != "" ? $felulet .= "<p>Találatok <span>\"{$kifejezes}\"</span> kifejezésre:</p>" : '';
 
-    $felulet .= "</form>
-    ";
+    $felulet .= "</form>";
 
         $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM edzoklienskapcs
                 WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";

@@ -17,6 +17,9 @@ main{
     align-items: center;
     margin: 20px 0;
 }
+input:focus{
+    outline: none;
+}
 .mezokep{
     width: 90%;
     display: flex;
@@ -39,15 +42,15 @@ main .mezo #rendben{
 }
 .mezo select{
     border: 1px solid  var(--zold);
-    background-color: var(--szurke);
     color: var(--zold);
+    font-size: 16px;
+    padding: 5px;
 }
 .mezo select{
     cursor: pointer;
 }
 .mezo option{
     border: 1px solid  var(--zold);
-    background-color: var(--szurke);
     color: var(--zold);
 }
 main #reg{
@@ -57,12 +60,10 @@ main #reg{
     margin: 5px 0 10px 0;
     border-radius: 5px;
     border: 1px solid  var(--zold);
-    background-color: var(--szurke);
     color: var(--zold);
     margin-top: 15px;
 }
 main #reg:hover{
-    background-color: #a8a8a8;
     cursor: pointer;
     color: black;
 }
@@ -80,9 +81,9 @@ main .mezo #rendben:hover{
     font-size: 16px;
     margin: 5px 0 10px 0;
     border-radius: 5px;
-    border: 1px solid  var(--zold);
-    background-color: var(--szurke);
     color: var(--zold);
+    padding: 5px;
+    border: 1px solid rgb(180, 180, 180);
 }
 
 .sikeres{

@@ -25,7 +25,7 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <h1>Saját profil adatai</h1>
+        <h1 class="sprofh">Saját profil adatai</h1>
         <div class="sikeres">
             <?php
                 if(isset($_SESSION['sikAdatMod'])){

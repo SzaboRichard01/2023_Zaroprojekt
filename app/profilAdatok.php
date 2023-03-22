@@ -93,7 +93,7 @@
                                 </div>";
                             }
                             //-----------------
-                if($_SESSION['p_tipus'] == "edző"){
+
                     $kimenet .= "
                     <div class=\"edzo-gombok\">
                         {$FelkeresBtn}
@@ -102,13 +102,12 @@
                         //Csak akkor tudjuk megnézni a kliens edzésterveit ha már van edző-kliens kapcsolat
                         $sqlKliense = mysqli_query($dbconn, "SELECT elfogadva FROM edzoklienskapcs WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$valasztott}
                         OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$valasztott}");
-                        if(mysqli_num_rows($sqlKliense) > 0){
+                        if($_SESSION['p_tipus'] == "edző" && mysqli_num_rows($sqlKliense) > 0){
                             $kimenet .= "<button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>";
                         }
                         //--------
                     
                     $kimenet .= "</div>";
-                }
             }
         }
     }
@@ -128,7 +127,7 @@
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main>
-        <h1>Profil adatai</h1>
+        <h1 class="sprofh">Profil adatai</h1>
         <div class="fadatok">
             <?php print($kimenet) ?>
         </div>

@@ -38,7 +38,13 @@ button:disabled{
 }
 
 input[type=submit]{
-  margin: 10px 0 0 0;
+  margin-top: 10px;
+}
+input{
+  border: 1px solid rgb(180, 180, 180);
+}
+input:focus{
+  outline: none;
 }
 
 /* Felső Navbar */
@@ -232,6 +238,7 @@ input[type=submit]{
   white-space: nowrap;
   pointer-events: none;
   transition: 0s;
+  width: fit-content;
 }
 .sidebar li:hover .tooltip{
   opacity: 1;
@@ -345,6 +352,18 @@ p span{
 .felh-lista form{
   width: 90%;
   margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.felh-lista form .kereses-gomb{
+  margin: 0;
+  width: 80px;
+  border-radius: 0;
+}
+.felh-lista form p{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 .felh-lista h2{
   margin: auto;
@@ -370,17 +389,14 @@ p span{
 }
 #kifejezes, #keresett, #meglevoKer{
   padding: 5px;
-  width: calc(100% - 85px);
+  width: calc(100% - 80px);
+  margin: 0;
 }
 #kereses-vissza{
   margin-top: 3px;
 }
 .uj_felh form{
   margin: 5px 0;
-}
-.kereses-gomb{
-  padding: 5px;
-  width: 80px;
 }
 .pkep-meret{
   height: 50px;
@@ -1077,12 +1093,6 @@ h2{
   margin-bottom: 20px;
 }
 
-.uj_felh form .kereses-gomb:hover{
-  color: var(--zold);
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .felkeres{
   display: flex;
   align-items: center;
@@ -1096,21 +1106,16 @@ h2{
   display: flex;
   justify-content: flex-end;
 }
+.meglevo form{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
 
 .meglevo form #meglevoKer{
   background-color: #d7d7d7;
   border: 1px solid var(--fekete);
   border-radius: 0;
-}
-
-.meglevo form .kereses-gomb{
-  background-color: #d7d7d7;
-  border: 1px solid var(--fekete);
-  border-radius: 0;
-}
-
-.meglevo form .kereses-gomb:hover{
-  color: var(--zold);
 }
 
 .felkeres a{
@@ -1135,17 +1140,10 @@ h2{
   min-width: 150px;
 }
 .felkeresek form{
-  width: 100%;
+  width: 90%;
   display: flex;
-  margin: 0;
+  margin: auto;
   flex-wrap: wrap;
-}
-.felkeresek form .kereses-gomb{
-  width: 80px;
-  margin: 0;
-  background-color: #d7d7d7;
-  border: 1px solid var(--fekete);
-  border-radius: 0;
 }
 
 .felkeresek form #FelKeresett{
@@ -1153,9 +1151,10 @@ h2{
   border-radius: 0;
   width: calc(100% - 80px);
 }
-
-.felkeresek form .kereses-gomb:hover{
-  color: var(--zold);
+.felkeresek .kereses-gomb, .meglevo .kereses-gomb{
+  margin: 0;
+  width: 80px;
+  border-radius: 0;
 }
 
 @media(max-width: 600px){
@@ -1445,6 +1444,26 @@ h2{
   overflow-y: auto;
   overflow-x: hidden;
 }
+.sKliensekL form{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sKliensekL form #kifejezes,
+.felh-lista form #kifejezes,
+.meglevo form #keresett,
+.felkeresek form #FelKeresett{
+  border-radius: 15px 0 0 15px;
+  padding: 10px;
+  font-size: 14px;
+}
+.sKliensekL form .kereses-gomb,
+.felh-lista form .kereses-gomb,
+.meglevo form .kereses-gomb,
+.felkeresek form .kereses-gomb{
+  margin: 0;
+  border-radius: 0 15px 15px 0;
+}
 .kliens{
   display: flex;
   flex-direction: row;
@@ -1511,4 +1530,46 @@ h2{
 }
 .bemutatkozo p{
   word-wrap: break-word;
+}
+
+.sprofh{
+  margin-left: 10px;
+}
+
+#SaModVissza, #tevModBtnV{
+  position: fixed;
+  left: 10px;
+  top: 0;
+}
+
+.eTervSegitseg{
+  width: 80%;
+  margin: 30px 0;
+  border-bottom: 3px solid var(--zold);
+  border-left: 3px solid var(--fekete);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 20px;
+  min-width: 350px;
+}
+.etSegitsegC{
+  color: var(--zold);
+}
+.eTervSegitseg p{
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.eTervSegitseg ol{
+  padding: 0 20px;
+  width: 60%;
+  min-width: 300px;
+}
+.etervKozep{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

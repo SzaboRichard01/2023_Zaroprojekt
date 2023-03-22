@@ -47,7 +47,7 @@ if(isset($_POST['modosit'])){
 <body>
     <main>
         <h2>Tevékenység módosítása</h2>
-        <button onclick="location.href='../kezdolap.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
+        <button id="tevModBtnV" onclick="location.href='../kezdolap.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza a kezdőlapra</button>
         <form method="post">
             <div class="mezo">
                 <label for="dat">Dátum:</label>

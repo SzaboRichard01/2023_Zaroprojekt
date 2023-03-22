@@ -8,7 +8,7 @@ $FelkKereso = "<form method=\"post\">
         <input type=\"search\" name=\"FelKeresett\" id=\"FelKeresett\" placeholder=\"Írjon be egy nevet a kereséshez\">
         <input class=\"kereses-gomb\" type=\"submit\" value=\"Keresés\">";
         
-        $FelKeresett != '' ? $FelkKereso .= ("<button id='kereses-vissza' class='kereses-gomb' onclick='$FelKeresett = ''><i class='fa fa-arrow-left' aria-hidden='true'></i> Vissza</button>") : '';
+        $FelKeresett != '' ? $FelkKereso .= ("<button id='kereses-vissza' onclick='$FelKeresett = ''><i class='fa fa-arrow-left' aria-hidden='true'></i> Vissza</button>") : '';
     $FelkKereso .= "</form>";
 print($FelkKereso);
 
