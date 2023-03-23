@@ -10,12 +10,12 @@ else{
     $felhTipus = "edző";
 }
 
-$fosszes = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
+$fosszes = mysqli_query($dbconn, "SELECT felhasznalo_id, vnev, knev, kep FROM felhasznalok WHERE profil_tipus = '{$felhTipus}' AND CONCAT(vnev, ' ', knev) LIKE '%{$kifejezes}%'");
 
 //Összes megfelelő típusú felhasználó listájának összeállítása a $kimenet változóba
 $kimenet = "";
 while($felh = mysqli_fetch_assoc($fosszes)){
-    $fEll = "SELECT * FROM edzoklienskapcs
+    $fEll = "SELECT elfogadva FROM edzoklienskapcs
             WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felh['felhasznalo_id']}
             OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felh['felhasznalo_id']}";
     $fEllEredmeny = mysqli_query($dbconn, $fEll);
@@ -26,8 +26,6 @@ while($felh = mysqli_fetch_assoc($fosszes)){
         $fvan = 1;
         $felfogadva = $fEllSor['elfogadva'];
     }
-
-
 
 
     $kimenet .= "<div class=\"felhKeret\">
@@ -52,11 +50,6 @@ while($felh = mysqli_fetch_assoc($fosszes)){
 
     $kimenet .= "</p>
     </div></a></div>";
-
-    
-
-    
 }
-
 //------
 ?>
