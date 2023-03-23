@@ -92,11 +92,16 @@ if (!isset($_SESSION['felh_id'])) {
             </div>
             <div class="right_side_pannel">
                 <div class="header">
-                <div class="prof" onclick="location.href='sProfil.php';">
                     <?php
-                    isset($_GET['chat']) ? print "<div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div><p>{$Vvnev} {$Vknev}</p>" : '';
+                    if(isset($_GET['chat'])){
+                        $profil = "<div class=\"prof\" onclick=\"location.href='profilAdatok.php?felhasznalo_id={$_GET['chat']}';\">";
+
+                        isset($_GET['chat']) ? $profil .= "<div class=\"pkep\"><img src=\"../pics/profile/{$Vkep}\"></div><p>{$Vvnev} {$Vknev}</p>" : '';
+
+                        $profil .= "</div>";
+                        print $profil;
+                    }
                     ?>
-                </div>
                 </div>
                 <div class="container">
                     <div class="chatUzenetek">

@@ -14,7 +14,6 @@ if(isset($_POST['modosit'])){
     $sqlUpdate = mysqli_query($dbconn, "UPDATE tevekenysegek SET datum = '{$pdatum}', leiras = '{$pleiras}' WHERE tev_id = {$modID}");
     header("Location: ../kezdolap.php");
 }
-
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>
