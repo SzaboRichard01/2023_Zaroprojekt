@@ -28,7 +28,7 @@ if(mysqli_num_rows($eredmeny) != 0){
             $sql2 = "SELECT * FROM edzoklienskapcs
                     INNER JOIN felhasznalok ON felhasznalo_id = fogado_az
                     WHERE kuldo_az = {$felh_id} AND fogado_az = {$fogadoaz}
-                    AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'";
+                    AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%' AND elfogadva = 1";
             $eredmeny2 = mysqli_query($dbconn, $sql2);
             $sor2 = mysqli_fetch_assoc($eredmeny2);
             
@@ -53,7 +53,7 @@ if(mysqli_num_rows($eredmeny) != 0){
             $sql2 = "SELECT * FROM edzoklienskapcs
             INNER JOIN felhasznalok ON felhasznalo_id = kuldo_az
             WHERE fogado_az = {$felh_id} AND kuldo_az = {$kuldoaz}
-            AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%'";
+            AND CONCAT(vnev, ' ', knev) LIKE '%{$keresett}%' AND elfogadva = 1";
             $eredmeny2 = mysqli_query($dbconn, $sql2);
             $sor2 = mysqli_fetch_assoc($eredmeny2);
             if($sor2 > 1){
