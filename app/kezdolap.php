@@ -60,22 +60,24 @@ if (!isset($_SESSION['felh_id'])) {
 
                 if(isset($_GET['tev'])){
                     $tevAzon =  mysqli_real_escape_string($dbconn, $_GET['tev']);
-                    $valTevsql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = '{$tevAzon}'");
+                    $valTevsql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = '{$tevAzon}' AND felhasznalo_id = {$_SESSION['felh_id']}");
                     $sTev = mysqli_fetch_assoc($valTevsql);
-            
-                    $tevTeljes = "<div class=\"tevTeljes\">
+                    
+                    if(mysqli_num_rows($valTevsql) != 0){
+                        $tevTeljes = "<div class=\"tevTeljes\">
                         <p class=\"tdatum\">{$sTev['datum']}</p>
-                        <div class=\"tleiras\">".
-                            $sTev['leiras']
-                        ."</div>
-                        <i class=\"fa fa-times bezar\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
-                        <div class=\"tevTeljGombok\">
-                            <button onclick=\"tevTejlTorles('{$sTev['datum']}', {$tevAzon})\" title=\"Törlés\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>
-                            <button title=\"Módosítás\" onclick=\"location.href='muveletek/tevModositas.php?tevid={$tevAzon}'\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>
-                        </div>
-                    </div>";
-    
-                    print $tevTeljes;
+                            <div class=\"tleiras\">".
+                                $sTev['leiras']
+                            ."</div>
+                            <i class=\"fa fa-times bezar\" aria-hidden=\"true\" onclick=\"tevTeljesBezar()\" title=\"Bezárás\"></i>
+                            <div class=\"tevTeljGombok\">
+                                <button onclick=\"tevTejlTorles('{$sTev['datum']}', {$tevAzon})\" title=\"Törlés\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>
+                                <button title=\"Módosítás\" onclick=\"location.href='muveletek/tevModositas.php?tevid={$tevAzon}'\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>
+                            </div>
+                        </div>";
+                        
+                        print $tevTeljes;
+                    }
                 }
             }
         ?>
