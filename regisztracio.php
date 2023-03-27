@@ -16,6 +16,16 @@ if(isset($_POST['reg'])){
         $telefon = strip_tags($_POST['telefon']);
     }
 
+    if(isset($_POST['email'])){
+        $sqlVan = mysqli_query($dbconn, "SELECT email FROM felhasznalok WHERE email = '{$_POST['email']}'");
+        if(mysqli_num_rows($sqlVan) != 0){
+            $VanIlyen = true;
+        }
+    }
+
+    if(isset($VanIlyen)){
+        $hibak[] = "Ehhez az E-mail címhez már tartozik egy felhasználó!";
+    }
     if(empty($_POST['ptipus'])){
         $hibak[] = "<p>Nem választotta ki, hogy milyen típusú profilt szeretne!</p>";
     }
@@ -82,7 +92,6 @@ if(isset($_POST['reg'])){
     else{
         $foto = date("U").$kit;
     }
-    
 
     if(isset($hibak)){
         $kimenet = "<ul\n>";
