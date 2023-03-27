@@ -1,18 +1,22 @@
 <?php
-require("../kapcsolat.php");
-$modID = mysqli_real_escape_string($dbconn, $_GET['tevid']);
+if(!isset($_GET['tevid'])){
+    header("Location: ../hiba.html");
+} else{
+    require("../kapcsolat.php");
+    $modID = mysqli_real_escape_string($dbconn, $_GET['tevid']);
 
-$sql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = {$modID}");
-$sor = mysqli_fetch_assoc($sql);
-$kDatum = $sor['datum'];
-$kLeiras = $sor['leiras'];
+    $sql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = {$modID}");
+    $sor = mysqli_fetch_assoc($sql);
+    $kDatum = $sor['datum'];
+    $kLeiras = $sor['leiras'];
 
-if(isset($_POST['modosit'])){
-    $pdatum = $_POST['dat'];
-    $pleiras = $_POST['leir'];
+    if(isset($_POST['modosit'])){
+        $pdatum = $_POST['dat'];
+        $pleiras = $_POST['leir'];
 
-    $sqlUpdate = mysqli_query($dbconn, "UPDATE tevekenysegek SET datum = '{$pdatum}', leiras = '{$pleiras}' WHERE tev_id = {$modID}");
-    header("Location: ../kezdolap.php");
+        $sqlUpdate = mysqli_query($dbconn, "UPDATE tevekenysegek SET datum = '{$pdatum}', leiras = '{$pleiras}' WHERE tev_id = {$modID}");
+        header("Location: ../kezdolap.php");
+    }
 }
 ?><!DOCTYPE html>
 <html lang="hu">

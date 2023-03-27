@@ -1,6 +1,5 @@
 <?php
 session_start();
-require("kapcsolat.php");
 //Lapvédelem ha senki nincs bejelentkezve vagy
 //ha a bejelentkezett profil típusa kliens
 //akkor nem férhetünk hozzá a kliens.php oldalhoz
@@ -8,6 +7,8 @@ if (!isset($_SESSION['felh_id']) || $_SESSION['p_tipus'] == "kliens") {
     header("Location: ../belepes.php");
     exit();
 } else {
+    define('eleres', true);
+    require("kapcsolat.php");
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
 

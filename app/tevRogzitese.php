@@ -1,7 +1,7 @@
 <?php
 session_start();
 require("kapcsolat.php");
-
+define('eleres', true);
 //Saját profil adatainak lekérése
 require("leker/sajatProfil.php");
 

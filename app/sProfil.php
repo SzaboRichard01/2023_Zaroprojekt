@@ -5,6 +5,7 @@ if (!isset($_SESSION['felh_id'])) {
     header("Location: ../belepes.php");
     exit();
 } else {
+    define('eleres', true);
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
 }

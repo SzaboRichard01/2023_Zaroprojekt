@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('eleres', true);
 require("kapcsolat.php");
 
 require("leker/sajatProfil.php");
