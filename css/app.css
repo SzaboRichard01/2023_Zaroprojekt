@@ -44,7 +44,7 @@ input{
   border: 1px solid rgb(180, 180, 180);
 }
 input:focus{
-  outline: none;
+  outline: 1px solid var(--zold);
 }
 
 /* Felső Navbar */

@@ -18,7 +18,7 @@ main{
     margin: 20px 0;
 }
 input:focus{
-    outline: none;
+    outline: 2px solid var(--zold);
 }
 .mezokep{
     width: 90%;
@@ -39,10 +39,14 @@ form{
 }
 main .mezo #rendben{
     margin-top: 15px;
+    background-color: var(--zold);
+    color: black;
+    border: 0;
+    border: 1px solid  var(--zold);
 }
 .mezo select{
-    border: 1px solid  var(--zold);
-    color: var(--zold);
+    border: 1px solid black;
+    color: black;
     font-size: 16px;
     padding: 5px;
 }
@@ -51,24 +55,28 @@ main .mezo #rendben{
 }
 .mezo option{
     border: 1px solid  var(--zold);
-    color: var(--zold);
+    color: black;
+}
+.mezokep #foto{
+    font-size: 14px;
+    margin: 5px 0 10px 0;
 }
 main #reg{
     width: 100%;
     height: 30px;
     font-size: 16px;
-    margin: 5px 0 10px 0;
+    margin: 15px 0 10px 0;
     border-radius: 5px;
     border: 1px solid  var(--zold);
-    color: var(--zold);
-    margin-top: 15px;
+    color: black;
+    background-color: var(--zold);
 }
 main #reg:hover{
     cursor: pointer;
-    color: black;
+    background-color: rgb(79, 119, 79);
 }
 main .mezo #rendben:hover{
-    background-color: #a8a8a8;
+    background-color: rgb(79, 119, 79);
     cursor: pointer;
     color: black;
 }

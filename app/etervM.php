@@ -17,44 +17,49 @@ function shorter($text, $chars_limit){
 
 //Lekérdezendő kliens adatai
 $kliensID = $_GET['kliens'];
-$kliensneve = mysqli_query($dbconn, "SELECT vnev, knev FROM felhasznalok WHERE felhasznalo_id = {$kliensID}");
-$kneve = mysqli_fetch_assoc($kliensneve);
-$kVnev = $kneve['vnev'];
-$kKnev = $kneve['knev'];
-//--------
+
+$sqlKaEll = mysqli_query($dbconn, "SELECT kapcs_id FROM edzoklienskapcs WHERE kuldo_az = '{$kliensID}' AND fogado_az = {$_SESSION['felh_id']} AND elfogadva = 1
+OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']} AND elfogadva = 1");
+if(mysqli_num_rows($sqlKaEll) != 0){
+    $kliensneve = mysqli_query($dbconn, "SELECT vnev, knev FROM felhasznalok WHERE felhasznalo_id = {$kliensID}");
+    $kneve = mysqli_fetch_assoc($kliensneve);
+    $kVnev = $kneve['vnev'];
+    $kKnev = $kneve['knev'];
+    //--------
 
 
-$eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
-FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
-WHERE kuldo_az = '{$kliensID}' AND fogado_az = {$_SESSION['felh_id']}
-OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']}");
-if(mysqli_num_rows($eredmeny) != 0){
-    $etervKi = "<div class=\"edzestervek\">";
-    while($sor = mysqli_fetch_assoc($eredmeny)){
-        $etID = $sor['terv_id'];
+    $eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
+    FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
+    WHERE kuldo_az = '{$kliensID}' AND fogado_az = {$_SESSION['felh_id']}
+    OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']}");
+    if(mysqli_num_rows($eredmeny) != 0){
+        $etervKi = "<div class=\"edzestervek\">";
+        while($sor = mysqli_fetch_assoc($eredmeny)){
+            $etID = $sor['terv_id'];
 
-        $etervKi .= "<a href=\"teljeset.php?edzesterv=". $etID ."\"><div class=\"edzesterv\">
-            <div class=\"etneve\">
-                <p>Edzésterv neve</p>
-                <h3>{$sor['neve']}</h3>
-            </div>
-            <div class=\"etleirasa\">
-                <p>Leírás<br>". shorter(strip_tags($sor['leiras']), 150)."</p>
-            </div>
-            <div class=\"etkitol\">
-                <p>Kliens neve</p>
-                <h3>{$kVnev} {$kKnev}</h3>
-            </div>
-        </div></a>";
+            $etervKi .= "<a href=\"teljeset.php?edzesterv=". $etID ."\"><div class=\"edzesterv\">
+                <div class=\"etneve\">
+                    <p>Edzésterv neve</p>
+                    <h3>{$sor['neve']}</h3>
+                </div>
+                <div class=\"etleirasa\">
+                    <p>Leírás<br>". shorter(strip_tags($sor['leiras']), 150)."</p>
+                </div>
+                <div class=\"etkitol\">
+                    <p>Kliens neve</p>
+                    <h3>{$kVnev} {$kKnev}</h3>
+                </div>
+            </div></a>";
+        }
+        $etervKi .= "</div>";
     }
-    $etervKi .= "</div>";
+    else{
+        $etervKi = "Ennek a kliensnek még nincs edzésterve!";
+    }
 }
 else{
-    $etervKi = "Ennek a kliensnek még nincs edzésterve!";
+    header("Location: hiba.html");
 }
-
-
-
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>
