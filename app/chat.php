@@ -41,19 +41,25 @@ if (!isset($_SESSION['felh_id'])) {
 
     //Chat rész
     if (isset($_GET['chat'])) {
-        $sqlValP = mysqli_query($dbconn, "SELECT vnev, knev, kep FROM felhasznalok WHERE felhasznalo_id = {$_GET['chat']}");
+        $sqlValP = mysqli_query($dbconn, "SELECT vnev, knev, kep, profil_tipus FROM felhasznalok WHERE felhasznalo_id = {$_GET['chat']}");
         $ValP = mysqli_fetch_assoc($sqlValP);
         $Vvnev = $ValP['vnev'];
         $Vknev = $ValP['knev'];
         $Vkep = $ValP['kep'];
+        $Vptipus = $ValP['profil_tipus'];
         
-        $_SESSION['chataz'] = $_GET['chat'];
-        $fogadoAz = $_GET['chat'];
-        if(isset($_POST['ChatUzenet']) && $_POST['szoveg'] != ""){
-            $mikor = date("Y-m-d H:i:s");
-            $uzenet = $_POST['szoveg'];
-            $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenetek (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
+        if($_SESSION['p_tipus'] == "edző" && $Vptipus == "kliens" || $_SESSION['p_tipus'] == "kliens" && $Vptipus == "edző"){
+            $_SESSION['chataz'] = $_GET['chat'];
+            $fogadoAz = $_GET['chat'];
+            if(isset($_POST['ChatUzenet']) && $_POST['szoveg'] != ""){
+                $mikor = date("Y-m-d H:i:s");
+                $uzenet = $_POST['szoveg'];
+                $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenetek (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
+            }
+        } else{
+            header("Location: hiba.html");
         }
+
     }
     //Chat rész vége
 }
