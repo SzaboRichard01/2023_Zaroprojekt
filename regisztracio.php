@@ -8,7 +8,9 @@ if(isset($_POST['reg'])){
         $vnev = strip_tags(ucfirst($_POST['vnev']));
         $knev = strip_tags(ucfirst($_POST['knev']));
         $email = strip_tags(strtolower($_POST['email']));
+
         $jelszo = strip_tags($_POST['jelszo']);
+        $hash = password_hash($jelszo, PASSWORD_DEFAULT); 
 
         $bemutatkozo = $_POST['bemutatkozo'];
         $telefon = strip_tags($_POST['telefon']);
@@ -93,7 +95,7 @@ if(isset($_POST['reg'])){
         $sql = "INSERT INTO felhasznalok
                 (vnev, knev, email, jelszo, profil_tipus, kep, nem, bemutatkozo, telefon)
                 VALUES
-                ('{$vnev}', '{$knev}', '{$email}', '{$jelszo}', '{$tipus}', '{$foto}', '{$nem}', '$bemutatkozo', '$telefon')";
+                ('{$vnev}', '{$knev}', '{$email}', '{$hash}', '{$tipus}', '{$foto}', '{$nem}', '$bemutatkozo', '$telefon')";
         mysqli_query($dbconn, $sql);
 
         move_uploaded_file($_FILES['foto']['tmp_name'], "pics/profile/{$foto}");

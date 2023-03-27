@@ -14,20 +14,26 @@
             $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
         }
         else{
-            $sql = "SELECT felhasznalo_id, profil_tipus
+            $sql = "SELECT felhasznalo_id, profil_tipus, jelszo
                     FROM felhasznalok
-                    WHERE email = '{$email}'
-                    AND jelszo = '{$jelszo}'";
+                    WHERE email = '{$email}'";
             $eredmeny = mysqli_query($dbconn, $sql);
             $sor = mysqli_fetch_assoc($eredmeny);
 
-            if(mysqli_num_rows($eredmeny) == 1){
-                $_SESSION['felh_id'] = $sor['felhasznalo_id'];
-                $_SESSION['p_tipus'] = $sor['profil_tipus'];
-                header("Location: app/kezdolap.php");
-            } else{
+            if(password_verify($jelszo, $sor['jelszo'])){
+                if(mysqli_num_rows($eredmeny) == 1){
+                    $_SESSION['felh_id'] = $sor['felhasznalo_id'];
+                    $_SESSION['p_tipus'] = $sor['profil_tipus'];
+                    header("Location: app/kezdolap.php");
+                } else{
+                    $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
+                }
+            }
+            else{
                 $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
             }
+
+            
         }
 
     }
