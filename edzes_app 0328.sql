@@ -136,7 +136,7 @@ CREATE TABLE `terv` (
   `terv_id` int(11) NOT NULL,
   `neve` varchar(40) NOT NULL,
   `leiras` text DEFAULT NULL,
-  `kapcs_id` int(255) NOT NULL
+  `kapcs_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
