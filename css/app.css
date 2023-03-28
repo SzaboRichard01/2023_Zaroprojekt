@@ -944,7 +944,10 @@ p span{
   align-items: center;
 }
 
-@media (max-width: 794px) {
+@media (max-width: 810px) {
+  .chatMain{
+    margin-top: 70px;
+  }
   .left_side_pannel{
     height: calc(20vh);
     margin-bottom: 10px;

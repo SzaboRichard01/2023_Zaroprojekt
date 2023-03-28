@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 27. 11:22
+-- Létrehozás ideje: 2023. Már 28. 13:54
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.1.12
 
@@ -39,10 +39,8 @@ CREATE TABLE `edzestervek` (
 --
 
 INSERT INTO `edzestervek` (`edzes_id`, `nap`, `edzesterv`, `terv_id`) VALUES
-(19, 'Hétfő', '<p><table><thead><tr><td>Valami 11111111111111111111111111111111111111</td><td>teszt </td><td>pelda </td></tr><tr><td>1</td><td>3</td><td>5</td></tr><tr><td>2</td><td>4</td><td>6</td></tr></thead></table>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p><p>ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p><p>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff<br></p>', 17),
-(22, 'hétfő', '<p>gfgdfgdf<br></p>', 20),
-(23, 'ljkljk', '<p>jlkljk</p>', 21),
-(24, 'kjhkh', '<p>khjkhj</p>', 22);
+(27, 'Hétfő', '<p>dsdsa</p>', 24),
+(28, 'fdsf', '<p>sdfsd</p>', 24);
 
 -- --------------------------------------------------------
 
@@ -64,11 +62,11 @@ CREATE TABLE `edzoklienskapcs` (
 --
 
 INSERT INTO `edzoklienskapcs` (`kapcs_id`, `kuldo_az`, `fogado_az`, `elfogadva`, `felkeres_datuma`, `kapcs_kezdete`) VALUES
-(1, 3, 1, 1, '2023-03-17 12:12:55', '2023-03-17 12:13:09'),
 (2, 1, 4, 1, '2023-03-21 09:15:05', '2023-03-21 09:15:50'),
-(5, 6, 1, 1, '2023-03-22 01:01:25', '2023-03-24 09:36:12'),
-(8, 1, 7, 0, '2023-03-24 09:37:19', '0000-00-00 00:00:00'),
-(9, 5, 7, 1, '2023-03-24 11:15:29', '2023-03-24 11:15:36');
+(19, 3, 2, 0, '2023-03-28 09:50:48', '0000-00-00 00:00:00'),
+(20, 3, 5, 1, '2023-03-28 09:50:54', '2023-03-28 09:51:19'),
+(21, 5, 4, 0, '2023-03-28 10:59:43', '0000-00-00 00:00:00'),
+(22, 3, 1, 1, '2023-03-28 11:29:06', '2023-03-28 11:29:40');
 
 -- --------------------------------------------------------
 
@@ -88,10 +86,7 @@ CREATE TABLE `etrendek` (
 --
 
 INSERT INTO `etrendek` (`etrend_id`, `nap`, `etrend`, `terv_id`) VALUES
-(18, 'Szerda', '<p><table><thead><tr><td>Valami 11111111111111111111111111111111111111</td><td>teszt </td><td>pelda </td></tr><tr><td>1</td><td>3</td><td>5</td></tr><tr><td>2</td><td>4</td><td>6</td></tr></thead></table>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p><p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p><p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb<br></p>', 17),
-(21, 'Hétfő', '<p>jhgjghjhg<br></p>', 20),
-(22, 'ljkljkl', '<p>ljkljkljk</p>', 21),
-(23, 'khjkhj', '<p>khjkhj</p>', 22);
+(25, 'hgfhgf', '<p>hgfhfg</p>', 24);
 
 -- --------------------------------------------------------
 
@@ -119,12 +114,9 @@ CREATE TABLE `felhasznalok` (
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `vnev`, `knev`, `email`, `jelszo`, `profil_tipus`, `kep`, `nem`, `bemutatkozo`, `telefon`) VALUES
 (1, 'Szabó', 'Richárd', 'valami@gmail.com', '$2y$10$8xK7nlP2Zx80F3LXdPxVYuDL5C8JTVbl9bHWXU67GKlVpQE1Og9vW', 'edző', '1679050736.jpeg', 'férfi', '', ''),
 (2, 'Híves', 'Sebastian', 'sebihives2001@gmail.com', '$2y$10$cW8YiByeMP.Mszhw1V9qV.5OalY9HTJCxoprnL4XrXbDhrl8K85g2', 'edző', 'nincskep.png', 'férfi', '11111111111111111111111111111111111111111111111111111111', '06201234567'),
-(3, 'Teszt', 'Kliens', 'kliens@gmail.com', '$2y$10$SzSPrx2kJmrjt5lpZrHcSeqQrj1P34gkZOu7Y5ay8vJfxgoQeWvpq', 'kliens', '1679397111.jpeg', 'férfi', '<p>gffffffffffffffffffffffffffffffffffffffffffff<span style=\"background-color: rgb(192, 80, 77);\">ffffffffffffffffffffffffffffffffffffffffff</span>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd</p>', '06201234567'),
+(3, 'Teszt', 'Kliens', 'kliens@gmail.com', '$2y$10$hDdzwqWmsmTjwVBzvBJgOO3RG4sWm6b4hCLD3U7qUIhT0.yVPUIOq', 'kliens', '1679984712.jpeg', 'férfi', '<p>gffffffffffffffffffffffffffffffffffffffffffff<span style=\"background-color: rgb(192, 80, 77);\">ffffffffffffffffffffffffffffffffffffffffff</span>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>\r\n', '06201234567'),
 (4, 'Teszt', 'Kliens2', 'kliens2@gmail.com', '$2y$10$w9t1EZ.ou4h52RrR2ty0jOmfd/2maFptaUQE5GdG4vdnsuUscxl3q', 'kliens', 'nincskep.png', 'férfi', '<p><br></p>', ''),
-(5, 'Teszt', 'Edző', 'edzo@gmail.com', '$2y$10$qkzaavnP9KZRoTk/Boju6Oeio/8cZzYkUmnZGzgpxfKijBiZDa.BC', 'edző', '1679400859.jpeg', 'férfi', '<h1><span style=\"background-color: rgb(255, 255, 255);\">3</span>3<span style=\"color: #c09100;\">3</span><span style=\"background-color: rgb(79, 129, 189);\"><span style=\"color: #ffffff;\">33333</span></span>333</h1><p>12312312312312<span style=\"background-color: rgb(227, 108, 9);\"><span style=\"color: #ffffff;\">31232131232131</span></span>23</p><ul><li><strike>fdhgfh</strike></li><li><b>gfhgfhf</b></li><li><i>gfhfghfg</i></li></ul><p>trr<strike>rrrrrrrrr</strike>rrrrrrrrrrrrrrrrrrrr<b>rrrrrrrrrrrrrrrrrrrrrrrrrrr</b>rrrrrrrrrrrrr<i>rrrrrrrrrrrrrrrr</i>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre<br></p>\r\n', '06201234564'),
-(6, 'Teszt', 'Kliens3', 'kliens3@gmail.com', '$2y$10$k15BFd5GpyvNbR0NIUn5beGupjHfw.BnnXg.IDFTYYc5S/YEj30Gu', 'kliens', 'nincskep.png', 'férfi', '<p><br></p>', ''),
-(7, 'Teszt', 'Kliens4', 'kliens4@gmail.com', '$2y$10$0UebjddasW5XQ206ZzMOKOu.kl3L8N436OCgMeqHGXAPbuyvT9w4u', 'kliens', 'nincskep.png', 'férfi', '<p>12345678911234567891123456789112345678911234567891123456789112345678911234567891</p>', '06201234567'),
-(9, 'Teszt2', 'Edző', 'edzo2@gmail.com', '$2y$10$oCDhuPYapSqstvY6nxTtWOv.mSFwmoYJP0rlMnjU/8v5hZRlawv62', 'edző', '1679907239.jpeg', 'férfi', '<p>nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbv</p>', '06201234567');
+(5, 'Teszt', 'Edző', 'edzo@gmail.com', '$2y$10$qkzaavnP9KZRoTk/Boju6Oeio/8cZzYkUmnZGzgpxfKijBiZDa.BC', 'edző', '1679994257.jpeg', 'férfi', '<h1><span style=\"background-color: rgb(255, 255, 255);\">3</span>3<span style=\"color: #c09100;\">3</span><span style=\"background-color: rgb(79, 129, 189);\"><span style=\"color: #ffffff;\">33333</span></span>333</h1><p>12312312312312<span style=\"background-color: rgb(227, 108, 9);\"><span style=\"color: #ffffff;\">31232131232131</span></span>23</p><ul><li><strike>fdhgfh</strike></li><li><b>gfhgfhf</b></li><li><i>gfhfghfg</i></li></ul><p>trr<strike>rrrrrrrrr</strike>rrrrrrrrrrrrrrrrrrrr<b>rrrrrrrrrrrrrrrrrrrrrrrrrrr</b>rrrrrrrrrrrrr<i>rrrrrrrrrrrrrrrr</i>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre<br></p>\r\n', '06201234564');
 
 -- --------------------------------------------------------
 
@@ -144,10 +136,7 @@ CREATE TABLE `terv` (
 --
 
 INSERT INTO `terv` (`terv_id`, `neve`, `leiras`, `kapcs_id`) VALUES
-(17, 'Teszt', '<h1>Teszt</h1><p>kép teszt:</p><p><img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6h5wcGaKcrNn4FzMNCyHNFFTwvdwBxNrjP-XF3SX&amp;s\" style=\"\"></p><p>Videó teszt:</p><p><br><iframe src=\"https://www.youtube.com/embed/CmpvcQ8WYpg\" title=\"YouTube video player\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" width=\"560\" height=\"315\" frameborder=\"0\"></iframe></p><p></p><table id=\"table92106\"><thead><tr><td>Valami 11111111111111 <br></td><td>teszt 222222222222222 <br></td><td>pelda 2222<br></td></tr></thead><tbody><tr><td>1<br></td><td>3<br></td><td>5<br></td></tr><tr><td>2<br></td><td>4<br></td><td>6<br></td></tr></tbody></table><p></p><br><p></p>\r\n', 1),
-(20, 'teszt edző - edzésterv kliens4', '<p>hgfhgfhgfhfghgf<br></p>', 9),
-(21, 'lkljlk', '<p>kljljkl</p>', 1),
-(22, 'ljkljkljklkjk', '<p>4324</p>', 5);
+(24, 'hgfhfghgf', '<h1><ol><li><b>hgfhgfhgfhgf</b></li><li><b>gfdgdfg</b></li><li><b><br></b></li></ol></h1><div><b><br></b></div>', 20);
 
 -- --------------------------------------------------------
 
@@ -172,8 +161,6 @@ INSERT INTO `tevekenysegek` (`tev_id`, `felhasznalo_id`, `datum`, `leiras`) VALU
 (3, 3, '2023-03-16', '33333'),
 (4, 3, '2023-03-19', '4444444444444444'),
 (5, 3, '2023-03-21', '<h1><b>ljklkjljkljkljkljklj</b></h1><div>őáélál<b><i><strike>éáléáléáléáéláléálé</strike></i></b></div><div><span style=\"background-color: rgb(31, 73, 125);\"><font color=\"#ffffff\">ddddddddddddddddddddddddddd<b><i><strike><br></strike></i></b></font></span></div>'),
-(6, 3, '2023-03-22', '<h1>Pelda</h1><ul><li>hjghjhgjhgjhgjghjghjgh</li><li>jhgjghjghjghjghjghjghj</li><li>ghjghjghjghjghjghjghjgh</li><li>jghjghjghjghjghjgh</li></ul><div><table id=\"table52677\"><thead><tr><td>pelda <br></td><td>teszt <br></td><td>1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 <br></td></tr></thead><tbody><tr><td>1<br></td><td>3<br></td><td>5<br></td></tr><tr><td>2<br></td><td>4<br></td><td>6<br></td></tr></tbody></table><p></p><br></div>'),
-(8, 6, '2023-03-27', '<p>KLIENS 3 feljegyzése</p>'),
 (9, 3, '2023-03-22', '<p>éklékl</p>');
 
 -- --------------------------------------------------------
@@ -186,7 +173,6 @@ CREATE TABLE `uzenetek` (
   `uzenet_id` int(11) NOT NULL,
   `kimeno_id` int(11) NOT NULL,
   `bejovo_id` int(11) NOT NULL,
-  `mikor` datetime NOT NULL,
   `uzenet` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -194,10 +180,21 @@ CREATE TABLE `uzenetek` (
 -- A tábla adatainak kiíratása `uzenetek`
 --
 
-INSERT INTO `uzenetek` (`uzenet_id`, `kimeno_id`, `bejovo_id`, `mikor`, `uzenet`) VALUES
-(1, 3, 1, '2023-03-17 12:09:40', 'Szia'),
-(2, 1, 3, '2023-03-17 12:09:53', 'Hello'),
-(3, 1, 3, '2023-03-22 08:02:01', 'jhkjhk');
+INSERT INTO `uzenetek` (`uzenet_id`, `kimeno_id`, `bejovo_id`, `uzenet`) VALUES
+(1, 3, 1, 'Szia'),
+(2, 1, 3, 'Hello'),
+(3, 1, 3, 'jhkjhk'),
+(10, 1, 4, 'ÜDv'),
+(11, 1, 4, 'fdsfffffffffffffffsdgsdfgfdGFGdfgdf gdfgfd'),
+(12, 5, 3, 'Szia'),
+(13, 3, 5, 'Hello'),
+(14, 3, 5, 'Hello'),
+(15, 3, 5, 'Hello'),
+(16, 3, 5, 'Hello'),
+(17, 3, 5, 'Hello'),
+(18, 3, 5, 'Hello'),
+(19, 3, 5, 'Hello'),
+(20, 3, 5, 'Hello');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -261,43 +258,43 @@ ALTER TABLE `uzenetek`
 -- AUTO_INCREMENT a táblához `edzestervek`
 --
 ALTER TABLE `edzestervek`
-  MODIFY `edzes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `edzes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT a táblához `edzoklienskapcs`
 --
 ALTER TABLE `edzoklienskapcs`
-  MODIFY `kapcs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `kapcs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT a táblához `etrendek`
 --
 ALTER TABLE `etrendek`
-  MODIFY `etrend_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `etrend_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `terv`
 --
 ALTER TABLE `terv`
-  MODIFY `terv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `terv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT a táblához `tevekenysegek`
 --
 ALTER TABLE `tevekenysegek`
-  MODIFY `tev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `tev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-  MODIFY `uzenet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uzenet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Megkötések a kiírt táblákhoz
