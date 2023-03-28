@@ -1,12 +1,11 @@
 <?php
 session_start();
-
 if(!isset($_GET['edzesterv'])){
     header("Location: hiba.html");
     exit();
 } else{
-    define('eleres', true);
     require("kapcsolat.php");
+    define('eleres', true);
     $edzestervID =  mysqli_real_escape_string($dbconn, $_GET['edzesterv']);
 
     $tervEll = mysqli_query($dbconn, "SELECT terv_id FROM terv INNER JOIN edzoklienskapcs ON terv.kapcs_id = edzoklienskapcs.kapcs_id WHERE kuldo_az = {$_SESSION['felh_id']} AND terv_id = {$edzestervID} OR fogado_az = {$_SESSION['felh_id']} AND terv_id = {$edzestervID}");

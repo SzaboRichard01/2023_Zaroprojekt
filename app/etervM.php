@@ -1,9 +1,9 @@
 <?php
+session_start();
 if(!isset($_SESSION['felh_id'])){
     header("Location: ../belepes.php");
     exit();
 } else{
-    session_start();
     define('eleres', true);
     require("kapcsolat.php");
 

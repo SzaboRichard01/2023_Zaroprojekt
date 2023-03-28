@@ -1,10 +1,10 @@
 <?php
 session_start();
-require("kapcsolat.php");
 if (!isset($_SESSION['felh_id'])) {
     header("Location: ../belepes.php");
     exit();
 } else {
+    require("kapcsolat.php");
     define('eleres', true);
     //Saját profil adatainak lekérése
     require("leker/sajatProfil.php");
