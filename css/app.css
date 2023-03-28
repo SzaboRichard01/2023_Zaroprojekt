@@ -789,6 +789,7 @@ p span{
   padding: 5px;
   width: 60%;
   word-wrap: break-word;
+  box-shadow: 5px 2px 5px var(--fekete);
 }
 .chatUzenetek .bejovoUz{
   display: flex;
@@ -805,6 +806,7 @@ p span{
   padding: 5px;
   width: 60%;
   word-wrap: break-word;
+  box-shadow: 5px 2px 5px var(--szurke);
 }
 
 .contact{
