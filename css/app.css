@@ -671,6 +671,10 @@ p span{
 .fadatok .edzo-gombok button{
   padding: 10px;
 }
+.fadatok .datum{
+  width: 100%;
+  padding: 10px;
+}
 #etervBtn{
   padding: 10px;
 }

@@ -11,6 +11,7 @@
         } else{
             //Saját profil adatainak lekérése
             require("leker/sajatProfil.php");
+            //-----
 
             $valasztott = mysqli_real_escape_string($dbconn, $_GET['felhasznalo_id']);
             $sql = mysqli_query($dbconn, "SELECT * FROM felhasznalok WHERE felhasznalo_id = {$valasztott}");
@@ -98,20 +99,43 @@
                                 }
                                 //-----------------
 
+                        $sqlKapcs = mysqli_query($dbconn, "SELECT elfogadva, felkeres_datuma, kapcs_kezdete FROM edzoklienskapcs WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$valasztott}
+                        OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$valasztott}");
+                        $sorK = mysqli_fetch_assoc($sqlKapcs);
+
                         $kimenet .= "
                         <div class=\"edzo-gombok\">
                             {$FelkeresBtn}
                             <button onclick=\"location.href='chat.php?chat={$sor['felhasznalo_id']}'\">Csevegés</button>";
 
                             //Csak akkor tudjuk megnézni a kliens edzésterveit ha már van edző-kliens kapcsolat
-                            $sqlKliense = mysqli_query($dbconn, "SELECT elfogadva FROM edzoklienskapcs WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$valasztott}
-                            OR fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$valasztott}");
-                            if($_SESSION['p_tipus'] == "edző" && mysqli_num_rows($sqlKliense) > 0){
-                                $kimenet .= "<button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>";
+                            if(mysqli_num_rows($sqlKapcs) != 0){
+                                $elfogadva = $sorK['elfogadva'];
+                                if($_SESSION['p_tipus'] == "edző" && $elfogadva == 1){
+                                    $kimenet .= "<button id=\"etervBtn\" onclick=\"location.href='etervM.php?kliens=". $valasztott ."'\">Kliens edzésterveinek megtekintése</button>";
+                                }
                             }
                             //--------
                         
                         $kimenet .= "</div>";
+
+                        //Datumok
+                        if(mysqli_num_rows($sqlKapcs) != 0){
+                            $felkeresDat = $sorK['felkeres_datuma'];
+                            $kapcsDat = $sorK['kapcs_kezdete'];
+
+                            $kimenet .= "<div class=\"datum\">";
+                            
+                            if($elfogadva == 1){
+                                $kimenet .= "<p>Kapcsolat kezdete: {$kapcsDat}</p>";
+                            }
+                            else{
+                                $kimenet .= "<p>Felkérés dátuma: {$felkeresDat}</p>";
+                            }
+
+                            $kimenet .= "</div>";
+                        }
+                        //--------
                 }
             }
         }
