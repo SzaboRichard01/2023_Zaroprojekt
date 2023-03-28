@@ -693,6 +693,7 @@ p span{
 .chatMain{
   display: flex;
   justify-content: center;
+  margin-top: 150px;
 }
 .chatWrapper{
   display: flex;
