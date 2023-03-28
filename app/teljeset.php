@@ -3,6 +3,7 @@ session_start();
 
 if(!isset($_GET['edzesterv'])){
     header("Location: hiba.html");
+    exit();
 } else{
     define('eleres', true);
     require("kapcsolat.php");

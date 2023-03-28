@@ -32,10 +32,7 @@
             else{
                 $hiba = "<p style=\"color: red;\"><strong>Hibás E-mail címet vagy jelszót adott meg!</strong></p>";
             }
-
-            
         }
-
     }
 ?><!DOCTYPE html>
 <html lang="hu">

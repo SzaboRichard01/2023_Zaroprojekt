@@ -1,20 +1,24 @@
 <?php
-session_start();
-require("kapcsolat.php");
-define('eleres', true);
-//Saját profil adatainak lekérése
-require("leker/sajatProfil.php");
+if(!isset($_SESSION['felh_id'])){
+    header("Location: ../belepes.php");
+    exit();
+} else{
+    session_start();
+    require("kapcsolat.php");
+    define('eleres', true);
+    //Saját profil adatainak lekérése
+    require("leker/sajatProfil.php");
 
-if(isset($_POST['rogzites'])){
-    $datum = $_POST['datum'];
-    $leiras = $_POST['tev'];
+    if(isset($_POST['rogzites'])){
+        $datum = $_POST['datum'];
+        $leiras = $_POST['tev'];
 
-    $sql = mysqli_query($dbconn, "INSERT INTO tevekenysegek (felhasznalo_id, datum, leiras) VALUES ('{$_SESSION['felh_id']}', '{$datum}', '{$leiras}')");
+        $sql = mysqli_query($dbconn, "INSERT INTO tevekenysegek (felhasznalo_id, datum, leiras) VALUES ('{$_SESSION['felh_id']}', '{$datum}', '{$leiras}')");
 
-    $_SESSION['tevrogz'] = "<p>Sikeres rögzítés!</p>";
-    header("Location: kezdolap.php");
+        $_SESSION['tevrogz'] = "<p>Sikeres rögzítés!</p>";
+        header("Location: kezdolap.php");
+    }
 }
-
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>

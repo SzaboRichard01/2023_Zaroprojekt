@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['felh_id'])) {
-    header("Location: belepes.php");
+    header("Location: ../belepes.php");
     exit();
 } else {
     define('eleres', true);

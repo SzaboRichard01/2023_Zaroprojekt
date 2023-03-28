@@ -69,7 +69,6 @@ if (!isset($_SESSION['felh_id'])) {
             isset($_POST['etr-etrend7']) ? $etrEtrend7 = $_POST['etr-etrend7'] : '';
             //---
 
-
             $sqlId = mysqli_query($dbconn, "SELECT kapcs_id FROM edzoklienskapcs
                 WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$tKinek}
                 OR kuldo_az = {$tKinek} AND fogado_az = {$_SESSION['felh_id']}");
@@ -186,14 +185,10 @@ if (!isset($_SESSION['felh_id'])) {
             <div class="mezo">
                 <label for="et-neve">Edzésterv neve:*</label>
                 <input type="text" name="et-neve" id="et-neve" require>
-            </div>
-            <!-- <div class="mezo">
-                <label for="et-leiras">Leírás:</label>
-                <textarea name="et-leiras" id="et-leiras"></textarea>
-            </div> -->            
+            </div>          
             <div class="mezo">
                 <label for="et-leiras">Leírás:*</label><br>
-                <textarea name="et-leiras" id="et-leiras" style="min-height: 300px;"></textarea>
+                <textarea name="et-leiras" id="et-leiras"></textarea>
             </div>
             <!-- ---------------------------------------------- -->
             <div class="mezo">

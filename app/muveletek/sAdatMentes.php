@@ -93,5 +93,7 @@ if(isset($_POST['mentes'])){
 
         $sikeres = "<p>Az adatok módosítása sikeres volt! <a href=\"../kezdolap.php\">Vissza a kezdőlapra</a></p>";
     }
+} else{
+    header("Location: ../hiba.html");
 }
 ?>
