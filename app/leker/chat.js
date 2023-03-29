@@ -46,7 +46,7 @@ if(url.includes("chat=")){
             }
         }
         xhr.send();
-    }, 500)
+    }, 1000)
 }
 
 function scrollToBottom(){

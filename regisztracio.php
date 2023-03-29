@@ -38,9 +38,14 @@ if(isset($_POST['reg'])){
     if(empty($_POST['knev'])){
         $hibak[] = "<p>Nem adta meg a keresztnevét!</p>";
     }
-    if(empty($_POST['email'])){
-        $hibak[] = "<p>E-mail cím megadása kötelező!</p>";
+    if(isset($email)){
+        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $hibak[] = "<p>Hibás E-mail címet adott meg!</p>";
+        }
+    } else{
+        $hibak[] = "<p>Nem adott meg E-mail címet!</p>";
     }
+    
     if(empty($_POST['jelszo'])){
         $hibak[] = "<p>Jelszó megadása kötelező!</p>";
     }

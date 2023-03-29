@@ -55,7 +55,7 @@ if (!isset($_SESSION['felh_id'])) {
             if(isset($_POST['ChatUzenet']) && $_POST['szoveg'] != ""){
                 $mikor = date("Y-m-d H:i:s");
                 $uzenet = $_POST['szoveg'];
-                $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenetek (kimeno_id, bejovo_id, mikor, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$mikor}', '{$uzenet}')");
+                $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenetek (kimeno_id, bejovo_id, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$uzenet}')");
             }
         } else{
             header("Location: hiba.html");

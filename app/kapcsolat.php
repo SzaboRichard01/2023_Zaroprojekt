@@ -1,5 +1,5 @@
 <?php
-    $dbconn = @mysqli_connect("localhost", "root", "", "edzes_app");
+    $dbconn = @mysqli_connect("mysql.omega", "edzes_app", "Projektmunka123", "edzes_app");
 
     //ellenőrzés
     /*
