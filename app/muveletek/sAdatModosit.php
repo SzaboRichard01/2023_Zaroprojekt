@@ -87,14 +87,10 @@ if(!isset($_SESSION['felh_id'])){
     </form>";
 
     if(isset($_POST['mentes'])){
-        if(!empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email'])){
+        if(!empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['bemutatkozo']) && !empty($_POST['telefon'])){
             $vezeteknev = $_POST['vnev'];
             $keresztnev = $_POST['knev'];
             $emailM = $_POST['email'];
-            $bemutatkozoM = $_POST['bemutatkozo'];
-            $telefonM = $_POST['telefon'];
-        }
-        if($_SESSION['p_tipus'] == "edző" && !empty($_POST['bemutatkozo']) && !empty($_POST['telefon'])){
             $bemutatkozoM = $_POST['bemutatkozo'];
             $telefonM = $_POST['telefon'];
         }
