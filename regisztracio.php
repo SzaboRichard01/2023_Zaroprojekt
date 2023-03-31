@@ -4,16 +4,18 @@ require("app/kapcsolat.php");
 if(isset($_POST['reg'])){
     if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo'])){
         $tipus = strip_tags($_POST['ptipus']);
-        $nem = strip_tags($_POST['neme']);
-        $vnev = strip_tags(ucfirst($_POST['vnev']));
-        $knev = strip_tags(ucfirst($_POST['knev']));
+
+        trim(strip_tags($_POST['neme'])) == "férfi" ? $nem = 1 : $nem = 0;
+
+        $vnev = trim(strip_tags(ucfirst($_POST['vnev'])));
+        $knev = trim(strip_tags(ucfirst($_POST['knev'])));
         $email = strip_tags(strtolower($_POST['email']));
 
         $jelszo = strip_tags($_POST['jelszo']);
         $hash = password_hash($jelszo, PASSWORD_DEFAULT); 
 
         $bemutatkozo = $_POST['bemutatkozo'];
-        $telefon = strip_tags($_POST['telefon']);
+        $telefon = trim(strip_tags($_POST['telefon']));
     }
 
     if(isset($_POST['email'])){
@@ -243,7 +245,7 @@ if(isset($_POST['reg'])){
                         <span class="tooltiptext">Csak edző profil esetén kötelező!</span>
                     </div>
                 </div>
-                <input type="tel" name="telefon" id="telefon">
+                <input type="tel" name="telefon" id="telefon" placeholder="Minta: +36301234567">
             </div>
             <em>A csillaggal * jelölt mezők kitöltése kötelező!</em>
             <input type="submit" value="Regisztráció" name="reg" id="reg">
