@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 17. 12:14
+-- Létrehozás ideje: 2023. Már 31. 11:22
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.1.12
 
@@ -34,14 +34,6 @@ CREATE TABLE `edzestervek` (
   `terv_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `edzestervek`
---
-
-INSERT INTO `edzestervek` (`edzes_id`, `nap`, `edzesterv`, `terv_id`) VALUES
-(1, 'Hétfő', '1', 1),
-(2, 'Kedd', '2', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -57,13 +49,6 @@ CREATE TABLE `edzoklienskapcs` (
   `kapcs_kezdete` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `edzoklienskapcs`
---
-
-INSERT INTO `edzoklienskapcs` (`kapcs_id`, `kuldo_az`, `fogado_az`, `elfogadva`, `felkeres_datuma`, `kapcs_kezdete`) VALUES
-(1, 3, 1, 1, '2023-03-17 12:12:55', '2023-03-17 12:13:09');
-
 -- --------------------------------------------------------
 
 --
@@ -76,14 +61,6 @@ CREATE TABLE `etrendek` (
   `etrend` text NOT NULL,
   `terv_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `etrendek`
---
-
-INSERT INTO `etrendek` (`etrend_id`, `nap`, `etrend`, `terv_id`) VALUES
-(1, 'Szerda', '3', 1),
-(2, 'Csütörtök', '4', 1);
 
 -- --------------------------------------------------------
 
@@ -99,20 +76,20 @@ CREATE TABLE `felhasznalok` (
   `jelszo` varchar(255) NOT NULL,
   `profil_tipus` varchar(6) NOT NULL,
   `kep` varchar(255) NOT NULL,
-  `nem` varchar(10) NOT NULL,
-  `online` tinyint(1) NOT NULL,
+  `nem` tinyint(1) NOT NULL,
   `bemutatkozo` text DEFAULT NULL,
-  `telefon` varchar(11) DEFAULT NULL
+  `telefon` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`
 --
 
-INSERT INTO `felhasznalok` (`felhasznalo_id`, `vnev`, `knev`, `email`, `jelszo`, `profil_tipus`, `kep`, `nem`, `online`, `bemutatkozo`, `telefon`) VALUES
-(1, 'Szabó', 'Richárd', 'valami@gmail.com', 'valami', 'edző', '1679050736.jpeg', 'férfi', 0, '', ''),
-(2, 'Híves', 'Sebastian', 'sebihives2001@gmail.com', 'Valami123', 'edző', 'nincskep.png', 'férfi', 0, '11111111111111111111111111111111111111111111111111111111', '06201234567'),
-(3, 'Teszt', 'Kliens', 'kliens@gmail.com', 'kliens', 'kliens', '1679051325.jpeg', 'férfi', 0, NULL, NULL);
+INSERT INTO `felhasznalok` (`felhasznalo_id`, `vnev`, `knev`, `email`, `jelszo`, `profil_tipus`, `kep`, `nem`, `bemutatkozo`, `telefon`) VALUES
+(1, 'Szabó', 'Richárd', 'pelda@gmail.com', '$2y$10$2G7wd/fLUU1WBHCoCGfqVedDTteliK0ZeORMVvdScHB1v2rKKSbIy', 'edző', '1679050736.jpeg', 1, '<p>Személyre szabott edzésterveket készítek az ügyfeleimnek, fizikai adottságait, idejét és kérését figyelembe véve, valamint ennek megfelelően étrendet is a hatékonyabb eredmények elérésének érdekében. Várom leendő klienseim jelentkezését!<br></p>', '+36201234567'),
+(2, 'Híves', 'Sebastian', 'sebihives2001@gmail.com', '$2y$10$LMEes.8nKycHExaH/k317eGFIkAvfcvlmwgtECmuPd35zuYArOAza', 'edző', '1680080537.jpeg', 1, '<p>Több éves edzői szakmai tapasztalattal rendelkezem. Személyre szabott edzésterveket készítek az ügyfeleimnek, fizikai adottságait, idejét és kérését figyelembe véve, valamint ennek megfelelően étrendet is a hatékonyabb eredmények elérésének érdekében. Várom leendő klienseim jelentkezését!<br></p>', '+4219156297'),
+(5, 'Tóth', 'Ildikó', 'tildoko34@gmail.com', '$2y$10$eFsImHeLP2fZt6/nQnePx.2CP/XCthfZUtudoze8tc/0A/pOJKpcW', 'kliens', '1680164255.jpeg', 0, '', NULL),
+(9, 'Kiss', 'Péter', 'peterk1@gmail.com', '$2y$10$GqnS5czFnLJ8py2F8yIMUe.6LbthFEPT84OXyO/33T7e2SQA7W4tK', 'kliens', 'nincskep.png', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -124,15 +101,8 @@ CREATE TABLE `terv` (
   `terv_id` int(11) NOT NULL,
   `neve` varchar(40) NOT NULL,
   `leiras` text DEFAULT NULL,
-  `kapcs_id` int(255) NOT NULL
+  `kapcs_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `terv`
---
-
-INSERT INTO `terv` (`terv_id`, `neve`, `leiras`, `kapcs_id`) VALUES
-(1, 'Teszt', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -147,16 +117,6 @@ CREATE TABLE `tevekenysegek` (
   `leiras` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `tevekenysegek`
---
-
-INSERT INTO `tevekenysegek` (`tev_id`, `felhasznalo_id`, `datum`, `leiras`) VALUES
-(1, 3, '2023-03-17', '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'),
-(2, 3, '2023-03-18', '22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222'),
-(3, 3, '2023-03-16', '33333'),
-(4, 3, '2023-03-19', '4444444444444444');
-
 -- --------------------------------------------------------
 
 --
@@ -167,17 +127,8 @@ CREATE TABLE `uzenetek` (
   `uzenet_id` int(11) NOT NULL,
   `kimeno_id` int(11) NOT NULL,
   `bejovo_id` int(11) NOT NULL,
-  `mikor` datetime NOT NULL,
   `uzenet` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `uzenetek`
---
-
-INSERT INTO `uzenetek` (`uzenet_id`, `kimeno_id`, `bejovo_id`, `mikor`, `uzenet`) VALUES
-(1, 3, 1, '2023-03-17 12:09:40', 'Szia'),
-(2, 1, 3, '2023-03-17 12:09:53', 'Hello');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -241,7 +192,7 @@ ALTER TABLE `uzenetek`
 -- AUTO_INCREMENT a táblához `edzestervek`
 --
 ALTER TABLE `edzestervek`
-  MODIFY `edzes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `edzes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT a táblához `edzoklienskapcs`
@@ -259,25 +210,25 @@ ALTER TABLE `etrendek`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `terv`
 --
 ALTER TABLE `terv`
-  MODIFY `terv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `terv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `tevekenysegek`
 --
 ALTER TABLE `tevekenysegek`
-  MODIFY `tev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `tev_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-  MODIFY `uzenet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uzenet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Megkötések a kiírt táblákhoz

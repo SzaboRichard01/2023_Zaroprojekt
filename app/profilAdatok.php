@@ -20,6 +20,7 @@
                 while($sor = mysqli_fetch_assoc($sql)){
                     $edzoVnev = $sor['vnev'];
                     $edzoKnev = $sor['knev'];
+                    $sor['nem'] == 1 ? $nem = "férfi" : $nem = "nő";
 
                     //Felkérés gomb - Ha már egyszer felkértük edzőnek, ne lehessen újra
                     $sqlFelkeres = mysqli_query($dbconn, "SELECT kuldo_az, fogado_az FROM edzoklienskapcs WHERE kuldo_az = {$felh_id} AND fogado_az = {$valasztott}
@@ -64,7 +65,7 @@
                             </tr>
                             <tr>
                                 <th>Nem:</th>
-                                <td>{$sor['nem']}</td>
+                                <td>{$nem}</td>
                             </tr>";
 
                                 //Ha a profil típusa kliens ellenőrizzük hogy van e megadva bemutatkozó szövege és telefonszáma

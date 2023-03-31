@@ -16,7 +16,9 @@
         $email = $sor['email'];
         $profilTipus = $sor['profil_tipus'];
         $kep = $sor['kep'];
-        $nem = $sor['nem'];
+
+        $sor['nem'] == 1 ? $nem = "férfi" : $nem = "nő";
+        
         $bemutatkozo = $sor['bemutatkozo'];
         $telefon = $sor['telefon'];
         //------------------------
