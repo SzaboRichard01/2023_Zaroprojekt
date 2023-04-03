@@ -28,81 +28,98 @@ if (!isset($_SESSION['felh_id'])) {
             $etNeve = $_POST['et-neve'];
             $etLeiras = $_POST['et-leiras'];
 
-            //Edzés - melyik nap
-            isset($_POST['mnap1']) ? $mNap1 = $_POST['mnap1'] : '';
-            isset($_POST['mnap2']) ? $mNap2 = $_POST['mnap2'] : '';
-            isset($_POST['mnap3']) ? $mNap3 = $_POST['mnap3'] : '';
-            isset($_POST['mnap4']) ? $mNap4 = $_POST['mnap4'] : '';
-            isset($_POST['mnap5']) ? $mNap5 = $_POST['mnap5'] : '';
-            isset($_POST['mnap6']) ? $mNap6 = $_POST['mnap6'] : '';
-            isset($_POST['mnap7']) ? $mNap7 = $_POST['mnap7'] : '';
+            //hibák szűrése
+            $etNeve == "" ? $hibak[] = "<p>Kötelező megadni a terv nevét!</p>" : '';
+
+            if((!isset($_POST['mnap1']) && !isset($_POST['edzes1']) || empty($_POST['mnap1'])) && (!isset($_POST['etr-napra1']) && !isset($_POST['etr-etrend1']) || empty($_POST['etr-napra1']))){
+                $hibak[] = "<p>Legalább egy edzéstervet vagy egy étrendet rögzítenie kell!</p>";
+            }
+
+            //van e két azonos edzésnap
+            isset($_POST['mnap1']) ? $edzesN[] = $_POST['mnap1'] : '';
+            isset($_POST['mnap2']) ? $edzesN[] = $_POST['mnap2'] : '';
+            isset($_POST['mnap3']) ? $edzesN[] = $_POST['mnap3'] : '';
+            isset($_POST['mnap4']) ? $edzesN[] = $_POST['mnap4'] : '';
+            isset($_POST['mnap5']) ? $edzesN[] = $_POST['mnap5'] : '';
+            isset($_POST['mnap6']) ? $edzesN[] = $_POST['mnap6'] : '';
+            isset($_POST['mnap7']) ? $edzesN[] = $_POST['mnap7'] : '';
+
+            if(isset($edzesN)){
+                $edzesNsz = array_unique($edzesN);
+                if(count($edzesN) != count($edzesNsz)){
+                    $hibak[] = "<p>Az edzéstervben nem szerepelhet egy héten belül kétszer vagy többször egy adott nap!</p>";
+                }
+            }
             //----
 
-            //Edzés - edzés leírása
-            isset($_POST['edzes1']) ? $edzes1 = $_POST['edzes1'] : '';
-            isset($_POST['edzes2']) ? $edzes2 = $_POST['edzes2'] : '';
-            isset($_POST['edzes3']) ? $edzes3 = $_POST['edzes3'] : '';
-            isset($_POST['edzes4']) ? $edzes4 = $_POST['edzes4'] : '';
-            isset($_POST['edzes5']) ? $edzes5 = $_POST['edzes5'] : '';
-            isset($_POST['edzes6']) ? $edzes6 = $_POST['edzes6'] : '';
-            isset($_POST['edzes7']) ? $edzes7 = $_POST['edzes7'] : '';
+            //van e két azonos nap az étrendben
+            isset($_POST['etr-napra1']) ? $etrendN[] = $_POST['etr-napra1'] : '';
+            isset($_POST['etr-napra2']) ? $etrendN[] = $_POST['etr-napra2'] : '';
+            isset($_POST['etr-napra3']) ? $etrendN[] = $_POST['etr-napra3'] : '';
+            isset($_POST['etr-napra4']) ? $etrendN[] = $_POST['etr-napra4'] : '';
+            isset($_POST['etr-napra5']) ? $etrendN[] = $_POST['etr-napra5'] : '';
+            isset($_POST['etr-napra6']) ? $etrendN[] = $_POST['etr-napra6'] : '';
+            isset($_POST['etr-napra7']) ? $etrendN[] = $_POST['etr-napra7'] : '';
+
+            if(isset($etrendN)){
+                $etrendNsz = array_unique($etrendN);
+                if(count($etrendN) != count($etrendNsz)){
+                    $hibak[] = "<p>Az étrendben nem szerepelhet egy héten belül kétszer vagy többször egy adott nap!</p>";
+                }
+            }
             //----
 
-            
-            //Étrend - melyik napra
-            isset($_POST['etr-napra1']) ? $etrNap1 = $_POST['etr-napra1'] : '';
-            isset($_POST['etr-napra2']) ? $etrNap2 = $_POST['etr-napra2'] : '';
-            isset($_POST['etr-napra3']) ? $etrNap3 = $_POST['etr-napra3'] : '';
-            isset($_POST['etr-napra4']) ? $etrNap4 = $_POST['etr-napra4'] : '';
-            isset($_POST['etr-napra5']) ? $etrNap5 = $_POST['etr-napra5'] : '';
-            isset($_POST['etr-napra6']) ? $etrNap6 = $_POST['etr-napra6'] : '';
-            isset($_POST['etr-napra7']) ? $etrNap7 = $_POST['etr-napra7'] : '';
-            //----
-
-            //Étrend - étrend leírása
-            isset($_POST['etr-etrend1']) ? $etrEtrend1 = $_POST['etr-etrend1'] : '';
-            isset($_POST['etr-etrend2']) ? $etrEtrend2 = $_POST['etr-etrend2'] : '';
-            isset($_POST['etr-etrend3']) ? $etrEtrend3 = $_POST['etr-etrend3'] : '';
-            isset($_POST['etr-etrend4']) ? $etrEtrend4 = $_POST['etr-etrend4'] : '';
-            isset($_POST['etr-etrend5']) ? $etrEtrend5 = $_POST['etr-etrend5'] : '';
-            isset($_POST['etr-etrend6']) ? $etrEtrend6 = $_POST['etr-etrend6'] : '';
-            isset($_POST['etr-etrend7']) ? $etrEtrend7 = $_POST['etr-etrend7'] : '';
-            //---
 
             $sqlId = mysqli_query($dbconn, "SELECT kapcs_id FROM edzoklienskapcs
                 WHERE kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$tKinek}
                 OR kuldo_az = {$tKinek} AND fogado_az = {$_SESSION['felh_id']}");
-            $IdEr = mysqli_fetch_assoc($sqlId);
-            $edzoFelhId = $IdEr['kapcs_id'];
-
-
-            //terv tabla insert
-            $sqlEterv = mysqli_query($dbconn, "INSERT INTO terv (neve, leiras, kapcs_id)
-                VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
-
-            $sqlEtervId = mysqli_query($dbconn, "SELECT terv_id FROM terv WHERE kapcs_id = {$edzoFelhId} AND neve = '{$etNeve}'");
-            $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
-            $edzestervID = $EtervIdEr['terv_id'];
+                $IdEr = mysqli_fetch_assoc($sqlId);
+                $edzoFelhId = $IdEr['kapcs_id'];
             
-            //edzestervek tabla insert
-            isset($mNap1) && isset($edzes1) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap1}', '{$edzes1}', '{$edzestervID}')") : '';
-            isset($mNap2) && isset($edzes2) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap2}', '{$edzes2}', '{$edzestervID}')") : '';
-            isset($mNap3) && isset($edzes3) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap3}', '{$edzes3}', '{$edzestervID}')") : '';
-            isset($mNap4) && isset($edzes4) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap4}', '{$edzes4}', '{$edzestervID}')") : '';
-            isset($mNap5) && isset($edzes5) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap5}', '{$edzes5}', '{$edzestervID}')") : '';
-            isset($mNap6) && isset($edzes6) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap6}', '{$edzes6}', '{$edzestervID}')") : '';
-            isset($mNap7) && isset($edzes7) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$mNap7}', '{$edzes7}', '{$edzestervID}')") : '';
+            //ha már van ilyen név
+            $nevEll = mysqli_query($dbconn, "SELECT terv_id FROM terv WHERE neve = '{$etNeve}' AND kapcs_id = {$edzoFelhId}");
+            if(mysqli_num_rows($nevEll) != 0){
+                $hibak[] = "<p>Ön már létrehozott korábban egy ilyen nevű edzéstervet {$Kvnev} {$Kknev} kliensének! A könnyebb azonosíthatóság érdekében kérjük adjon meg egy másik nevet az edzéstervének, vagy töröje a régi azonos nevű edzéstervet ha már nincs rá szüksége a kliensének!</p>";
+            }
+            //----
 
-            //etrendek tabla insert
-            isset($etrNap1) && isset($etrEtrend1) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap1}', '{$etrEtrend1}', '{$edzestervID}')") : '';
-            isset($etrNap2) && isset($etrEtrend2) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap2}', '{$etrEtrend2}', '{$edzestervID}')") : '';
-            isset($etrNap3) && isset($etrEtrend3) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap3}', '{$etrEtrend3}', '{$edzestervID}')") : '';
-            isset($etrNap4) && isset($etrEtrend4) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap4}', '{$etrEtrend4}', '{$edzestervID}')") : '';
-            isset($etrNap5) && isset($etrEtrend5) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap5}', '{$etrEtrend5}', '{$edzestervID}')") : '';
-            isset($etrNap6) && isset($etrEtrend6) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap6}', '{$etrEtrend6}', '{$edzestervID}')") : '';
-            isset($etrNap7) && isset($etrEtrend7) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$etrNap7}', '{$etrEtrend7}', '{$edzestervID}')") : '';
+            //hibák szűrése vége
 
-            $sikeres = "<p>Sikeres edzésterv felvitel!</p>";
+            if(isset($hibak)){
+                $hibakKi = "";
+                foreach ($hibak as $hiba) {
+                    $hibakKi .= $hiba;
+                }
+            } else{
+
+                //terv tabla insert
+                $sqlEterv = mysqli_query($dbconn, "INSERT INTO terv (neve, leiras, kapcs_id)
+                    VALUES ('{$etNeve}', '{$etLeiras}', '{$edzoFelhId}')");
+
+                $sqlEtervId = mysqli_query($dbconn, "SELECT terv_id FROM terv WHERE kapcs_id = {$edzoFelhId} AND neve = '{$etNeve}'");
+                $EtervIdEr = mysqli_fetch_assoc($sqlEtervId);
+                $edzestervID = $EtervIdEr['terv_id'];
+            
+                //edzestervek tabla insert
+                isset($_POST['mnap1']) && isset($_POST['edzes1']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap1']}', '{$_POST['edzes1']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap2']) && isset($_POST['edzes2']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap2']}', '{$_POST['edzes2']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap3']) && isset($_POST['edzes3']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap3']}', '{$_POST['edzes3']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap4']) && isset($_POST['edzes4']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap4']}', '{$_POST['edzes4']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap5']) && isset($_POST['edzes5']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap5']}', '{$_POST['edzes5']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap6']) && isset($_POST['edzes6']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap6']}', '{$_POST['edzes6']}', '{$edzestervID}')") : '';
+                isset($_POST['mnap7']) && isset($_POST['edzes7']) ? mysqli_query($dbconn, "INSERT INTO edzestervek (nap, edzesterv, terv_id) VALUES ('{$_POST['mnap7']}', '{$_POST['edzes7']}', '{$edzestervID}')") : '';
+
+                //etrendek tabla insert
+                isset($_POST['etr-napra1']) && isset($_POST['etr-etrend1']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra1']}', '{$_POST['etr-etrend1']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra2']) && isset($_POST['etr-etrend2']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra2']}', '{$_POST['etr-etrend2']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra3']) && isset($_POST['etr-etrend3']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra3']}', '{$_POST['etr-etrend3']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra4']) && isset($_POST['etr-etrend4']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra4']}', '{$_POST['etr-etrend4']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra5']) && isset($_POST['etr-etrend5']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra5']}', '{$_POST['etr-etrend5']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra6']) && isset($_POST['etr-etrend6']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra6']}', '{$_POST['etr-etrend6']}', '{$edzestervID}')") : '';
+                isset($_POST['etr-napra7']) && isset($_POST['etr-etrend7']) ? mysqli_query($dbconn, "INSERT INTO etrendek (nap, etrend, terv_id) VALUES ('{$_POST['etr-napra7']}', '{$_POST['etr-etrend7']}', '{$edzestervID}')") : '';
+
+                $sikeres = "<p>Sikeres edzésterv felvitel!</p>";
+            }
         }
     } else{
         header("Location: hiba.html");
@@ -180,6 +197,13 @@ if (!isset($_SESSION['felh_id'])) {
         ?>
 
         <form method="post" enctype="multipart/form-data" id="felvitelForm">
+            <div class="hibauzenet">
+                <?php
+                    if(isset($hibakKi)){
+                        print $hibakKi;
+                    }
+                ?>
+            </div>
             <!-- Edzésterv -->
             <h2>Edzésterv</h2>
             <div class="mezo">

@@ -26,7 +26,7 @@ if(isset($_POST['reg'])){
     }
 
     if(isset($VanIlyen)){
-        $hibak[] = "Ehhez az E-mail címhez már tartozik egy felhasználó!";
+        $hibak[] = "<p>Ehhez az E-mail címhez már tartozik egy felhasználó!</p>";
     }
     if(empty($_POST['ptipus'])){
         $hibak[] = "<p>Nem választotta ki, hogy milyen típusú profilt szeretne!</p>";
