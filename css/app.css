@@ -1591,3 +1591,7 @@ h2{
 .nincsKl{
  text-align: center;
 }
+#mezonapok select, #etrendnapok select{
+  padding: 5px;
+  font-size: 16px;
+}

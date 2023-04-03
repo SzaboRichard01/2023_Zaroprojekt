@@ -10,7 +10,11 @@ function hanyNap(selectObject){
 
   let mezok = "";
   for (let index = 1; index <= hnap; index++) {
-    mezok += '<div class="enap"><label for="mnap' + index + '">Melyik napra?*</label><input type="text" name="mnap' + index + '" id="mnap' + index + '"><label for="edzes' + index + '">Edzés leírása az adott napra:*</label><textarea name="edzes' + index + '" id="edzes' + index + '"></textarea></div>';
+    mezok += '<div class="enap"><label for="mnap' + index + '">Melyik napra?*</label><select name="mnap' + index + '" id="mnap' + index + '"><option disabled selected>Válasszon egy lehetőséget</option>';
+    if(hnap == 1){
+      mezok += '<option value="Minden alkalomra">Minden alkalomra</option>';
+    }
+    mezok += '<option value="Hétfő">Hétfő</option><option value="Kedd">Kedd</option><option value="Szerda">Szerda</option><option value="Csütörtök">Csütörtök</option><option value="Péntek">Péntek</option><option value="Szombat">Szombat</option><option value="Vasárnap">Vasárnap</option></select><label for="edzes' + index + '">Edzés leírása az adott napra:*</label><textarea name="edzes' + index + '" id="edzes' + index + '"></textarea></div>';
   }
   document.querySelector('#mezonapok').innerHTML = mezok;
 }
@@ -20,7 +24,11 @@ function etrendNap(selectObject2){
 
   let mezok = "";
   for (let index = 1; index <= hnap; index++) {
-    mezok += '<div class="etnap"><label for="etr-napra' + index + '">Melyik napra?*</label><input type="text" name="etr-napra' + index + '" id="etr-napra' + index + '"><label for="etr-etrend' + index + '">Étrend az adott napra:*</label><textarea name="etr-etrend' + index + '" id="etr-etrend' + index + '"></textarea></div>';
+    mezok += '<div class="etnap"><label for="etr-napra' + index + '">Melyik napra?*</label><select name="etr-napra' + index + '" id="etr-napra' + index + '"><option disabled selected>Válasszon egy lehetőséget</option>';
+    if(hnap == 1){
+      mezok += '<option value="Minden alkalomra">Minden alkalomra</option>';
+    }
+    mezok += '<option value="Hétfő">Hétfő</option><option value="Kedd">Kedd</option><option value="Szerda">Szerda</option><option value="Csütörtök">Csütörtök</option><option value="Péntek">Péntek</option><option value="Szombat">Szombat</option><option value="Vasárnap">Vasárnap</option></select><label for="etr-etrend' + index + '">Étrend az adott napra:*</label><textarea name="etr-etrend' + index + '" id="etr-etrend' + index + '"></textarea></div>';
   }
   document.querySelector('#etrendnapok').innerHTML = mezok;
 }
