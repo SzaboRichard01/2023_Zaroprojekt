@@ -11,7 +11,7 @@ if(!isset($_GET['etid'])){
     if(mysqli_num_rows($tervEll) != 0){
         $modForm = "<form method=\"post\">";
 
-        //Edzésterv adatai
+        //terv adatai
         $eredmeny = mysqli_query($dbconn, "SELECT neve, leiras FROM terv WHERE terv_id = {$etID}");
             $sor = mysqli_fetch_assoc($eredmeny);
             $etNeve = $sor['neve'];
@@ -26,7 +26,6 @@ if(!isset($_GET['etid'])){
                 <textarea name=\"etleiras\" id=\"etleiras\">{$etLeiras}</textarea>
             </div>";
         //-----
-        
         
         $modForm .= "<input type=\"submit\" name=\"kuldes\" id=\"kuldes\" value=\"Mentés\">
         </form>";
@@ -81,8 +80,10 @@ if(!isset($_GET['etid'])){
     require("leker/SidebarNavbar.php");
     ?>
     <main>
-        <button onclick="location.href='edzesterv.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
-        <?php print $modForm; ?>
+        <?php
+            print("<button onclick=\"location.href='teljeset.php?edzesterv={$etID}'\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>");
+            print $modForm;
+        ?>
     </main>
 </body>
 </html>

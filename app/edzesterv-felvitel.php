@@ -192,7 +192,7 @@ if (!isset($_SESSION['felh_id'])) {
             </div>
             <!-- ---------------------------------------------- -->
             <div class="mezo">
-                <label for="hnap">Hány edzésnap legyen egy héten?*</label>
+                <label for="hnap">Hány napra szeretné felbontani az edzéstervet?*</label>
                 <select name="hnap" id="hnap" onchange="hanyNap(this), redactorEdz()">
                     <option disabled selected>Válasszon egy számot!</option>
                     <option value="1">1</option>
