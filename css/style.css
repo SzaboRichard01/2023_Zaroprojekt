@@ -344,7 +344,10 @@ body::-webkit-scrollbar-thumb:hover{
     bottom: 8px;
     width: 100%;
     text-align: center;
+    background-color: var(--szurke);
+    opacity: 0.7;
 }
+
 .dot {
     cursor: pointer;
     height: 15px;
