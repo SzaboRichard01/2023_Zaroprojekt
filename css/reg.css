@@ -82,12 +82,12 @@ main .mezo #rendben:hover{
 }
 .mezo{
     font-size: 18px;
+    margin: 10px 0;
 }
 .mezo input{
     width: 100%;
     height: 30px;
     font-size: 16px;
-    margin: 5px 0 10px 0;
     border-radius: 5px;
     color: var(--zold);
     padding: 5px;

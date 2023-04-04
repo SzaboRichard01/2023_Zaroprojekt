@@ -103,7 +103,7 @@ if(!isset($_GET['edzesterv'])){
             <div class=\"teljesNap\">
                 <h3>{$EtnapS['nap']}</h3>
                 <div class=\"teljnapterv\">{$EtnapS['etrend']}</div>
-                <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
+                <i class=\"fa fa-times tnapbezar\" aria-hidden=\"true\" onclick=\"TeljesnapBezar()\" title=\"Bezárás\"></i>
             </div>
             ";
         }

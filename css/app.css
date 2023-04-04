@@ -1401,7 +1401,7 @@ h2{
   padding: 10px;
   color: white;
 }
-.teljesNap i{
+.teljesNap .tnapbezar{
   font-size: 30px;
   position: absolute;
   top: 0;
