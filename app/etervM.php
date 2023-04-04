@@ -32,11 +32,12 @@ if(!isset($_SESSION['felh_id'])){
         $kKnev = $kneve['knev'];
         //--------
 
+        $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
 
         $eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
         FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
         WHERE kuldo_az = '{$kliensID}' AND fogado_az = {$_SESSION['felh_id']}
-        OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']}");
+        OR fogado_az = '{$kliensID}' AND kuldo_az = {$_SESSION['felh_id']} AND neve LIKE '%{$kifejezes}%' ORDER BY terv_id DESC");
         if(mysqli_num_rows($eredmeny) != 0){
             $etervKi = "<div class=\"edzestervek\">";
             while($sor = mysqli_fetch_assoc($eredmeny)){
@@ -59,7 +60,11 @@ if(!isset($_SESSION['felh_id'])){
             $etervKi .= "</div>";
         }
         else{
-            $etervKi = "Ennek a kliensnek még nincs edzésterve!";
+            if($kifejezes != ""){
+                $etervKi = "Nincs találat";
+            } else{
+                $etervKi = "Ennek a kliensnek még nincs edzésterve!";
+            }
         }
     }
     else{
@@ -89,10 +94,18 @@ if(!isset($_SESSION['felh_id'])){
     require("leker/SidebarNavbar.php");
     ?>
     <main id="edzestervMain">
-        <?php
-        print("<h2>{$kVnev} {$kKnev} Edzéstervei</h2>");
-        print $etervKi;
-        ?>
+        <?php print("<h2>{$kVnev} {$kKnev} Edzéstervei</h2>"); ?>
+        <div class="kereso">
+            <form method="post" class="etkereso">
+                <input type="search" name="kifejezes" id="kifejezes" placeholder="Keresés">
+                <input class="kereses-gomb" type="submit" value="Keresés">
+                <?php
+                    $kifejezes != "" ? print("<button id=\"kereses-vissza\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>") : "";
+                    $kifejezes != "" ? print("<p>Találatok <span>\"{$kifejezes}\"</span> kifejezésre:</p>") : '';
+                ?>
+            </form>
+        </div>
+        <?php print $etervKi; ?>
     </main>
 </body>
 </html>

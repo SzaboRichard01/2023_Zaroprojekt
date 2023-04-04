@@ -349,18 +349,18 @@ h1 span{
 p span{
   color: var(--zold);
 }
-.felh-lista form{
+.felh-lista form, .etkereso{
   width: 90%;
   margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
 }
-.felh-lista form .kereses-gomb{
+.felh-lista form .kereses-gomb, .etkereso .kereses-gomb{
   margin: 0;
   width: 80px;
   border-radius: 0;
 }
-.felh-lista form p{
+.felh-lista form p, .etkereso p{
   display: flex;
   align-items: center;
   margin-left: 10px;
@@ -1414,7 +1414,7 @@ h2{
   justify-content: center;
   align-items: center;
 }
-.teljesNap i:hover{
+.teljesNap .tnapbezar:hover{
   cursor: pointer;
   background-color: rgb(146, 0, 0);
 }
@@ -1458,10 +1458,16 @@ h2{
   flex-wrap: wrap;
 }
 
+.kereso{
+  width: 50%;
+  min-width: 350px;
+}
+
 .sKliensekL form #kifejezes,
 .felh-lista form #kifejezes,
 .meglevo form #keresett,
-.felkeresek form #FelKeresett{
+.felkeresek form #FelKeresett,
+.etkereso #kifejezes{
   border-radius: 15px 0 0 15px;
   padding: 10px;
   font-size: 14px;
@@ -1469,7 +1475,8 @@ h2{
 .sKliensekL form .kereses-gomb,
 .felh-lista form .kereses-gomb,
 .meglevo form .kereses-gomb,
-.felkeresek form .kereses-gomb{
+.felkeresek form .kereses-gomb,
+.etkereso .kereses-gomb{
   margin: 0;
   border-radius: 0 15px 15px 0;
 }

@@ -82,7 +82,7 @@ if (!isset($_SESSION['felh_id'])) {
     }
     else{
         //Kliens típusú profil esetén
-        $felulet = "<h1>{$vnev} {$knev} Edzéstervei</h1>";
+        $felulet = "";
     
         $kliensID = $_SESSION['felh_id'];
         
@@ -96,11 +96,15 @@ if (!isset($_SESSION['felh_id'])) {
                 return $text;
             }
         }
+
+        $kifejezes = (isset($_POST['kifejezes'])) ? $_POST['kifejezes'] : "";
         
         $eredmeny = mysqli_query($dbconn, "SELECT terv.terv_id, terv.neve, terv.leiras, terv.kapcs_id, kuldo_az, fogado_az
                 FROM terv INNER JOIN edzoklienskapcs ON edzoklienskapcs.kapcs_id = terv.kapcs_id
                 WHERE kuldo_az = '{$kliensID}'
-                OR fogado_az = '{$kliensID}'");
+                OR fogado_az = '{$kliensID}'
+                AND neve LIKE '%{$kifejezes}%'
+                ORDER BY terv_id DESC");
         
         $etervKi = "<div class=\"edzestervek\">";
         if(mysqli_num_rows($eredmeny) != 0){
@@ -139,18 +143,21 @@ if (!isset($_SESSION['felh_id'])) {
             }
         }
         else{
-            $etervKi .= "
-            <div class=\"etervKozep\">
-            <div class=\"eTervSegitseg\">
-                <p class=\"etSegitsegC\">Önnek még nincs egy edzésterve sem!</p>
-                <p>Edzéstervet az Edző típusú profillal rendelkező felhasználóktól tud kérni.</p>
-                <ol>
-                    <li>Kérjen fel egy edzőt</li>
-                    <li>Ha az edző elfogadta a felkérését, chat részben meg tudják beszélni a további részleteket (milyen edzéstervet / étrendet szeretne, korábbi sérülések, betegségek stb.)</li>
-                    <li>Amikor mindezt megbeszélték, az edző megírja a személyre szabott edzéstervet/étrendet, amint készen van az edzéstervek menüpontban fogja tudni megtekinteni.</li>
-                </ol>
-            </div>
-            </div>";
+            if($kifejezes != ""){
+                $etervKi .= "<p>Nincs találat</p>";
+            } else{
+                $etervKi .= "<div class=\"etervKozep\">
+                <div class=\"eTervSegitseg\">
+                    <p class=\"etSegitsegC\">Önnek még nincs egy edzésterve sem!</p>
+                    <p>Edzéstervet az Edző típusú profillal rendelkező felhasználóktól tud kérni.</p>
+                    <ol>
+                        <li>Kérjen fel egy edzőt</li>
+                        <li>Ha az edző elfogadta a felkérését, chat részben meg tudják beszélni a további részleteket (milyen edzéstervet / étrendet szeretne, korábbi sérülések, betegségek stb.)</li>
+                        <li>Amikor mindezt megbeszélték, az edző megírja a személyre szabott edzéstervet/étrendet, amint készen van az edzéstervek menüpontban fogja tudni megtekinteni.</li>
+                    </ol>
+                </div>
+                </div>";
+            }
         }
         $etervKi .= "</div>";
         $felulet .= $etervKi;
@@ -178,7 +185,25 @@ if (!isset($_SESSION['felh_id'])) {
     <?php require("leker/SidebarNavbar.php"); ?>
 
     <main id="edzestervMain">
-        <?php print($felulet); ?>
+        <?php
+            if($_SESSION['p_tipus'] == "kliens"){
+                $kiir = "<h1>{$vnev} {$knev} Edzéstervei</h1>
+                <div class=\"kereso\">
+                    <form method=\"post\" class=\"etkereso\">
+                        <input type=\"search\" name=\"kifejezes\" id=\"kifejezes\" placeholder=\"Keresés\">
+                        <input class=\"kereses-gomb\" type=\"submit\" value=\"Keresés\">";
+                        
+                            $kifejezes != "" ? $kiir .= "<button id=\"kereses-vissza\" onclick=\"$kifejezes = ''\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>" : "";
+                            $kifejezes != "" ? $kiir .= "<p>Találatok <span>\"{$kifejezes}\"</span> kifejezésre:</p>" : '';
+                        
+                    $kiir .= "</form>
+                </div>";
+
+                print $kiir;
+            }
+
+            print($felulet);
+        ?>
     </main>
     
 
