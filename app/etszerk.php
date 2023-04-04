@@ -18,7 +18,7 @@ if(!isset($_GET['etid'])){
             $etLeiras = $sor['leiras'];
         
             $modForm .="<div class=\"mezo\">
-                <label for=\"etneve\">Edzésterv neve:</label>
+                <label for=\"etneve\">Terv neve:</label>
                 <input type=\"text\" value=\"{$etNeve}\" name=\"etneve\" id=\"etneve\">
             </div>
             <div class=\"mezo\">
@@ -89,7 +89,7 @@ if(!isset($_GET['etid'])){
             $Leirasa = $_POST['etleiras'];
 
             if($Neve == ""){
-                $nevhiba = "<p>A név mező nem lehet üres!</p>";
+                $nevhiba = "<p style=\"color: red; font-weight: bold; font-size: 18px\">A név mező nem lehet üres!</p>";
             } else{
                 $update = mysqli_query($dbconn, "UPDATE terv SET neve = '{$Neve}', leiras = '{$Leirasa}' WHERE terv_id = {$etID}");
         

@@ -205,9 +205,8 @@ if (!isset($_SESSION['felh_id'])) {
                 ?>
             </div>
             <!-- Edzésterv -->
-            <h2>Edzésterv</h2>
             <div class="mezo">
-                <label for="et-neve">Edzésterv neve:*</label>
+                <label for="et-neve">Terv neve:*</label>
                 <input type="text" name="et-neve" id="et-neve" require>
             </div>          
             <div class="mezo">
@@ -215,6 +214,7 @@ if (!isset($_SESSION['felh_id'])) {
                 <textarea name="et-leiras" id="et-leiras"></textarea>
             </div>
             <!-- ---------------------------------------------- -->
+            <h2>Edzésterv</h2>
             <div class="mezo">
                 <label for="hnap">Hány napra szeretné felbontani az edzéstervet?*</label>
                 <select name="hnap" id="hnap" onchange="hanyNap(this), redactorEdz()">

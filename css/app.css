@@ -1318,15 +1318,15 @@ h2{
   overflow-y: auto;
 }
 
-.etLeiras table{
+.etLeiras table, .bemutatkozo table{
   color: black;
   border: 1px solid black;
 }
-.etLeiras table td{
+.etLeiras table td, .bemutatkozo table td{
   background-color: var(--zold);
   padding: 10px;
 }
-.etLeiras table thead td{
+.etLeiras table thead td, .bemutatkozo thead td{
   background-color: var(--fekete);
   color: white;
 }
@@ -1337,6 +1337,12 @@ h2{
 }
 .etLeiras p{
   word-wrap: break-word;
+}
+.etLeiras ul, .etLeiras ol,
+.teljnapterv ul, .teljnapterv ol,
+.bemutatkozo ul, .bemutatkozo ol,
+.tleiras ul, .tleiras ol{
+  margin: 5px 3px 5px 20px;
 }
 .etEdzes, .etEtrend{
   margin: 5px 10px;
