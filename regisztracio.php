@@ -40,12 +40,13 @@ if(isset($_POST['reg'])){
     if(empty($_POST['knev'])){
         $hibak[] = "<p>Nem adta meg a keresztnevét!</p>";
     }
-    if(isset($email)){
-        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+    
+    if(empty($_POST['email'])){
+        $hibak[] = "<p>Nem adott meg E-mail címet!</p>";
+    } else{
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             $hibak[] = "<p>Hibás E-mail címet adott meg!</p>";
         }
-    } else{
-        $hibak[] = "<p>Nem adott meg E-mail címet!</p>";
     }
     
     if(empty($_POST['jelszo'])){
@@ -254,5 +255,6 @@ if(isset($_POST['reg'])){
     </main>
 
     <script src="js/script.js"></script>
+    <script src="js/storage.js"></script>
 </body>
 </html>
