@@ -1,6 +1,38 @@
 <?php
 require("app/kapcsolat.php");
 
+if(isset($_GET['aszf'])){
+    $aszf = "<div class=\"aszfAb\">
+        <div class=\"aszfH\">
+            <p>Általános szerződési feltételek (ÁSZF)</p>
+            <i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"location.href='regisztracio.php'\"></i>
+        </div>
+        <div class=\"aszfLe\">
+            <p>Ezen Általános Szerződési Feltételek (ÁSZF) tartalmazza a felhasználók jogait és kötelezettségeit alkalmazás használata során. Kérjük, hogy figyelmesen olvassa el az alábbiakat, mielőtt regisztrálna és használná az alkalmazást. Az alkalmazás használatával a felhasználó elfogadja az ÁSZF feltételeit.</p><br>
+            <p><strong>Szolgáltatások</strong><br>
+            Az alkalmazás lehetővé teszi az edzők és kliensek regisztrációját, felhasználói profilok létrehozását, edzésterv kérését és az alkalmazáson belüli csevegést. Az alkalmazás szolgáltatásainak igénybevételéhez a felhasználónak internetkapcsolattal rendelkező eszközzel kell rendelkeznie.</p><br>
+            <p><strong>Regisztráció</strong><br>
+            Az alkalmazás használatához regisztráció szükséges. A felhasználóknak valós adatokat kell megadniuk a regisztráció során. A felhasználók felelőssége az adatok pontossága és naprakészsége.</p><br>
+            <p><strong>Adatvédelem</strong><br>
+            Az alkalmazás kezeli a felhasználók személyes adatait az adatvédelmi szabályoknak megfelelően. Az alkalmazás nem adja ki a felhasználók személyes adatait harmadik félnek, kivéve az adatvédelmi jogszabályokban előírtak szerint.</p><br>
+            <p><strong>Felhasználói tartalom</strong><br>
+            Az alkalmazás lehetővé teszi a felhasználók számára, hogy tartalmat osszanak meg, például edzéstervet vagy üzeneteket. A felhasználók felelőssége a megosztott tartalom jogosultsága és pontossága. Az alkalmazás nem vállal felelősséget a felhasználók által megosztott tartalomért.</p><br>
+            <p><strong>Felmondás</strong><br>
+            A felhasználó bármikor felmondhatja az alkalmazás használatát. Az alkalmazás jogosult azonnal lezárni a felhasználó fiókját, ha a felhasználó az ÁSZF feltételeit megsérti.</p><br>
+            <p><strong>Jogok és felelősségek</strong><br>
+            Az alkalmazás jogosult módosítani az ÁSZF feltételeit, bármikor értesítés nélkül. Az alkalmazás nem vállal felelősséget semmilyen vagyoni vagy nem vagyoni károkért, amelyek a felhasználó által használt eszközökben, adatokban, szoftverekben vagy bármely más hardverben vagy szoftverben keletkeznek az alkalmazás használata során.</p><br>
+
+            <p>Az ÁSZF feltételei és az alkalmazás használata a magyar jog szerinti szabályozás alá esik. Az ÁSZF-ben nem szabályozott kérdésekben a hatályos jogszabályokat kell alkalmazni.</p>
+
+            <p>Az ÁSZF feltételei az alkalmazás használatával jönnek létre és érvényesek. Az ÁSZF bármely rendelkezésének jogellenessége, érvénytelensége vagy hatályon kívül helyezése nem érinti a többi rendelkezés érvényességét és hatályát.</p>
+            
+            <p>Az ÁSZF a felhasználó és az alkalmazás közötti teljes megállapodást tartalmazza. Az ÁSZF-ben nem foglalt kérdésekben az alkalmazás jogosult a maga által megfelelőnek ítélt módon eljárni.</p><br>
+
+            <p>Kérdései vagy észrevételei vannak az ÁSZF-fel kapcsolatban, kérjük, vegye fel a kapcsolatot az alkalmazás üzemeltetőjével az alkalmazásban található elérhetőségeken.</p>
+        </div>
+    </div>";
+}
+
 if(isset($_POST['reg'])){
     if(!empty($_POST['neme']) && !empty($_POST['vnev']) && !empty($_POST['knev']) && !empty($_POST['email']) && !empty($_POST['jelszo'])){
         $tipus = strip_tags($_POST['ptipus']);
@@ -70,6 +102,10 @@ if(isset($_POST['reg'])){
                 $hibak[] = "<p>Edző profil esetén kötelező megadnia a telefonszámát!</p>";
             }
         }
+    }
+
+    if(!isset($_POST['aszf'])){
+        $hibak[] = "<p>Az alkalmazás használatához el kell fogadnia az Általános Szerződési Feltételeinket (ÁSZF). Az ÁSZF-ről bővebben itt olvashat: <a href=\"?aszf\">ÁSZF</a>.</p>";
     }
 
     $mime = array("image/jpeg", "image/gif", "image/png", "image/jpg");
@@ -177,6 +213,13 @@ if(isset($_POST['reg'])){
                 }
             ?>
         </div>
+
+        <?php
+            if(isset($aszf)){
+                print($aszf);
+            }
+        ?>
+
         <form method="post" enctype="multipart/form-data">
             <div class="hibauzenet">
                 <?php
@@ -247,6 +290,10 @@ if(isset($_POST['reg'])){
                     </div>
                 </div>
                 <input type="tel" name="telefon" id="telefon" placeholder="Minta: +36301234567">
+            </div>
+            <div class="mezo aszf">
+                <input type="checkbox" name="aszf" id="aszf">
+                <label for="aszf">Elfogadom az <a href="?aszf">Általános szerződési feltételeket (ÁSZF)!</a></label>
             </div>
             <em>A csillaggal * jelölt mezők kitöltése kötelező!</em>
             <input type="submit" value="Regisztráció" name="reg" id="reg">

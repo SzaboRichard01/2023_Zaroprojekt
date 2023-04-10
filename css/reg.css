@@ -173,3 +173,67 @@ main .mezo #rendben:hover{
 .ujJelszoB{
     margin: 20px 0;
 }
+.aszf{
+    margin-top: 20px;
+    font-size: 16px;
+}
+.aszf input{
+    width: 17px;
+    height: 17px;
+}
+
+.aszfAb{
+    width: 70%;
+    min-width: 350px;
+    height: 70vh;
+    min-height: 300px;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+}
+.aszfH{
+    display: flex;
+    
+    position: absolute;
+    top: 0;
+    background-color: var(--zold);
+    width: 100%;
+    height: 50px;
+}
+.aszfH p{
+    width: calc(100% - 50px);
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+}
+.aszfH i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
+.aszfH i:hover{
+    background-color: rgb(158, 10, 10);
+    cursor: pointer;
+}
+.aszfAb .aszfLe{
+    background-color: rgb(214, 214, 214);
+    margin-top: 50px;
+    width: 100%;
+    height: calc(100% - 50px);
+    z-index: 3;
+    overflow-y: auto;
+    padding: 10px 30px 10px 10px;
+    text-align: justify;
+}
+
+form a{
+    color: var(--zold);
+}

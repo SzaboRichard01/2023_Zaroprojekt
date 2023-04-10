@@ -72,7 +72,7 @@
     </nav>
     <!-- Menu vége -->
     <main>
-        <h1>Belépés</h1>
+        <h1>Bejelentkezés</h1>
         <form method="post">
             <?php
                 if(isset($hiba)){
@@ -90,6 +90,7 @@
             <div class="mezo">
                 <input type="submit" value="Belépés" id="rendben" name="rendben">
             </div>
+            <p>Még nincs fiókja? <a href="regisztracio.php">Regisztráljon itt!</a></p>
         </form>
     </main>
 
