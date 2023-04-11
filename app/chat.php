@@ -24,12 +24,6 @@ if (!isset($_SESSION['felh_id'])) {
     //Összes edző típusú felhasználó listájának összeállítása a $chatLista változóba
     $chatLista = "";
     while($felhasznalo = mysqli_fetch_assoc($fosszesChat)) {
-        $felhEllenorzes = "SELECT * FROM edzoklienskapcs
-                            WHERE fogado_az = {$_SESSION['felh_id']} AND kuldo_az = {$felhasznalo['felhasznalo_id']}
-                            OR kuldo_az = {$_SESSION['felh_id']} AND fogado_az = {$felhasznalo['felhasznalo_id']}";
-        $felhEllEredmeny = mysqli_query($dbconn, $felhEllenorzes);
-        $felhEllSor = mysqli_fetch_assoc($felhEllEredmeny);
-
         $chatLista .= "<a href=\"?chat={$felhasznalo['felhasznalo_id']}\">          
                         <div class=\"prof\">
                         <div class=\"pkep pkep-meret\"><img src=\"../pics/profile/" .$felhasznalo['kep']. "\"></div>
@@ -37,7 +31,6 @@ if (!isset($_SESSION['felh_id'])) {
                         </div>
                     </a>";
     }
-    $chatLista .= "";
     //oldalsó lista vége
 
     //Chat rész
@@ -53,7 +46,6 @@ if (!isset($_SESSION['felh_id'])) {
             $_SESSION['chataz'] = $_GET['chat'];
             $fogadoAz = $_GET['chat'];
             if(isset($_POST['ChatUzenet']) && $_POST['szoveg'] != ""){
-                $mikor = date("Y-m-d H:i:s");
                 $uzenet = $_POST['szoveg'];
                 $sqlBeszur = mysqli_query($dbconn, "INSERT INTO uzenetek (kimeno_id, bejovo_id, uzenet) VALUES ('{$_SESSION['felh_id']}', '{$fogadoAz}', '{$uzenet}')");
             }
