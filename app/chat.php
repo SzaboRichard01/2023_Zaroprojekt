@@ -64,9 +64,6 @@ if (!isset($_SESSION['felh_id'])) {
     }
     //Chat rész vége
 }
-
-
-
 ?><!DOCTYPE html>
 <html lang="hu">
 <head>
