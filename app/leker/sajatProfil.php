@@ -29,6 +29,7 @@
             <button id=\"spBtnVissza\" onclick=\"location.href='kezdolap.php';\"; title=\"Vissza a kezdőlapra\"><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> Vissza</button>
             <p class=\"nev\">{$vnev} {$knev}</p>
             <button id=\"btnAdatokSz\" onclick=\"location.href='muveletek/sAdatModosit.php'\" title=\"Adatok módosítása\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>
+            <button id=\"btnProfTorles\" onclick=\"sajatProfTorles()\" title=\"Saját profil tölése\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>
         </div>
         <div class=\"felh-adatok\">
             <div class=\"fadatok-pkep\">

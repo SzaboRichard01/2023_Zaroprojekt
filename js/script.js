@@ -83,7 +83,6 @@ function btnElutasit(az, tNev) {
   })
 }
 
-//Edzésterv törlése
 function btnEtervTorles(nev, etneve, etervid){
   Swal.fire({
     title: 'Biztosan törölni szeretné?',
@@ -99,7 +98,6 @@ function btnEtervTorles(nev, etneve, etervid){
     }
   })
 }
-//----------
 
 function tevTeljesBezar(){
   let tevTeljes = document.querySelector(".tevTeljes");
@@ -119,6 +117,26 @@ function tevTejlTorles(datum, tevazon){
   }).then((result) => {
     if (result.isConfirmed) {
       location.href = "muveletek/tevTorlese.php?tevaz=" + tevazon;
+    }
+  })
+}
+
+function sajatProfTorles(){
+  Swal.fire({
+    title: 'Biztosan törölni szeretné a profilját?',
+    text: "Ez a művelet nem visszavonható! Minden adata törlődni fog az alkalmazásból, beleértve az edzésterveit és az üzeneteit is!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#ff0000',
+    cancelButtonColor: '#55be3b',
+    confirmButtonText: 'Törlés',
+    cancelButtonText: 'Mégsem',
+    backdrop: `rgba(120,0,0,0.4)`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        location.href = "muveletek/sProfilTorles.php",
+      )
     }
   })
 }
