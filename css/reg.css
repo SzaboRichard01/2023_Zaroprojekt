@@ -224,7 +224,7 @@ main .mezo #rendben:hover{
     cursor: pointer;
 }
 .aszfAb .aszfLe{
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(255, 255, 255);
     margin-top: 50px;
     width: 100%;
     height: calc(100% - 50px);

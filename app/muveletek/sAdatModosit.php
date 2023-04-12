@@ -39,11 +39,12 @@ if(!isset($_SESSION['felh_id'])){
         </div>
 
         <div class=\"ujJelszoB\">
+            <hr>
             <div class=\"tip\">
                 <h2>Új jelszó beállítása</h2>
                 <div class=\"tooltip\">
                     <i class=\"fa fa-question-circle-o\" aria-hidden=\"true\"></i>
-                    <span class=\"tooltiptext\">Csak akkor kell kitöltenie ha új jelszót szeretne megadni!</span>
+                    <span class=\"tooltiptext\">Ha új jelszót szeretne beállítani meg kell adnia a régi jelszavát is!</span>
                 </div>
             </div>
 

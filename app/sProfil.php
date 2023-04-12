@@ -41,6 +41,7 @@ if (!isset($_SESSION['felh_id'])) {
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/script.js"></script>
 </body>
 </html>
