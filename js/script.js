@@ -116,7 +116,7 @@ function tevTejlTorles(datum, tevazon){
     cancelButtonText: 'Mégsem'
   }).then((result) => {
     if (result.isConfirmed) {
-      location.href = "muveletek/tevTorlese.php?tevaz=" + tevazon;
+      location.href = "muveletek/feljTorlese.php?tevaz=" + tevazon;
     }
   })
 }

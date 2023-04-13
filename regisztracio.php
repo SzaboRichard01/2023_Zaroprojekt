@@ -138,7 +138,7 @@ if(isset($_POST['reg'])){
     }
 
     if(isset($hibak)){
-        $kimenet = "<ul\n>";
+        $kimenet = "<ul>";
         foreach($hibak as $hiba){
             $kimenet .= "<li>{$hiba}</li>";
         }

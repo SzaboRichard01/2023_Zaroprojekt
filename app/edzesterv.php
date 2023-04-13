@@ -29,7 +29,7 @@ if (!isset($_SESSION['felh_id'])) {
         $felulet .= "</form>";
     
             $sql = "SELECT kuldo_az, fogado_az, elfogadva FROM edzoklienskapcs
-                    WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}";
+                    WHERE kuldo_az = {$_SESSION['felh_id']} AND elfogadva = 1 OR fogado_az = {$_SESSION['felh_id']} AND elfogadva = 1";
             $eredmeny = mysqli_query($dbconn, $sql);
             if(mysqli_num_rows($eredmeny) != 0){
                 while($sor = mysqli_fetch_assoc($eredmeny)){
@@ -149,7 +149,7 @@ if (!isset($_SESSION['felh_id'])) {
                 $etervKi .= "<div class=\"etervKozep\">
                 <div class=\"eTervSegitseg\">
                     <p class=\"etSegitsegC\">Önnek még nincs egy edzésterve sem!</p>
-                    <p>Edzéstervet az Edző típusú profillal rendelkező felhasználóktól tud kérni.</p>
+                    <p>Edzéstervet az Edző profillal rendelkező felhasználóktól tud kérni.</p>
                     <ol>
                         <li>Kérjen fel egy edzőt</li>
                         <li>Ha az edző elfogadta a felkérését, chat részben meg tudják beszélni a további részleteket (milyen edzéstervet / étrendet szeretne, korábbi sérülések, betegségek stb.)</li>
@@ -206,7 +206,6 @@ if (!isset($_SESSION['felh_id'])) {
         ?>
     </main>
     
-
     <script src="../js/script.js"></script>
 </body>
 </html>

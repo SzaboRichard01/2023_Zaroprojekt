@@ -25,7 +25,7 @@ let url = window.location.href;
 sendBtn.style.display = "none";
 inputField.style.display = "none";
 
-//Chat üzeneteinek megjelenÍtése, az URL-ben létezik a "chat=". 
+//Chat üzeneteinek megjelenÍtése, ha az URL-ben létezik a "chat=". 
 if(url.includes("chat=")){
     sendBtn.style.display = "unset";
     inputField.style.display = "unset";

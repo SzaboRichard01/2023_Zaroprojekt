@@ -5,7 +5,7 @@ if(!isset($_GET['tevid'])){
     require("../kapcsolat.php");
     $modID = mysqli_real_escape_string($dbconn, $_GET['tevid']);
 
-    $sql = mysqli_query($dbconn, "SELECT datum, leiras FROM tevekenysegek WHERE tev_id = {$modID}");
+    $sql = mysqli_query($dbconn, "SELECT datum, leiras FROM feljegyzesek WHERE felj_id = {$modID}");
     $sor = mysqli_fetch_assoc($sql);
     $kDatum = $sor['datum'];
     $kLeiras = $sor['leiras'];
@@ -14,7 +14,7 @@ if(!isset($_GET['tevid'])){
         $pdatum = $_POST['dat'];
         $pleiras = $_POST['leir'];
 
-        $sqlUpdate = mysqli_query($dbconn, "UPDATE tevekenysegek SET datum = '{$pdatum}', leiras = '{$pleiras}' WHERE tev_id = {$modID}");
+        $sqlUpdate = mysqli_query($dbconn, "UPDATE feljegyzesek SET datum = '{$pdatum}', leiras = '{$pleiras}' WHERE felj_id = {$modID}");
         header("Location: ../kezdolap.php");
     }
 }
@@ -45,11 +45,11 @@ if(!isset($_GET['tevid'])){
             }
         );
     </script>
-    <title>Tevékenység módosítása</title>
+    <title>Feljegyzés módosítása</title>
 </head>
 <body>
     <main>
-        <h2>Tevékenység módosítása</h2>
+        <h2>Feljegyzés módosítása</h2>
         <button id="tevModBtnV" onclick="location.href='../kezdolap.php'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza a kezdőlapra</button>
         <form method="post">
             <div class="mezo">

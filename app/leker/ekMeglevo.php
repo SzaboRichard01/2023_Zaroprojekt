@@ -18,7 +18,7 @@ if(!defined('eleres')){
     
     $sql = "SELECT kuldo_az, fogado_az, elfogadva
         FROM edzoklienskapcs
-        WHERE elfogadva = 1 AND kuldo_az = {$_SESSION['felh_id']} OR fogado_az = {$_SESSION['felh_id']}
+        WHERE kuldo_az = {$_SESSION['felh_id']} AND elfogadva = 1 OR fogado_az = {$_SESSION['felh_id']} AND elfogadva = 1
         ORDER BY felkeres_datuma DESC";
     $eredmeny = mysqli_query($dbconn, $sql);
     $eFelkeres = "";

@@ -10,13 +10,27 @@ if(!isset($_SESSION['felh_id'])){
     require("leker/sajatProfil.php");
 
     if(isset($_POST['rogzites'])){
-        $datum = $_POST['datum'];
-        $leiras = $_POST['tev'];
+        if(empty($_POST['datum'])){
+            $hibak[] = "<p>Nem választott ki dátumot!</p>";
+        }
+        if(empty($_POST['jegy'])){
+            $hibak[] = "A jegyzet üres!";
+        }
 
-        $sql = mysqli_query($dbconn, "INSERT INTO tevekenysegek (felhasznalo_id, datum, leiras) VALUES ('{$_SESSION['felh_id']}', '{$datum}', '{$leiras}')");
+        if(isset($hibak)){
+            $hibakKi = "<ul>";
+            foreach($hibak as $hiba){
+                $hibakKi .= "<li>{$hiba}</li>";
+            }
+            $hibakKi .= "</ul>";
+        } else{
+            $datum = $_POST['datum'];
+            $leiras = $_POST['jegy'];
 
-        $_SESSION['tevrogz'] = "<p>Sikeres rögzítés!</p>";
-        header("Location: kezdolap.php");
+            $sql = mysqli_query($dbconn, "INSERT INTO feljegyzesek (felhasznalo_id, datum, leiras) VALUES ('{$_SESSION['felh_id']}', '{$datum}', '{$leiras}')");
+            $_SESSION['tevrogz'] = "<p>Sikeres rögzítés!</p>";
+            header("Location: kezdolap.php");
+        }
     }
 }
 ?><!DOCTYPE html>
@@ -40,28 +54,35 @@ if(!isset($_SESSION['felh_id'])){
     <script>
         $(document).ready(
             function() {
-                $('textarea#tev').redactor({
+                $('textarea#jegy').redactor({
                     minHeight: 300
                 });
             }
         );
     </script>
-    <title>Tevékenység Rögzítése</title>
+    <title>Feljegyzés Rögzítése</title>
 </head>
 <body>
     <!-- Felső és oldalsó menü -->
     <?php require("leker/SidebarNavbar.php"); ?>
-
     <main>
+        <h2>Feljegyzés rögzítése</h2>
         <button onclick="location.href='kezdolap.php'" id="tevRogzVissza"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza</button>
         <form method="post">
+            <div class="hibauzenet">
+                <?php
+                    if(isset($hibakKi)){
+                        print($hibakKi);
+                    }
+                ?>
+            </div>
             <div class="mezo">
                 <label for="datum">Dátum (Melyik nap):</label>
                 <input type="date" name="datum" id="datum">
             </div>
             <div class="mezo">
-                <label for="tev">Tevékenység leírása:</label>
-                <textarea name="tev" id="tev"></textarea>
+                <label for="jegy">Jegyzet:</label>
+                <textarea name="jegy" id="jegy"></textarea>
             </div>
             <input type="submit" value="Rögzítés" name="rogzites" id="rogzites">
         </form>
