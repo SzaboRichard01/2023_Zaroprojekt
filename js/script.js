@@ -107,7 +107,7 @@ function tevTeljesBezar(){
 function tevTejlTorles(datum, tevazon){
   Swal.fire({
     title: 'Biztosan törölni szeretné?',
-    text: "Ezzel törlődik "+ datum +" napján rögzített tevékenysége! Ezt a műveletet nem tudja majd visszavonni!",
+    text: "Ezzel törlődik "+ datum +" napján rögzített feljegyzése! Ezt a műveletet nem tudja majd visszavonni!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#55be3b',
