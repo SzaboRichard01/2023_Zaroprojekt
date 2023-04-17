@@ -165,6 +165,7 @@ main .mezo #rendben:hover{
     padding: 5px 0;
     position: absolute;
     z-index: 1;
+    left: 10px;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
