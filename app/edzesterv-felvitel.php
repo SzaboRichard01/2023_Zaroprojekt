@@ -234,7 +234,7 @@ if (!isset($_SESSION['felh_id'])) {
             <!-- Értrend -->
             <h2>Étrend</h2>
             <div class="mezo">
-                <label for="etrendnap">Hány napra szeretne értendet rögzíteni?*</label>
+                <label for="etrendnap">Hány napra szeretne étrendet rögzíteni?*</label>
                 <select name="etrendnap" id="etrendnap" onchange="etrendNap(this), redactorEtrend()">
                     <option disabled selected>Válasszon egy számot!</option>
                     <option value="1">1</option>
